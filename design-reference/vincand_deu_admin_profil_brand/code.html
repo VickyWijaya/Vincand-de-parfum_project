@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>VINCAND DEU PARFUM - CMS</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "outline-variant": "#c6c6cd", "on-primary-fixed-variant": "#3f465c", "on-surface": "#0b1c30", "surface-container-low": "#eff4ff", "on-secondary-fixed": "#0d1c2e", "primary-container": "#131b2e", "primary-fixed": "#dae2fd", "on-error": "#ffffff", "surface-container": "#e5eeff", "on-primary-fixed": "#131b2e", "secondary-fixed-dim": "#b9c7df", "on-primary": "#ffffff", "error": "#ba1a1a", "on-tertiary-container": "#98805d", "on-secondary-container": "#57657a", "on-secondary-fixed-variant": "#3a485b", "surface-container-high": "#dce9ff", "surface-dim": "#cbdbf5", "surface-bright": "#f8f9ff", "on-background": "#0b1c30", "secondary-container": "#d5e3fc", "on-tertiary": "#ffffff", "surface-container-highest": "#d3e4fe", "inverse-primary": "#bec6e0", "tertiary": "#000000", "on-primary-container": "#7c839b", "surface-tint": "#565e74", "on-surface-variant": "#45464d", "primary": "#000000", "on-secondary": "#ffffff", "secondary-fixed": "#d5e3fc", "surface": "#f8f9ff", "inverse-surface": "#213145", "tertiary-fixed-dim": "#dec29a", "background": "#f8f9ff", "outline": "#76777d", "surface-variant": "#d3e4fe", "tertiary-fixed": "#fcdeb5", "on-tertiary-fixed": "#271901", "error-container": "#ffdad6", "secondary": "#515f74", "tertiary-container": "#271901", "on-error-container": "#93000a", "on-tertiary-fixed-variant": "#574425", "inverse-on-surface": "#eaf1ff", "primary-fixed-dim": "#bec6e0", "surface-container-lowest": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "layout-gutter": "1.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-sm": "0.75rem", "space-2xl": "3rem", "space-xs": "0.5rem", "layout-sidebar": "16rem", "space-2xs": "0.25rem", "space-md": "1rem" }, "fontFamily": { "headline-lg-mobile": ["Inter"], "headline-lg": ["Inter"], "label-md": ["Inter"], "label-sm": ["Inter"], "headline-sm": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"], "caption": ["Inter"], "body-sm": ["Inter"] }, "fontSize": { "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "caption": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-layout-sidebar bg-surface-container-lowest border-r border-outline-variant/30 z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-16 px-space-md border-b border-outline-variant/30 flex flex-col justify-center"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">VINCAND DEU</span><span class="font-caption text-caption text-on-surface-variant tracking-wider uppercase mt-space-2xs">ADMIN PANEL</span></div><nav class="p-space-xs space-y-space-2xs" data-active-classes="bg-surface-container text-on-surface font-semibold"><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-label-md text-label-md">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="produk" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-label-md text-label-md">Produk</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="kategori-dan-varian" href="#"><span class="material-symbols-outlined text-[20px]">category</span><span class="font-label-md text-label-md">Kategori & Varian</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-xs rounded transition-colors bg-surface-container text-on-surface font-semibold" data-path="profil-brand" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span class="font-label-md text-label-md">Profil Brand</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="kolaborasi" href="#"><span class="material-symbols-outlined text-[20px]">handshake</span><span class="font-label-md text-label-md">Kolaborasi</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="legalitas-dan-izin" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-label-md text-label-md">Legalitas & Izin</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="media-sosial-dan-kontak" href="#"><span class="material-symbols-outlined text-[20px]">contact_phone</span><span class="font-label-md text-label-md">Media Sosial & Kontak</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="pengaturan" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-md text-label-md">Pengaturan</span></a></nav></div><div class="p-space-xs border-t border-outline-variant/30"><div class="flex items-center justify-between p-space-xs rounded bg-surface-container-low"><div class="flex flex-col min-w-0 pr-space-2xs"><span class="font-label-sm text-label-sm text-on-surface truncate">Owner / Admin</span><span class="font-caption text-caption text-on-surface-variant truncate">Administrator</span></div><a class="p-space-2xs text-on-surface-variant hover:text-error transition-colors flex items-center justify-center" data-path="login" href="#" title="Logout"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></aside><div class="pl-layout-sidebar"><header class="fixed top-0 left-layout-sidebar right-0 h-16 bg-surface-container-lowest border-b border-outline-variant/30 z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-lg flex-1 max-w-xl"><div class="flex items-center gap-space-2xs text-on-surface-variant font-body-sm text-body-sm"><span class="hover:text-on-surface cursor-pointer">CMS</span><span class="material-symbols-outlined text-[16px]">chevron_right</span><span class="text-on-surface font-label-sm text-label-sm">Section</span></div><div class="relative w-full max-w-xs"><span class="material-symbols-outlined absolute left-space-xs top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span><input class="w-full h-9 pl-8 pr-space-sm bg-surface rounded border border-outline-variant/50 font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-on-surface transition-colors" placeholder="Cari menu atau data..." type="text"/></div></div><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-2xs text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" href="#" target="_blank"><span class="material-symbols-outlined text-[16px]">open_in_new</span>Lihat Website Publik</a><button class="relative p-space-2xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center pl-space-2xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WQhsN4Mhs9HCnReRc59NAn6HSJGQXRn8cUJTxKklWb-_vSjl6324Eps691XhqlV0G2jUfTEEjjfY2TteX3dv6w99CSyuFFEEjY359POAd4SvXJ04B4bIWCLleKqETnucEGDzgK7xDrfKfMUAXPX9MqDOPV4Z2etWR35wBtGQJ7zqLXYxSDiifPmapDxsUyCVCZ4Ls9DyqP-TJBR-kLcGhPhNkwY0d3OtmhFkQduwpG7gqPxHKyEFI72nr3Xa2y-sUc0cSAZCYoZ5w"/></div></div></header><main class="relative pt-16 min-h-screen bg-surface w-full p-space-lg"><div class="flex flex-col w-full">
+<!-- Top View Notification / Alert -->
+<div class="mb-space-lg flex items-center justify-between px-space-md py-space-sm bg-surface-container-lowest rounded-xl shadow-sm" id="statusAlert">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-on-surface truncate">Perubahan profil terakhir disimpan otomatis ke cache.</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">Klik Simpan Perubahan untuk menerbitkan versi ini langsung ke website publik.</span>
+</div>
+</div>
+<button class="p-space-2xs text-on-surface-variant hover:text-on-surface rounded-full transition-colors flex items-center justify-center shrink-0 ml-space-md" onclick="document.getElementById('statusAlert').remove()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Page Header Area -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md pb-space-lg">
+<div class="flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption uppercase tracking-wider text-secondary">Pengaturan Konten Publik</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-caption text-caption text-on-surface-variant">Live Sync Enabled</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Profil Brand</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+        Kelola informasi identitas, narasi cerita, dan filosofi wewangian VINCAND DEU yang tampil di halaman publik.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<a class="h-9 px-space-md bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded font-label-md text-label-md shadow-sm transition-colors inline-flex items-center gap-space-xs" href="#" target="_blank">
+<span>Lihat Halaman Our Story</span>
+<span class="material-symbols-outlined text-[16px]">north_east</span>
+</a>
+<button class="h-9 px-space-md bg-primary hover:bg-primary/90 text-on-primary rounded font-label-md text-label-md shadow-sm transition-all flex items-center gap-space-xs" onclick="handleSaveAction()" type="button">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Simpan Perubahan</span>
+</button>
+</div>
+</div>
+<!-- Main Grid Form Workspace -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg pb-24">
+<!-- Left Main Column (Form Modules) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Section 1: Identitas Utama Brand -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-space-lg py-space-md bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">badge</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Identitas Utama Brand</h2>
+</div>
+<span class="font-caption text-caption text-secondary uppercase tracking-wider font-semibold">Essential Info</span>
+</div>
+<div class="p-space-lg flex flex-col gap-space-lg">
+<!-- Logo Brand Upload Area -->
+<div class="flex flex-col sm:flex-row gap-space-lg sm:items-center">
+<div class="relative w-28 h-28 bg-surface-container-low rounded-xl flex items-center justify-center shrink-0 p-space-xs overflow-hidden shadow-sm">
+<img alt="VINCAND DEU Brand Mark" class="w-full h-full object-contain" id="brandLogoPreview" src="https://lh3.googleusercontent.com/aida/AEtjO1WQhsN4Mhs9HCnReRc59NAn6HSJGQXRn8cUJTxKklWb-_vSjl6324Eps691XhqlV0G2jUfTEEjjfY2TteX3dv6w99CSyuFFEEjY359POAd4SvXJ04B4bIWCLleKqETnucEGDzgK7xDrfKfMUAXPX9MqDOPV4Z2etWR35wBtGQJ7zqLXYxSDiifPmapDxsUyCVCZ4Ls9DyqP-TJBR-kLcGhPhNkwY0d3OtmhFkQduwpG7gqPxHKyEFI72nr3Xa2y-sUc0cSAZCYoZ5w"/>
+<div class="absolute bottom-1 right-1 bg-surface-container-lowest text-on-surface p-1 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[14px] block">verified</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs flex-1">
+<span class="font-label-sm text-label-sm text-on-surface">Logo Brand (Identity Mark)</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Format disarankan: file PNG transparan dengan resolusi minimal 512x512px (rasio 1:1). Logo ini menjadi tanda pengenal resmi pada header publik, kemasan, dan invoice.
+              </p>
+<div class="flex items-center gap-space-xs pt-space-xs">
+<input accept="image/*" class="hidden" id="logoUploadInput" onchange="previewUploadedLogo(event)" type="file"/>
+<button class="h-8 px-space-sm bg-surface-container hover:bg-surface-container-high text-on-surface rounded font-label-sm text-label-sm transition-colors flex items-center gap-space-2xs" onclick="document.getElementById('logoUploadInput').click()" type="button">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+<span>Ganti Logo</span>
+</button>
+<button class="h-8 px-space-sm bg-surface-container-low hover:bg-surface-container text-error rounded font-label-sm text-label-sm transition-colors flex items-center gap-space-2xs" onclick="removeLogo()" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span>Hapus</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Input Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface" for="brandName">Nama Brand Resmi</label>
+<input class="h-10 px-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all" id="brandName" type="text" value="VINCAND DEU PARFUM"/>
+<span class="font-caption text-caption text-on-surface-variant">Tampil di navigasi bar, metadata website, dan footer hak cipta.</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface" for="brandTagline">Tagline / Slogan Olfaktori</label>
+<input class="h-10 px-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all" id="brandTagline" type="text" value="Indonesian Independent Olfactive House"/>
+<span class="font-caption text-caption text-on-surface-variant">Ditempatkan tepat di bawah logo utama.</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface" for="brandOrigin">Tahun Berdiri & Lokasi Basis</label>
+<input class="h-10 px-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all" id="brandOrigin" type="text" value="2024 / Jakarta, Indonesia"/>
+<span class="font-caption text-caption text-on-surface-variant">Format: [Tahun] / [Kota, Negara].</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Tentang Brand (Story & Philosophy) -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-space-lg py-space-md bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">auto_stories</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Tentang Brand & Narasi Olfaktori</h2>
+</div>
+<span class="font-caption text-caption text-secondary uppercase tracking-wider font-semibold">Narrative Content</span>
+</div>
+<div class="p-space-lg flex flex-col gap-space-lg">
+<!-- Deskripsi Singkat Hero -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface" for="heroDescription">Deskripsi Singkat (Hero Header Statement)</label>
+<span class="font-caption text-caption text-on-surface-variant" id="heroDescCount">104 / 160 Karakter</span>
+</div>
+<textarea class="p-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all resize-none" id="heroDescription" oninput="updateCharCount()" rows="2">Every scent begins with an idea, a feeling, and the desire to create something worth remembering.</textarea>
+<span class="font-caption text-caption text-on-surface-variant">Ditampilkan mencolok pada hero banner halaman profil website publik.</span>
+</div>
+<!-- Cerita Brand (Our Story) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface" for="brandStory">Cerita Brand (Our Story Content)</label>
+<div class="flex items-center gap-space-xs">
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container transition-colors" title="Bold" type="button"><span class="material-symbols-outlined text-[16px]">format_bold</span></button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container transition-colors" title="Italic" type="button"><span class="material-symbols-outlined text-[16px]">format_italic</span></button>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container transition-colors" title="List" type="button"><span class="material-symbols-outlined text-[16px]">format_list_bulleted</span></button>
+</div>
+</div>
+<textarea class="p-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all leading-relaxed" id="brandStory" rows="6">VINCAND DEU PARFUM lahir dari dorongan autentik untuk meredefinisi wewangian independen di Indonesia. Kami percaya bahwa setiap aroma adalah karya seni tak kasat mata yang mampu mengabadikan memori, memicu resonansi emosional, dan melengkapi karakter pemakainya tanpa batasan konvensi.
+
+Berdiri pada tahun 2024 di Jakarta, setiap botol diformulasikan melalui riset mendalam, kurasi bahan aromatik berkualitas tinggi, dan pendekatan olfaktori modern yang dirancang untuk iklim tropis. Kami menolak formula generik demi menghadirkan jejak aroma (sillage) yang elegan, berdaya tahan teruji, dan nyaman digunakan dalam ritme keseharian.</textarea>
+<span class="font-caption text-caption text-on-surface-variant">Format multi-paragraf didukung. Paragraf baru akan otomatis ditampilkan terpisah pada halaman depan.</span>
+</div>
+<!-- Filosofi & Nilai Brand -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface" for="brandValues">Filosofi & Nilai Inti Brand (Core Pillars)</label>
+<textarea class="p-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all leading-relaxed" id="brandValues" rows="4">1. Authentic Expression: Wewangian yang jujur pada emosi penciptanya dan merayakan keunikan setiap persona pemakai.
+2. Accessible Craftsmanship: Kualitas komposisi perfumery artisan dengan standar higienis dan bahan teruji tanpa kompromi.
+3. Meaningful Connection: Membangun ikatan personal antara jejak aroma dan kenangan berharga yang tak tergantikan.</textarea>
+<span class="font-caption text-caption text-on-surface-variant">Gunakan format poin bernomor atau baris baru untuk memudahkan render tampilan kartu filosofi di website.</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Kontak & Representasi Publik -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-space-lg py-space-md bg-surface-container-low/40 flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">contact_support</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Kontak Representasi Brand</h2>
+</div>
+<span class="font-caption text-caption text-secondary uppercase tracking-wider font-semibold">Public Facing</span>
+</div>
+<div class="p-space-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface" for="brandWhatsapp">WhatsApp Pelayanan Resmi</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-space-xs top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">chat</span>
+<input class="w-full h-10 pl-9 pr-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all" id="brandWhatsapp" type="text" value="+62 812 3456 7890"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Akan dikaitkan ke floating WhatsApp button di website.</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface" for="brandEmail">Email Korespondensi Resmi</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-space-xs top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">mail</span>
+<input class="w-full h-10 pl-9 pr-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all" id="brandEmail" type="email" value="contact@vincanddeu.com"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Tujuan penerimaan kontak pers, kemitraan, dan konsultasi.</span>
+</div>
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface" for="brandLocation">Lokasi Studio / Rumah Produksi</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-space-xs top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">location_on</span>
+<input class="w-full h-10 pl-9 pr-space-sm bg-surface-container-low rounded font-body-md text-body-md text-on-surface focus:bg-surface-container-lowest focus:shadow-sm outline-none transition-all" id="brandLocation" type="text" value="Jakarta, Indonesia"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Alamat ringkas publik untuk dicantumkan pada bagian footer web.</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Live Context & Publication Guidelines -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Live Preview Snippet Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface">Pratinjau Kartu Publik</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary font-caption text-caption">Live Snippet</span>
+</div>
+<!-- Simulated Mini Public Showcase -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center p-1 shadow-sm shrink-0">
+<img alt="Mini Logo" class="w-full h-full object-contain" id="cardMiniLogo" src="https://lh3.googleusercontent.com/aida/AEtjO1WQhsN4Mhs9HCnReRc59NAn6HSJGQXRn8cUJTxKklWb-_vSjl6324Eps691XhqlV0G2jUfTEEjjfY2TteX3dv6w99CSyuFFEEjY359POAd4SvXJ04B4bIWCLleKqETnucEGDzgK7xDrfKfMUAXPX9MqDOPV4Z2etWR35wBtGQJ7zqLXYxSDiifPmapDxsUyCVCZ4Ls9DyqP-TJBR-kLcGhPhNkwY0d3OtmhFkQduwpG7gqPxHKyEFI72nr3Xa2y-sUc0cSAZCYoZ5w"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface leading-tight truncate" id="previewName">VINCAND DEU PARFUM</span>
+<span class="font-caption text-caption text-secondary truncate" id="previewTagline">Indonesian Independent Olfactive House</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic pt-space-2xs line-clamp-3" id="previewHero">
+            "Every scent begins with an idea, a feeling, and the desire to create something worth remembering."
+          </p>
+<div class="flex items-center justify-between pt-space-xs text-secondary font-caption text-caption">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">pin_drop</span> Jakarta, ID</span>
+</div>
+</div>
+<div class="space-y-space-xs pt-space-2xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5 shrink-0">check_circle</span>
+<span>Tampilan responsif disinkronkan otomatis pada perangkat mobile dan desktop.</span>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[16px] mt-0.5 shrink-0">check_circle</span>
+<span>SEO Open Graph meta tag menggunakan narasi dari kolom hero statement.</span>
+</div>
+</div>
+</div>
+<!-- Quick Tips & Integrity Check -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+<span class="font-headline-sm text-headline-sm text-on-surface">Panduan Narasi Olfaktori</span>
+<div class="flex flex-col gap-space-sm text-body-sm text-on-surface-variant">
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface block mb-1">Tone of Voice</span>
+<p class="font-caption text-caption">Gunakan bahasa yang puitis namun lugas, percaya diri, dan memancarkan atmosfer mewah yang intim.</p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface block mb-1">Dampak Perubahan</span>
+<p class="font-caption text-caption">Data yang diperbarui akan memengaruhi halaman "Our Story", bagian footer seluruh halaman web, serta meta preview WhatsApp.</p>
+</div>
+</div>
+<div class="pt-space-2xs flex flex-col gap-space-xs font-caption text-caption text-on-surface-variant">
+<div class="flex justify-between py-1 border-b border-surface-container">
+<span>Status Status Server:</span>
+<span class="text-on-surface font-semibold">Online (CDN Active)</span>
+</div>
+<div class="flex justify-between py-1 border-b border-surface-container">
+<span>Terakhir Diterbitkan:</span>
+<span class="text-on-surface font-semibold">14 Mei 2024, 18:22 WIB</span>
+</div>
+<div class="flex justify-between py-1">
+<span>Editor Aktif:</span>
+<span class="text-on-surface font-semibold">Admin (Owner)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Sticky Action Bar -->
+<div class="fixed bottom-0 left-layout-sidebar right-0 bg-surface-container-lowest/95 backdrop-blur-md px-space-lg py-space-sm shadow-xl z-30 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">history</span>
+<span>Terakhir diperbarui: <strong class="text-on-surface font-label-sm">3 hari lalu oleh Admin</strong></span>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<button class="h-9 px-space-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded font-label-md text-label-md transition-colors" onclick="resetFormToDefaults()" type="button">
+        Reset ke Default
+      </button>
+<button class="h-9 px-space-md bg-surface-container text-on-surface hover:bg-surface-container-high rounded font-label-md text-label-md transition-colors" onclick="window.history.back()" type="button">
+        Batal
+      </button>
+<button class="h-9 px-space-lg bg-primary hover:bg-primary/90 text-on-primary rounded font-label-md text-label-md shadow-sm transition-all flex items-center gap-space-xs" id="saveProfileBtn" onclick="handleSaveAction()" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Simpan Perubahan Profil</span>
+</button>
+</div>
+</div>
+<!-- Interactive Toast Dialog Container -->
+<div class="fixed bottom-20 right-space-lg bg-primary text-on-primary px-space-md py-space-sm rounded-xl shadow-xl flex items-center gap-space-sm z-50 transform translate-y-12 opacity-0 pointer-events-none transition-all duration-300" id="toastNotification">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="font-label-md text-label-md" id="toastMessage">Profil brand berhasil diperbarui ke live CDN.</span>
+</div>
+</div>
+<script>
+  function updateCharCount() {
+    const heroInput = document.getElementById('heroDescription');
+    const countDisplay = document.getElementById('heroDescCount');
+    const previewHero = document.getElementById('previewHero');
+    if (heroInput && countDisplay) {
+      countDisplay.textContent = heroInput.value.length + ' / 160 Karakter';
+      if (previewHero) {
+        previewHero.textContent = '"' + heroInput.value + '"';
+      }
+    }
+  }
+
+  // Bind live updates to preview card
+  const brandNameInput = document.getElementById('brandName');
+  if (brandNameInput) {
+    brandNameInput.addEventListener('input', function(e) {
+      const target = document.getElementById('previewName');
+      if (target) target.textContent = e.target.value || 'VINCAND DEU PARFUM';
+    });
+  }
+
+  const brandTaglineInput = document.getElementById('brandTagline');
+  if (brandTaglineInput) {
+    brandTaglineInput.addEventListener('input', function(e) {
+      const target = document.getElementById('previewTagline');
+      if (target) target.textContent = e.target.value || 'Indonesian Independent Olfactive House';
+    });
+  }
+
+  function previewUploadedLogo(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const preview = document.getElementById('brandLogoPreview');
+        const miniLogo = document.getElementById('cardMiniLogo');
+        if (preview) preview.src = e.target.result;
+        if (miniLogo) miniLogo.src = e.target.result;
+        showToast('Logo brand berhasil diganti');
+      }
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function removeLogo() {
+    const preview = document.getElementById('brandLogoPreview');
+    const miniLogo = document.getElementById('cardMiniLogo');
+    if (preview) preview.src = "https://lh3.googleusercontent.com/aida/AEtjO1WQhsN4Mhs9HCnReRc59NAn6HSJGQXRn8cUJTxKklWb-_vSjl6324Eps691XhqlV0G2jUfTEEjjfY2TteX3dv6w99CSyuFFEEjY359POAd4SvXJ04B4bIWCLleKqETnucEGDzgK7xDrfKfMUAXPX9MqDOPV4Z2etWR35wBtGQJ7zqLXYxSDiifPmapDxsUyCVCZ4Ls9DyqP-TJBR-kLcGhPhNkwY0d3OtmhFkQduwpG7gqPxHKyEFI72nr3Xa2y-sUc0cSAZCYoZ5w";
+    if (miniLogo) miniLogo.src = "https://lh3.googleusercontent.com/aida/AEtjO1WQhsN4Mhs9HCnReRc59NAn6HSJGQXRn8cUJTxKklWb-_vSjl6324Eps691XhqlV0G2jUfTEEjjfY2TteX3dv6w99CSyuFFEEjY359POAd4SvXJ04B4bIWCLleKqETnucEGDzgK7xDrfKfMUAXPX9MqDOPV4Z2etWR35wBtGQJ7zqLXYxSDiifPmapDxsUyCVCZ4Ls9DyqP-TJBR-kLcGhPhNkwY0d3OtmhFkQduwpG7gqPxHKyEFI72nr3Xa2y-sUc0cSAZCYoZ5w";
+    showToast('Logo direset ke gambar default');
+  }
+
+  function resetFormToDefaults() {
+    if (confirm('Kembalikan semua teks profil brand ke pengaturan default sistem?')) {
+      document.getElementById('brandName').value = 'VINCAND DEU PARFUM';
+      document.getElementById('brandTagline').value = 'Indonesian Independent Olfactive House';
+      document.getElementById('brandOrigin').value = '2024 / Jakarta, Indonesia';
+      document.getElementById('heroDescription').value = 'Every scent begins with an idea, a feeling, and the desire to create something worth remembering.';
+      document.getElementById('brandWhatsapp').value = '+62 812 3456 7890';
+      document.getElementById('brandEmail').value = 'contact@vincanddeu.com';
+      document.getElementById('brandLocation').value = 'Jakarta, Indonesia';
+      updateCharCount();
+      showToast('Formulir telah direset ke nilai default');
+    }
+  }
+
+  function handleSaveAction() {
+    const btn = document.getElementById('saveProfileBtn');
+    if (!btn) return;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span><span>Menyimpan...</span>';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      showToast('Perubahan profil brand berhasil dipublikasikan!');
+    }, 600);
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toastNotification');
+    const msg = document.getElementById('toastMessage');
+    if (!toast || !msg) return;
+
+    msg.textContent = message;
+    toast.classList.remove('translate-y-12', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.add('translate-y-12', 'opacity-0', 'pointer-events-none');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 3200);
+  }
+</script></main></div></body></html>

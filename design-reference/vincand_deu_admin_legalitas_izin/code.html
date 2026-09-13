@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed": "#d5e3fc", "on-tertiary-fixed-variant": "#574425", "primary": "#000000", "on-tertiary": "#ffffff", "on-primary-fixed": "#131b2e", "outline": "#76777d", "on-secondary": "#ffffff", "on-secondary-fixed": "#0d1c2e", "inverse-primary": "#bec6e0", "surface-container-high": "#dce9ff", "background": "#f8f9ff", "on-primary": "#ffffff", "on-background": "#0b1c30", "on-error": "#ffffff", "surface": "#f8f9ff", "on-secondary-container": "#57657a", "surface-container": "#e5eeff", "surface-bright": "#f8f9ff", "on-tertiary-container": "#98805d", "primary-fixed-dim": "#bec6e0", "primary-container": "#131b2e", "surface-variant": "#d3e4fe", "surface-container-highest": "#d3e4fe", "secondary": "#515f74", "on-surface": "#0b1c30", "surface-tint": "#565e74", "tertiary-fixed-dim": "#dec29a", "tertiary": "#000000", "surface-dim": "#cbdbf5", "on-error-container": "#93000a", "on-secondary-fixed-variant": "#3a485b", "on-tertiary-fixed": "#271901", "surface-container-lowest": "#ffffff", "surface-container-low": "#eff4ff", "tertiary-container": "#271901", "secondary-fixed-dim": "#b9c7df", "inverse-surface": "#213145", "error": "#ba1a1a", "secondary-container": "#d5e3fc", "on-primary-container": "#7c839b", "on-primary-fixed-variant": "#3f465c", "tertiary-fixed": "#fcdeb5", "inverse-on-surface": "#eaf1ff", "primary-fixed": "#dae2fd", "error-container": "#ffdad6", "on-surface-variant": "#45464d", "outline-variant": "#c6c6cd" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.5rem", "space-md": "1rem", "layout-gutter": "1.5rem", "space-sm": "0.75rem", "space-2xs": "0.25rem", "space-xl": "2rem", "layout-sidebar": "16rem", "space-xs": "0.5rem", "space-2xl": "3rem" }, "fontFamily": { "body-md": [ "Inter" ], "caption": [ "Inter" ], "headline-lg-mobile": [ "Inter" ], "label-sm": [ "Inter" ], "headline-sm": [ "Inter" ], "headline-md": [ "Inter" ], "body-lg": [ "Inter" ], "headline-lg": [ "Inter" ], "body-sm": [ "Inter" ], "label-md": [ "Inter" ] }, "fontSize": { "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "caption": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" } ], "headline-sm": [ "16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "headline-lg": [ "30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "body-sm": [ "13px", { "lineHeight": "18px", "fontWeight": "400" } ], "label-md": [ "14px", { "lineHeight": "20px", "fontWeight": "500" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-screen w-layout-sidebar bg-surface-container-lowest border-r border-outline-variant z-50 flex flex-col justify-between"><div class="flex flex-col flex-1 min-h-0"><div class="h-16 px-space-md flex items-center gap-space-xs border-b border-outline-variant bg-surface-container-lowest"><div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm">V</div><div class="flex flex-col overflow-hidden"><span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate leading-tight">VINCAND DEU</span><span class="font-caption text-caption text-secondary uppercase tracking-wider">Admin Panel</span></div></div><div class="flex-1 overflow-y-auto p-space-sm"><nav class="flex flex-col gap-1" data-active-classes="bg-secondary-container text-on-secondary-fixed font-medium rounded-lg"><a class="flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="produk" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Produk</span></a><a class="flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="kategori-dan-varian" href="#"><span class="material-symbols-outlined text-[20px]">category</span><span>Kategori &amp; Varian</span></a><a class="flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="profil-brand" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span>Profil Brand</span></a><a class="flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-space-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="kolaborasi" href="#"><span class="material-symbols-outlined text-[20px]">handshake</span><span>Kolaborasi</span></a><a aria-current="page" class="flex items-center gap-space-xs px-space-sm py-2 transition-colors bg-secondary-container text-on-secondary-fixed font-medium rounded-lg" data-path="legalitas-dan-izin" href="#"><span class="material-symbols-outlined text-[20px]">verified</span><span>Legalitas &amp; Izin</span></a><a class="flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="media-sosial-dan-kontak" href="#"><span class="material-symbols-outlined text-[20px]">share</span><span>Media Sosial &amp; Kontak</span></a><a class="flex items-center gap-space-xs px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors font-label-md text-label-md" data-path="pengaturan" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span>Pengaturan</span></a></nav></div></div><div class="border-t border-outline-variant p-space-sm bg-surface-container-lowest"><div class="flex items-center justify-between p-space-xs rounded-lg hover:bg-surface-container-low transition-colors"><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-md text-label-md font-bold">A</div><div class="flex flex-col"><span class="font-label-md text-label-md font-medium text-on-surface leading-tight">Owner / Admin</span><span class="font-caption text-caption text-secondary">Administrator</span></div></div><button class="p-1 text-on-surface-variant hover:text-error transition-colors flex items-center justify-center" title="Keluar" type="button"><span class="material-symbols-outlined text-[20px]">logout</span></button></div></div></aside><div class="pl-layout-sidebar"><header class="fixed top-0 left-layout-sidebar right-0 h-16 bg-surface-container-lowest border-b border-outline-variant z-40 px-space-layout-gutter flex items-center justify-between"><div class="flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="hover:text-on-surface transition-colors">CMS</span><span class="text-outline">/</span><span class="font-label-md text-label-md text-on-surface font-medium">Admin Panel</span></div><div class="flex items-center gap-space-md"><div class="relative w-64 md:w-80"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full h-9 pl-9 pr-space-sm bg-surface-container-lowest border border-outline-variant rounded font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary" placeholder="Cari menu atau data..." type="text"/></div><a class="flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#" target="_blank"><span class="hidden sm:inline">Lihat Website Publik</span><span class="material-symbols-outlined text-[16px]">north_east</span></a><div class="h-4 w-px bg-outline-variant hidden sm:block"></div><button class="relative p-1.5 text-on-surface-variant hover:text-on-surface rounded hover:bg-surface-container transition-colors" title="Notifikasi" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error"></span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida/AEtjO1WQhsN4Mhs9HCnReRc59NAn6HSJGQXRn8cUJTxKklWb-_vSjl6324Eps691XhqlV0G2jUfTEEjjfY2TteX3dv6w99CSyuFFEEjY359POAd4SvXJ04B4bIWCLleKqETnucEGDzgK7xDrfKfMUAXPX9MqDOPV4Z2etWR35wBtGQJ7zqLXYxSDiifPmapDxsUyCVCZ4Ls9DyqP-TJBR-kLcGhPhNkwY0d3OtmhFkQduwpG7gqPxHKyEFI72nr3Xa2y-sUc0cSAZCYoZ5w"/></div></header><main class="w-full pt-16 px-space-layout-gutter py-space-lg min-h-screen bg-surface"><div class="flex flex-col w-full">
+<section class="flex flex-col gap-space-lg w-full max-w-7xl mx-auto">
+<!-- Page Header Bar -->
+<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">verified_user</span>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Legalitas &amp; Dokumen Izin</h1>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+          Kelola dokumen resmi perizinan usaha dan izin edar yang ditampilkan ke calon pembeli
+        </p>
+</div>
+<div class="flex items-center gap-space-xs">
+<a class="inline-flex items-center justify-center gap-1.5 h-9 px-4 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-secondary transition-colors shadow-sm focus:outline-none" href="#form-upload-section">
+<span class="material-symbols-outlined text-[18px]">upload_file</span>
+<span>+ Unggah Dokumen Baru</span>
+</a>
+</div>
+</div>
+<!-- Alert / Notice Box -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-start gap-space-sm shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">info</span>
+<div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Dokumen yang berstatus <strong class="text-on-surface font-label-md">Publik</strong> akan otomatis muncul di bagian Legalitas &amp; Kepercayaan pada website publik VINCAND DEU. Dokumen <strong class="text-on-surface font-label-md">Internal</strong> hanya tersimpan aman di arsip admin.
+        </p>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container text-on-secondary-container rounded font-caption text-caption shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> 3 Berkas Aktif
+        </span>
+</div>
+</div>
+<!-- Overview Metrics Panel -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div>
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Total Terverifikasi</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold mt-1">3 <span class="text-label-sm font-label-sm font-normal text-secondary">Berkas</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">fact_check</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div>
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Tayang Publik</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold mt-1">3 <span class="text-label-sm font-label-sm font-normal text-secondary">Ditampilkan</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">visibility</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+<div>
+<span class="font-caption text-caption text-secondary uppercase tracking-wider">Kepatuhan Standar</span>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold mt-1">100% <span class="text-label-sm font-label-sm font-normal text-secondary">Lengkap</span></div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">health_and_safety</span>
+</div>
+</div>
+</div>
+<!-- CRUD Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-space-md py-3.5 bg-surface-container-low flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Daftar Dokumen Izin &amp; Sertifikat Mutu</span>
+<span class="bg-surface-container px-2 py-0.5 rounded font-caption text-caption text-secondary">3 Berkas</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-caption text-caption text-secondary">Sinkronisasi Otomatis</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-sm text-label-sm tracking-wider uppercase">
+<th class="py-3 px-space-md font-semibold">Nama Dokumen</th>
+<th class="py-3 px-space-md font-semibold">Nomor Registrasi / Izin</th>
+<th class="py-3 px-space-md font-semibold">Masa Berlaku</th>
+<th class="py-3 px-space-md font-semibold">Tipe Berkas</th>
+<th class="py-3 px-space-md font-semibold">Status Publikasi</th>
+<th class="py-3 px-space-md font-semibold">Pembaruan</th>
+<th class="py-3 px-space-md font-semibold text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">apartment</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Nomor Induk Berusaha (NIB)</span>
+<span class="font-caption text-caption text-secondary truncate">Legalitas Utama Badan Usaha UMKM</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-mono font-body-sm text-body-sm text-on-surface-variant font-medium">9120002819201</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">event_available</span>
+                  Berlaku Selamanya (Terbit 2024)
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">picture_as_pdf</span>
+                  PDF (1.2 MB)
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" onchange="togglePublish(this, 'status-badge-1')" type="checkbox"/>
+<div class="w-8 h-4 bg-surface-container rounded-full peer peer-checked:bg-primary transition-colors after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-on-primary after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-4"></div>
+</label>
+<span class="font-caption text-caption px-2 py-0.5 rounded font-medium bg-surface-container-high text-on-secondary-fixed" id="status-badge-1">
+                    Tayang di Web
+                  </span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-secondary font-caption text-caption">
+                3 hari lalu
+              </td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Unduh Berkas" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Edit Informasi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-error hover:opacity-80 transition-colors" onclick="confirmDelete('Nomor Induk Berusaha (NIB)')" title="Hapus Dokumen" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low/20 hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">health_and_safety</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Notifikasi Izin Edar BPOM RI</span>
+<span class="font-caption text-caption text-secondary truncate">Extrait de Parfum Batch Series</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-mono font-body-sm text-body-sm text-on-surface-variant font-medium">NA18240601923</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">calendar_today</span>
+                  12 Januari 2024
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">picture_as_pdf</span>
+                  PDF (2.4 MB)
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" onchange="togglePublish(this, 'status-badge-2')" type="checkbox"/>
+<div class="w-8 h-4 bg-surface-container rounded-full peer peer-checked:bg-primary transition-colors after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-on-primary after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-4"></div>
+</label>
+<span class="font-caption text-caption px-2 py-0.5 rounded font-medium bg-surface-container-high text-on-secondary-fixed" id="status-badge-2">
+                    Tayang di Web
+                  </span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-secondary font-caption text-caption">
+                1 minggu lalu
+              </td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Unduh Berkas" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Edit Informasi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-error hover:opacity-80 transition-colors" onclick="confirmDelete('Notifikasi Izin Edar BPOM RI')" title="Hapus Dokumen" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">science</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface truncate">Sertifikat Uji Keamanan Mutu Lab</span>
+<span class="font-caption text-caption text-secondary truncate">Uji Dermatologi Bebas Iritasi</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-mono font-body-sm text-body-sm text-on-surface-variant font-medium">LPT-DERM-2024-99</span>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[15px] text-secondary">calendar_today</span>
+                  20 Februari 2024
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface font-caption text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">image</span>
+                  JPG (840 KB)
+                </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-xs">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" onchange="togglePublish(this, 'status-badge-3')" type="checkbox"/>
+<div class="w-8 h-4 bg-surface-container rounded-full peer peer-checked:bg-primary transition-colors after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-on-primary after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:after:translate-x-4"></div>
+</label>
+<span class="font-caption text-caption px-2 py-0.5 rounded font-medium bg-surface-container-high text-on-secondary-fixed" id="status-badge-3">
+                    Tayang di Web
+                  </span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-secondary font-caption text-caption">
+                2 minggu lalu
+              </td>
+<td class="py-3.5 px-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1.5 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Unduh Berkas" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Edit Informasi" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-error hover:opacity-80 transition-colors" onclick="confirmDelete('Sertifikat Uji Keamanan Mutu Lab')" title="Hapus Dokumen" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-space-md py-3 bg-surface-container-low flex items-center justify-between text-secondary font-body-sm text-body-sm">
+<span>Menampilkan 3 dari 3 dokumen</span>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded bg-surface-container text-on-surface opacity-50 cursor-not-allowed">Sebelumnya</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded bg-primary text-on-primary">1</button>
+<button class="px-2.5 py-1 text-label-sm font-label-sm rounded bg-surface-container text-on-surface opacity-50 cursor-not-allowed">Berikutnya</button>
+</div>
+</div>
+</div>
+<!-- Upload Form Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md" id="form-upload-section">
+<div class="flex flex-col border-b-0 pb-1">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">post_add</span>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Unggah Dokumen Legalitas Baru</h2>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+          Tambahkan dokumen regulasi, sertifikasi ISO/BPOM, atau hasil pengujian laboratorium terkini
+        </p>
+</div>
+<form class="flex flex-col gap-space-md" onsubmit="handleFormSubmit(event)">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Nama Dokumen -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm font-medium text-on-surface-variant" for="doc-name">
+              Nama Dokumen <span class="text-error">*</span>
+</label>
+<input class="h-9 px-3 bg-surface-container-lowest text-on-surface rounded font-body-md text-body-md focus:bg-surface-container-low focus:outline-none shadow-sm placeholder:text-outline" id="doc-name" placeholder="Contoh: Izin Edar BPOM Batch 2" required="" type="text"/>
+<span class="font-caption text-caption text-secondary">Nama yang mudah diidentifikasi pelanggan</span>
+</div>
+<!-- Nomor Registrasi / Izin -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm font-medium text-on-surface-variant" for="doc-number">
+              Nomor Dokumen / Registrasi <span class="text-error">*</span>
+</label>
+<input class="h-9 px-3 bg-surface-container-lowest text-on-surface rounded font-body-md text-body-md focus:bg-surface-container-low focus:outline-none shadow-sm placeholder:text-outline" id="doc-number" placeholder="Contoh: NA18240609999" required="" type="text"/>
+<span class="font-caption text-caption text-secondary">Nomor resmi dari instansi penerbit</span>
+</div>
+<!-- Instansi / Lembaga Penerbit -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm font-medium text-on-surface-variant" for="doc-issuer">
+              Instansi / Lembaga Penerbit <span class="text-error">*</span>
+</label>
+<input class="h-9 px-3 bg-surface-container-lowest text-on-surface rounded font-body-md text-body-md focus:bg-surface-container-low focus:outline-none shadow-sm placeholder:text-outline" id="doc-issuer" placeholder="Misal: BPOM RI / OSS Kemenves" required="" type="text"/>
+<span class="font-caption text-caption text-secondary">Lembaga otoritas pemberi izin resmi</span>
+</div>
+</div>
+<!-- Dropzone File Upload Area -->
+<div class="flex flex-col gap-1.5 mt-1">
+<label class="font-label-sm text-label-sm font-medium text-on-surface-variant">
+            Berkas Dokumen (PDF, JPG, PNG) <span class="text-error">*</span>
+</label>
+<div class="relative flex flex-col items-center justify-center p-8 bg-surface-container-low/40 rounded-xl hover:bg-surface-container-low transition-colors cursor-pointer group text-center" id="dropzone" onclick="document.getElementById('file-upload').click()">
+<input accept=".pdf,.jpg,.jpeg,.png" class="sr-only" id="file-upload" onchange="fileSelected(this)" type="file"/>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:scale-105 transition-transform mb-3 shadow-sm">
+<span class="material-symbols-outlined text-[26px]">cloud_upload</span>
+</div>
+<div class="flex flex-col gap-1 items-center">
+<span class="font-label-md text-label-md font-semibold text-on-surface" id="file-label-main">
+                Tarik &amp; lepas berkas ke sini, atau <span class="text-primary underline cursor-pointer">Pilih dari perangkat</span>
+</span>
+<span class="font-body-sm text-body-sm text-secondary" id="file-label-sub">
+                Format didukung: PDF, JPG, atau PNG (Maksimal kapasitas 5.0 MB)
+              </span>
+</div>
+</div>
+</div>
+<!-- Toggle & Submit Footer -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pt-2 mt-2 bg-surface-container-low/30 p-space-md rounded-xl">
+<div class="flex items-center gap-space-sm">
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="publish-switch" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container rounded-full peer peer-checked:bg-primary transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-primary after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-4"></div>
+</label>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-medium text-on-surface">Tampilkan di Halaman Publik Website</span>
+<span class="font-caption text-caption text-secondary">Pengunjung dapat melihat sertifikat ini di profil legalitas produk</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-xs">
+<button class="h-9 px-4 rounded bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" type="reset">
+              Reset
+            </button>
+<button class="h-9 px-5 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-secondary transition-colors shadow-sm flex items-center gap-1.5" type="submit">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Simpan &amp; Publikasikan Dokumen</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+<!-- Quick Safety Compliance Assurance Note -->
+<div class="flex items-center justify-between text-secondary px-space-xs py-space-xs">
+<div class="flex items-center gap-1.5 font-caption text-caption">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span>Dokumen tersimpan terenkripsi dan diverifikasi sesuai regulasi perizinan kosmetika Indonesia.</span>
+</div>
+<span class="font-caption text-caption">VINCAND DEU PARFUM © 2025</span>
+</div>
+</section>
+</div>
+<script>
+  function togglePublish(element, badgeId) {
+    const badge = document.getElementById(badgeId);
+    if (!badge) return;
+    if (element.checked) {
+      badge.textContent = 'Tayang di Web';
+      badge.className = 'font-caption text-caption px-2 py-0.5 rounded font-medium bg-surface-container-high text-on-secondary-fixed';
+    } else {
+      badge.textContent = 'Internal (Arsip)';
+      badge.className = 'font-caption text-caption px-2 py-0.5 rounded font-medium bg-surface-container text-secondary';
+    }
+  }
+
+  function fileSelected(input) {
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const mainLabel = document.getElementById('file-label-main');
+      const subLabel = document.getElementById('file-label-sub');
+      if (mainLabel && subLabel) {
+        mainLabel.textContent = 'Berkas Terpilih: ' + file.name;
+        subLabel.textContent = 'Ukuran: ' + (file.size / (1024 * 1024)).toFixed(2) + ' MB • Siap diunggah';
+      }
+    }
+  }
+
+  function confirmDelete(docName) {
+    if (confirm('Apakah Anda yakin ingin menghapus arsip: ' + docName + '?')) {
+      alert('Dokumen "' + docName + '" berhasil dihapus dari sistem.');
+    }
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const docName = document.getElementById('doc-name').value;
+    const isPublic = document.getElementById('publish-switch').checked;
+    const statusText = isPublic ? 'dan ditayangkan ke publik' : 'ke arsip internal';
+    alert('Dokumen "' + docName + '" berhasil disimpan ' + statusText + '!');
+    e.target.reset();
+    document.getElementById('file-label-main').innerHTML = 'Tarik & lepas berkas ke sini, atau <span class="text-primary underline cursor-pointer">Pilih dari perangkat</span>';
+    document.getElementById('file-label-sub').textContent = 'Format didukung: PDF, JPG, atau PNG (Maksimal kapasitas 5.0 MB)';
+  }
+</script></main></div></body></html>

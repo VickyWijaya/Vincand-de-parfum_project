@@ -1,0 +1,508 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-bright": "#fcf9f3",
+          "secondary-fixed": "#ebe0db",
+          "on-secondary-fixed": "#1f1b18",
+          "surface-variant": "#e5e2dc",
+          "outline-variant": "#c4c7c7",
+          "primary": "#000000",
+          "inverse-on-surface": "#f3f0ea",
+          "primary-container": "#1c1b1b",
+          "secondary-container": "#ebe0db",
+          "surface": "#fcf9f3",
+          "inverse-primary": "#c8c6c5",
+          "surface-dim": "#dcdad4",
+          "surface-container-lowest": "#ffffff",
+          "on-tertiary-fixed-variant": "#584323",
+          "surface-container-high": "#ebe8e2",
+          "tertiary-fixed": "#fedeb2",
+          "on-tertiary-fixed": "#281800",
+          "tertiary-container": "#281800",
+          "error-container": "#ffdad6",
+          "on-primary-fixed-variant": "#474746",
+          "on-primary-container": "#858383",
+          "secondary": "#645d59",
+          "outline": "#747878",
+          "tertiary": "#000000",
+          "surface-container": "#f0eee8",
+          "on-primary-fixed": "#1c1b1b",
+          "inverse-surface": "#31312d",
+          "primary-fixed": "#e5e2e1",
+          "surface-container-highest": "#e5e2dc",
+          "primary-fixed-dim": "#c8c6c5",
+          "on-tertiary-container": "#9a805b",
+          "on-error": "#ffffff",
+          "error": "#ba1a1a",
+          "background": "#fcf9f3",
+          "on-primary": "#ffffff",
+          "on-secondary-fixed-variant": "#4c4542",
+          "surface-container-low": "#f6f3ed",
+          "tertiary-fixed-dim": "#e0c298",
+          "on-secondary": "#ffffff",
+          "on-error-container": "#93000a",
+          "on-surface": "#1c1c18",
+          "secondary-fixed-dim": "#cec5c0",
+          "on-tertiary": "#ffffff",
+          "surface-tint": "#5f5e5e",
+          "on-surface-variant": "#444748",
+          "on-secondary-container": "#6a635f",
+          "on-background": "#1c1c18"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-md": "1.5rem",
+          "space-xs": "0.5rem",
+          "gutter-mobile": "1.25rem",
+          "space-2xl": "6rem",
+          "space-xl": "4rem",
+          "space-2xs": "0.25rem",
+          "space-3xl": "9rem",
+          "hairline": "1px",
+          "gutter-desktop": "3rem",
+          "max-width-editorial": "1440px",
+          "space-lg": "2.5rem",
+          "space-sm": "1rem"
+        },
+        "fontFamily": {
+          "body-small": [
+            "Inter"
+          ],
+          "body-regular": [
+            "Inter"
+          ],
+          "display-hero-mobile": [
+            "Bodoni Moda"
+          ],
+          "label-caps-spaced": [
+            "Inter"
+          ],
+          "body-lead": [
+            "Bodoni Moda"
+          ],
+          "caption-editorial": [
+            "Bodoni Moda"
+          ],
+          "headline-lg-mobile": [
+            "Bodoni Moda"
+          ],
+          "display-hero": [
+            "Bodoni Moda"
+          ],
+          "headline-lg": [
+            "Bodoni Moda"
+          ],
+          "headline-xl": [
+            "Bodoni Moda"
+          ],
+          "label-caps-subtle": [
+            "Inter"
+          ],
+          "headline-md": [
+            "Bodoni Moda"
+          ],
+          "headline-xl-mobile": [
+            "Bodoni Moda"
+          ]
+        },
+        "fontSize": {
+          "body-small": [
+            "13px",
+            {
+              "lineHeight": "22px",
+              "letterSpacing": "0.025em",
+              "fontWeight": "300"
+            }
+          ],
+          "body-regular": [
+            "15px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "300"
+            }
+          ],
+          "display-hero-mobile": [
+            "44px",
+            {
+              "lineHeight": "50px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-caps-spaced": [
+            "11px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.22em",
+              "fontWeight": "500"
+            }
+          ],
+          "body-lead": [
+            "20px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "caption-editorial": [
+            "12px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.05em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg-mobile": [
+            "28px",
+            {
+              "lineHeight": "34px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-hero": [
+            "80px",
+            {
+              "lineHeight": "88px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-lg": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-xl": [
+            "56px",
+            {
+              "lineHeight": "64px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "400"
+            }
+          ],
+          "label-caps-subtle": [
+            "9px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.26em",
+              "fontWeight": "500"
+            }
+          ],
+          "headline-md": [
+            "26px",
+            {
+              "lineHeight": "34px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            }
+          ],
+          "headline-xl-mobile": [
+            "36px",
+            {
+              "lineHeight": "42px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ]
+        }
+      }
+    }
+  }</script></head><body class="bg-surface font-body-regular text-body-regular text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-primary/[0.06]"><div class="h-20 max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between"><a class="flex items-center gap-space-xs transition-opacity duration-300 hover:opacity-80" data-path="home" href="#"><img alt="VINCAND DEU PARFUM" class="h-[48px] w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhn-8yZmc_627icL13Ac7OFPQbqiv_r0NBdmphxp9WBiTitWWppjoLvzW5YylC61UjsoWugGsG8N9QyAjyHcvv-UzTVEXnp7ifbl29UIsaK92v-hREkf0Ev-xP8BlTru1l3up10Q1rraLcOUJOSS5dZ9v2O8lWguifYwRhBkM64NFRwEpxdTTGWt7mbY9n7g5BoIPOt7bEyEWm5uFwhdXA8EoAlhGq7Q15VqPN4zOZIboSr28t5hKgpNxFDmNiFOupoA"><span class="sr-only">VINCAND DEU PARFUM</span></a><nav class="hidden md:flex items-center gap-space-lg" data-active-classes="text-primary font-medium border-b border-primary pb-space-2xs"><a aria-current="page" class="uppercase transition-colors duration-300 text-primary font-medium border-b border-primary pb-space-2xs" data-path="home" href="#">HOME</a><a class="font-label-caps-spaced text-label-caps-spaced uppercase text-on-surface-variant hover:text-on-surface transition-colors duration-300" data-path="fragrances" href="#">FRAGRANCES</a><a class="font-label-caps-spaced text-label-caps-spaced uppercase text-on-surface-variant hover:text-on-surface transition-colors duration-300" data-path="our-story" href="#">OUR STORY</a><a class="font-label-caps-spaced text-label-caps-spaced uppercase text-on-surface-variant hover:text-on-surface transition-colors duration-300" data-path="collaboration" href="#">COLLABORATION</a><a class="font-label-caps-spaced text-label-caps-spaced uppercase text-on-surface-variant hover:text-on-surface transition-colors duration-300" data-path="contact" href="#">CONTACT</a></nav><div class="flex md:hidden items-center"><button aria-label="Open Navigation Menu" class="p-space-2xs text-on-surface focus:outline-none" id="mobile-menu-open" type="button"><span class="material-symbols-outlined text-[26px]">menu</span></button></div></div></header><div class="fixed inset-0 z-[60] bg-surface flex flex-col justify-between p-gutter-mobile transition-all duration-500 opacity-0 pointer-events-none -translate-y-2" id="mobile-drawer"><div class="flex items-center justify-between h-20"><img alt="VINCAND DEU PARFUM" class="h-[44px] w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-iJUpi6WjS2F67Ic-OS0CtnoCyeQqt3UAzyO004CazcLBUy8SdNyrHPgzxLXlJD7TwbL9qObT04Eg8OWzxKeHHaHCEQgNmwT-dQRgkcu0oGGKixdp9bPdyCOZt6mUBZNYBWnObSTUsRGw9_bBzu7In0TNHj8U6gjgHJQ1UiMG82_kHCiQUefENbUYhalT6EI2TJ1tlyALVQFuANlMDpldU7mI_t2U0Yh3l3RG1lJVt1OXn4xjmkBro5FLw6ymdYTHZw"><button aria-label="Close Navigation Menu" class="p-space-2xs text-on-surface focus:outline-none" id="mobile-menu-close" type="button"><span class="material-symbols-outlined text-[26px]">close</span></button></div><nav class="flex flex-col items-center justify-center gap-space-md py-space-xl" data-active-classes="text-primary font-headline-md"><a aria-current="page" class="tracking-wider transition-colors uppercase text-primary font-headline-md" data-path="home" href="#">HOME</a><a class="font-headline-md text-headline-md tracking-wider text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="fragrances" href="#">FRAGRANCES</a><a class="font-headline-md text-headline-md tracking-wider text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="our-story" href="#">OUR STORY</a><a class="font-headline-md text-headline-md tracking-wider text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="collaboration" href="#">COLLABORATION</a><a class="font-headline-md text-headline-md tracking-wider text-on-surface-variant hover:text-on-surface transition-colors uppercase" data-path="contact" href="#">CONTACT</a></nav><div class="text-center pb-space-lg"><p class="font-label-caps-subtle text-label-caps-subtle text-secondary uppercase tracking-[0.25em]">VINCAND DEU PARFUM</p></div></div><script>(function(){const openBtn=document.getElementById('mobile-menu-open');const closeBtn=document.getElementById('mobile-menu-close');const drawer=document.getElementById('mobile-drawer');if(openBtn&&closeBtn&&drawer){openBtn.addEventListener('click',function(){drawer.classList.remove('opacity-0','pointer-events-none','-translate-y-2');drawer.classList.add('opacity-100','pointer-events-auto','translate-y-0');});closeBtn.addEventListener('click',function(){drawer.classList.add('opacity-0','pointer-events-none','-translate-y-2');drawer.classList.remove('opacity-100','pointer-events-auto','translate-y-0');});drawer.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){drawer.classList.add('opacity-0','pointer-events-none','-translate-y-2');drawer.classList.remove('opacity-100','pointer-events-auto','translate-y-0');});});}})();</script><main class="w-full pt-20 bg-surface min-h-[70vh]"><div class="flex flex-col w-full">
+<!-- SECTION 1: HERO (Cinematic Chiaroscuro Atmosphere) -->
+<section class="relative w-full min-h-[92vh] bg-[#0c0b0a] text-inverse-on-surface overflow-hidden flex flex-col justify-between -mt-20 pt-28 pb-space-xl">
+<!-- Ambient Light Vignette & Background Photography -->
+<div class="absolute inset-0 z-0 opacity-45 mix-blend-luminosity">
+<img alt="Vincand Deu Parfum campaign hero flacon bathed in chiaroscuro golden light" class="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000 ease-out" src="https://lh3.googleusercontent.com/aida/AEtjO1V-GfYXfkbZtqD6nWtdj3Hrmr6LB4r1i4MeOtj8k-qGYXQsnhZZuKpnkEhFF_A_A3dr0jXByAWjnEipPA-lfVXpI5iVNe-FmAjT5dT46bxntrD47L7qylGQTf64-oWd1yZucLSa6zRhioIVoRW-ndF0k0UvVNxodsgj-Cx07KBfpw7b_DrPbBPapv0jSBM1Sf_sHtbXgEqoy9X6QfatIwU5Z0sdPopXijYLX9C4hyPcNxC5OT3lA1j3Vg">
+</div>
+<div class="absolute inset-0 z-1 bg-gradient-to-t from-[#0c0b0a] via-[#0c0b0a]/60 to-transparent"></div>
+<div class="absolute inset-0 z-1 bg-gradient-to-r from-[#0c0b0a]/90 via-transparent to-[#0c0b0a]/70"></div>
+<!-- Editorial Header Spacing Bar -->
+<div class="relative z-10 max-w-[1440px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-md"></div>
+<!-- Center Hero Monograph Layout -->
+<div class="relative z-10 max-w-[1440px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop my-auto grid grid-cols-1 lg:grid-cols-12 gap-y-space-lg items-end">
+<div class="lg:col-span-8 flex flex-col items-start">
+<h1 class="font-display-hero text-headline-xl-mobile sm:text-headline-xl lg:text-display-hero tracking-[-0.02em] font-normal leading-none uppercase text-surface-bright flex flex-col mb-space-md">
+<span class="">VINCAND DEU</span>
+<span class="italic font-normal tracking-wide text-secondary-fixed">PARFUM</span>
+</h1>
+<p class="font-body-lead text-body-lead italic font-normal text-secondary-fixed-dim max-w-xl mb-space-lg">
+          An Expression Beyond Scent.
+        </p>
+<!-- Signature Clean CTA Anchor -->
+<a class="group inline-flex items-center gap-space-sm font-label-caps-spaced text-label-caps-spaced tracking-[0.3em] uppercase text-surface-bright hover:text-tertiary-fixed transition-colors duration-300" data-path="fragrances" href="#">
+<span class="">EXPLORE FRAGRANCES</span>
+<span class="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+</a>
+</div>
+<!-- Hero Minimal Side Accent -->
+<div class="lg:col-span-4 lg:flex flex-col items-end text-right hidden">
+<div class="w-16 h-hairline bg-surface-variant/20 mb-space-sm"></div>
+<p class="font-body-small text-body-small text-secondary-fixed/70 max-w-xs font-light">
+          An unhurried meditation on personal aura, evocative memory, and quiet confidence.
+        </p>
+</div>
+</div>
+<!-- Hero Baseline Empty Spacer for Balance -->
+<div class="relative z-10 max-w-[1440px] w-full mx-auto px-gutter-mobile lg:px-gutter-desktop"></div>
+</section>
+<!-- SECTION 2: OUR SIGNATURE FRAGRANCES (Balanced Editorial Monograph) -->
+<section class="w-full bg-surface py-space-3xl relative">
+<div class="max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-2xl">
+<div>
+<span class="font-label-caps-spaced text-label-caps-spaced text-secondary tracking-[0.3em] uppercase block mb-space-xs">OUR CREATIONS</span>
+<h2 class="font-headline-xl text-headline-lg md:text-headline-xl text-on-surface font-normal">Our Signature Fragrances</h2>
+</div>
+<p class="font-body-small text-body-small text-secondary max-w-sm mt-space-sm md:mt-0 font-light">
+          Two distinct signatures conceived as tactile extensions of skin, ambient light, and personal aura.
+        </p>
+</div>
+<!-- Balanced Side-by-Side Editorial Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-space-xl gap-y-space-2xl">
+<!-- Fragrance 1: VELUSTRA -->
+<article class="flex flex-col group">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-low shadow-sm">
+<img alt="VELUSTRA by VINCAND DEU PARFUM authentic purple glass bottle with gold cap" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTo-KtcZ9NOjN7bOspnLn4Fhpe8yAvD6NpSievesrTSAgDlufp3Wa-sFzzvHteytKXWJ4RqHDogWDBca6RMJBdLCbrZpUrZfp7GEf4MZv8E1c5dUnT09TThXQV5y1vNaciYPX_t0FYwaJA5utF7z7rWNclfhexKMyU67Jo-MzGaUMAHzFuR0i7dkHLVDVuXVs_SjGCdmCAuo7u8Wg_HePNrp3jqhs4dkXSbJWC2jYnm5i6abjDGMJN">
+<div class="absolute top-space-md left-space-md bg-surface/90 backdrop-blur-sm px-3 py-1 text-on-surface">
+<span class="font-label-caps-subtle text-label-caps-subtle uppercase tracking-[0.25em]">SWEET · FLORAL · GOURMAND</span>
+</div>
+</div>
+<div class="pt-space-md flex flex-col items-start w-full">
+<div class="flex items-baseline justify-between w-full mb-space-2xs">
+<h3 class="font-headline-lg text-headline-md sm:text-headline-lg text-on-surface font-normal tracking-tight">VELUSTRA</h3>
+</div>
+<p class="font-body-regular text-body-regular text-on-surface font-normal mb-1">A playful expression of juicy berries, delicate florals, and warm gourmand sweetness.</p>
+<p class="font-caption-editorial text-caption-editorial text-secondary italic mb-space-md">Sweet · Floral · Seductive · Gourmand</p>
+<div class="flex items-center gap-space-lg pt-space-xs border-t border-primary/10 w-full">
+<a class="group/btn inline-flex items-center gap-space-xs font-label-caps-spaced text-label-caps-spaced uppercase text-primary tracking-[0.24em] transition-colors duration-300 hover:text-secondary" data-path="fragrances" href="#">
+<span class="">VIEW VELUSTRA</span>
+<span class="transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
+</a>
+<a class="group/shopee inline-flex items-center gap-space-2xs font-label-caps-spaced text-label-caps-spaced uppercase text-secondary tracking-[0.24em] transition-colors duration-300 hover:text-primary" href="#" rel="noopener noreferrer" target="_blank">
+<span class="">SHOP ON SHOPEE</span>
+<span class="transition-transform duration-300 group-hover/shopee:-translate-y-0.5 group-hover/shopee:translate-x-0.5">↗</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Fragrance 2: AMBERRYYCE -->
+<article class="flex flex-col group">
+<div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container-low shadow-sm">
+<img alt="AMBERRYYCE by VINCAND DEU PARFUM authentic clear glass bottle with gold cap, cherries, and saffron" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLRu13C-8X3MAyBDP-gCxjlRAgI--6dt47vgTb3jU-_0rh68D2bBMDBzp_d9lldC7aBpCHY2uS3bXFBibJq8g521iCQZMkTqO8pZn0QkpUd4h0pIKAm69BN8Y5fmjO4Io8F7hZWR5lHrSz7aE_2pwI-4uWuo3kgb7RJ7yOdvVGrcJlxrRc9NAhXhsxLQYHWl7MEtWeKVFmutzrYRlHx7zMfhORiO1xw8MVM0AgtZPH7Kr-z-daSYO0">
+<div class="absolute top-space-md left-space-md bg-surface/90 backdrop-blur-sm px-3 py-1 text-on-surface">
+<span class="font-label-caps-subtle text-label-caps-subtle uppercase tracking-[0.25em]">LUXURY · WOODY · FRUITY</span>
+</div>
+</div>
+<div class="pt-space-md flex flex-col items-start w-full">
+<div class="flex items-baseline justify-between w-full mb-space-2xs">
+<h3 class="font-headline-lg text-headline-md sm:text-headline-lg text-on-surface font-normal tracking-tight">AMBERRYYCE</h3>
+</div>
+<p class="font-body-regular text-body-regular text-on-surface font-normal mb-1">A rich expression of juicy cherries, elegant florals, and warm woody depth.</p>
+<p class="font-caption-editorial text-caption-editorial text-secondary italic mb-space-md">Luxury · Sweet · Woody · Fruity</p>
+<div class="flex items-center gap-space-lg pt-space-xs border-t border-primary/10 w-full">
+<a class="group/btn inline-flex items-center gap-space-xs font-label-caps-spaced text-label-caps-spaced uppercase text-primary tracking-[0.24em] transition-colors duration-300 hover:text-secondary" data-path="fragrances" href="#">
+<span class="">VIEW AMBERRYYCE</span>
+<span class="transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
+</a>
+<a class="group/shopee inline-flex items-center gap-space-2xs font-label-caps-spaced text-label-caps-spaced uppercase text-secondary tracking-[0.24em] transition-colors duration-300 hover:text-primary" href="#" rel="noopener noreferrer" target="_blank">
+<span class="">SHOP ON SHOPEE</span>
+<span class="transition-transform duration-300 group-hover/shopee:-translate-y-0.5 group-hover/shopee:translate-x-0.5">↗</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- SECTION 3: THE VINCAND DEU WORLD (Authentic Indonesian UMKM Story) -->
+<section class="w-full bg-surface-container-low py-space-3xl relative overflow-hidden">
+<div class="max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Left Visual Composition: Dual Image Tension -->
+<div class="lg:col-span-7 grid grid-cols-12 gap-space-md items-end">
+<div class="col-span-8 overflow-hidden aspect-[4/5] bg-surface shadow-md">
+<img alt="Cinematic motion blur editorial with model draped in black silk sillage mist" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UjraBgLMoCn7x8t9r1HXa8yyzSUpwGxmQzusG-bqr2nqTpL7OYxSxR9Bu4uF0POMJwkO7imciyDY6RYyWqZgST6viPpPIJz7xbFkCNnP4S8Lg7A8AU5A5TWtK-G0q622oolzhY5Z9LIdha_0OKXjsHS5E9mX3Q9pD8hZ88sQi_ac7PHoRZmk-J3t4yq9j9c-mvNlNtCB6G8JLPP0V3Wu8I62c5i6NQ15SuiWK5hlHruJknH7avUWs-fYI">
+</div>
+<div class="col-span-4 -mb-space-lg overflow-hidden aspect-[3/4] bg-surface shadow-lg">
+<img alt="Tactile macro detail of fragrant white petals and warm hands touching glass flacon" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1U1NsL411zpHB7Dk3wA1ukvEvp489uRZjYPHeJema-P25c5YiFsnVwMXApnc1MC4Zg8vxr8HEMfQWwIJHPRo3-qmFwjmhGsOopWZqbbAJ5q2HQdJVx_qo-8BYpVdmAm8r1qgj12iC0ZmulG7H8g5OzujDeuPIbB5Oqa122gLeV4Tjb7DLFRfste54XDSCqSR8SIvpgGdk-b-J8qC1yZeW4GG1zu6-F8Skh05E16zN3T8xGtSoc_4ol6iZk">
+</div>
+</div>
+<!-- Right Philosophy Cluster -->
+<div class="lg:col-span-5 flex flex-col items-start lg:pl-space-md mt-space-xl lg:mt-0">
+<span class="font-label-caps-spaced text-label-caps-spaced text-secondary tracking-[0.35em] uppercase mb-space-xs">THE VINCAND DEU WORLD</span>
+<h2 class="font-headline-xl text-headline-lg lg:text-headline-xl text-on-surface font-normal leading-tight tracking-tight uppercase mb-space-md">
+            MORE THAN<br>A SCENT.
+          </h2>
+<div class="w-12 h-hairline bg-primary/20 mb-space-md"></div>
+<p class="font-body-lead text-body-lead text-on-surface font-light leading-relaxed mb-space-md">
+            Born from an independent passion for scent and visual storytelling. Vincand Deu creates evocative fragrances designed as daily companions for quiet confidence and authentic presence.
+          </p>
+<a class="inline-flex items-center gap-space-xs bg-primary text-on-primary px-8 py-3.5 font-label-caps-spaced text-label-caps-spaced uppercase tracking-[0.24em] transition-opacity duration-300 hover:opacity-85 shadow-sm" data-path="our-story" href="#">
+<span class="">OUR STORY</span>
+<span class="">→</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: CREATED TOGETHER (Collaboration Preview) -->
+<section class="w-full bg-surface py-space-3xl">
+<div class="max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-2xl">
+<div>
+<span class="font-label-caps-spaced text-label-caps-spaced text-secondary tracking-[0.3em] uppercase block mb-space-xs">ARTISTIC DIALOGUES</span>
+<h2 class="font-headline-xl text-headline-lg md:text-headline-xl text-on-surface font-normal">Created Together</h2>
+<p class="font-body-small text-body-small text-secondary mt-space-xs font-light">
+            Visual campaigns, creative explorations, and artistic dialogues.
+          </p>
+</div>
+<a class="group inline-flex items-center gap-space-xs font-label-caps-spaced text-label-caps-spaced uppercase text-primary tracking-[0.24em] mt-space-sm md:mt-0 hover:text-secondary transition-colors duration-300" data-path="collaboration" href="#">
+<span class="">EXPLORE COLLABORATION</span>
+<span class="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+</a>
+</div>
+<!-- Curated Minimal Visual Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Tile 1: Editorial Perspective -->
+<div class="flex flex-col group">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-high shadow-sm mb-space-sm">
+<img alt="Visual study of amber refraction, form, and skin intimacy" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1V-GfYXfkbZtqD6nWtdj3Hrmr6LB4r1i4MeOtj8k-qGYXQsnhZZuKpnkEhFF_A_A3dr0jXByAWjnEipPA-lfVXpI5iVNe-FmAjT5dT46bxntrD47L7qylGQTf64-oWd1yZucLSa6zRhioIVoRW-ndF0k0UvVNxodsgj-Cx07KBfpw7b_DrPbBPapv0jSBM1Sf_sHtbXgEqoy9X6QfatIwU5Z0sdPopXijYLX9C4hyPcNxC5OT3lA1j3Vg">
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-label-caps-subtle text-label-caps-subtle tracking-[0.24em] uppercase text-on-surface">EDITORIAL PERSPECTIVE</span>
+<span class="font-caption-editorial text-caption-editorial text-secondary italic">Movement I</span>
+</div>
+<p class="font-body-small text-body-small text-secondary mt-1 font-light">Visual study of amber refraction, form, and skin intimacy.</p>
+</div>
+<!-- Tile 2: Choreography of Sillage -->
+<div class="flex flex-col group md:translate-y-8">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-high shadow-sm mb-space-sm">
+<img alt="Capturing the unseen trail left across fabric and atmosphere" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1UjraBgLMoCn7x8t9r1HXa8yyzSUpwGxmQzusG-bqr2nqTpL7OYxSxR9Bu4uF0POMJwkO7imciyDY6RYyWqZgST6viPpPIJz7xbFkCNnP4S8Lg7A8AU5A5TWtK-G0q622oolzhY5Z9LIdha_0OKXjsHS5E9mX3Q9pD8hZ88sQi_ac7PHoRZmk-J3t4yq9j9c-mvNlNtCB6G8JLPP0V3Wu8I62c5i6NQ15SuiWK5hlHruJknH7avUWs-fYI">
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-label-caps-subtle text-label-caps-subtle tracking-[0.24em] uppercase text-on-surface">CHOREOGRAPHY OF SILLAGE</span>
+<span class="font-caption-editorial text-caption-editorial text-secondary italic">Movement II</span>
+</div>
+<p class="font-body-small text-body-small text-secondary mt-1 font-light">Capturing the unseen trail left across fabric and atmosphere.</p>
+</div>
+<!-- Tile 3: Tactile Harmony -->
+<div class="flex flex-col group">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-high shadow-sm mb-space-sm">
+<img alt="Collaborations exploring natural raw essences and vessel design" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvYKE9VDpnbqsyEwl5R4BRxsiEc1nhdml49AV_6Vae9Fq-SS662_ueFj_fi8lvTtGM7Lev6XGqYO-30Kz_dDDtVJgZ9ISHe29Nlr-A1vj5ueTGK10gg_WDt7v7l1S1trToMXKsOYu9W3neUFHSf22b9JzWfrUH3VwK2KOGcW6TVbI0oEkjUthYoS2m293YJquvLC4pRAEeKXo2enDJMjG9XMRghybxlpJlByRC4ESG9DIRQaURoewcxe5jxblR1OcaZgsYNAzjm7zqyw">
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-label-caps-subtle text-label-caps-subtle tracking-[0.24em] uppercase text-on-surface">TACTILE HARMONY</span>
+<span class="font-caption-editorial text-caption-editorial text-secondary italic">Movement III</span>
+</div>
+<p class="font-body-small text-body-small text-secondary mt-1 font-light">Collaborations exploring natural raw essences and vessel design.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: ENTER OUR WORLD (Social Media Section) -->
+<section class="w-full bg-[#111010] text-inverse-on-surface py-space-3xl relative overflow-hidden">
+<!-- Interactive Background Image Preview Screen -->
+<div class="absolute inset-0 z-0 bg-cover bg-center transition-all duration-700 ease-out opacity-25 filter blur-[1px] scale-105" id="enter-world-bg" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida/AEtjO1V-GfYXfkbZtqD6nWtdj3Hrmr6LB4r1i4MeOtj8k-qGYXQsnhZZuKpnkEhFF_A_A3dr0jXByAWjnEipPA-lfVXpI5iVNe-FmAjT5dT46bxntrD47L7qylGQTf64-oWd1yZucLSa6zRhioIVoRW-ndF0k0UvVNxodsgj-Cx07KBfpw7b_DrPbBPapv0jSBM1Sf_sHtbXgEqoy9X6QfatIwU5Z0sdPopXijYLX9C4hyPcNxC5OT3lA1j3Vg&quot;);"></div>
+<div class="absolute inset-0 z-1 bg-gradient-to-t from-[#111010] via-[#111010]/80 to-[#111010]/95"></div>
+<div class="relative z-10 max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<!-- Headline & Subtitle -->
+<div class="max-w-2xl mb-space-2xl">
+<span class="font-label-caps-spaced text-label-caps-spaced text-tertiary-fixed tracking-[0.35em] uppercase block mb-space-xs">CHANNELS &amp; DIALOGUE</span>
+<h2 class="font-display-hero text-headline-xl sm:text-headline-xl lg:text-display-hero text-surface-bright font-normal leading-none uppercase tracking-tight mb-space-xs">
+          ENTER OUR WORLD
+        </h2>
+<p class="font-body-lead text-body-lead text-secondary-fixed/80 font-light italic">
+          Beyond fragrance, discover the world we create.
+        </p>
+</div>
+<!-- Large Interactive Editorial Channels (Hover swaps backdrop) -->
+<div class="flex flex-col w-full divide-y divide-surface-variant/10" id="channel-links">
+<!-- INSTAGRAM -->
+<a class="channel-link group py-space-lg flex items-center justify-between transition-all duration-400 hover:pl-4" data-preview-img="https://lh3.googleusercontent.com/aida/AEtjO1UjraBgLMoCn7x8t9r1HXa8yyzSUpwGxmQzusG-bqr2nqTpL7OYxSxR9Bu4uF0POMJwkO7imciyDY6RYyWqZgST6viPpPIJz7xbFkCNnP4S8Lg7A8AU5A5TWtK-G0q622oolzhY5Z9LIdha_0OKXjsHS5E9mX3Q9pD8hZ88sQi_ac7PHoRZmk-J3t4yq9j9c-mvNlNtCB6G8JLPP0V3Wu8I62c5i6NQ15SuiWK5hlHruJknH7avUWs-fYI" href="#" rel="noopener noreferrer" target="_blank">
+<div class="flex items-baseline gap-space-md">
+<span class="font-label-caps-subtle text-label-caps-subtle text-secondary-fixed/50 group-hover:text-tertiary-fixed transition-colors">01</span>
+<span class="font-headline-lg text-headline-md sm:text-headline-lg lg:text-headline-xl uppercase text-surface-bright group-hover:text-tertiary-fixed tracking-tight font-normal transition-colors">INSTAGRAM</span>
+</div>
+<div class="flex items-center gap-space-sm text-secondary-fixed group-hover:text-tertiary-fixed transition-colors">
+<span class="font-label-caps-spaced text-label-caps-spaced uppercase tracking-[0.2em] hidden sm:inline-block">Visual campaigns &amp; daily journal</span>
+<span class="material-symbols-outlined text-[32px] transition-transform duration-300 group-hover:translate-x-2">arrow_forward</span>
+</div>
+</a>
+<!-- TIKTOK -->
+<a class="channel-link group py-space-lg flex items-center justify-between transition-all duration-400 hover:pl-4" data-preview-img="https://lh3.googleusercontent.com/aida/AEtjO1U1NsL411zpHB7Dk3wA1ukvEvp489uRZjYPHeJema-P25c5YiFsnVwMXApnc1MC4Zg8vxr8HEMfQWwIJHPRo3-qmFwjmhGsOopWZqbbAJ5q2HQdJVx_qo-8BYpVdmAm8r1qgj12iC0ZmulG7H8g5OzujDeuPIbB5Oqa122gLeV4Tjb7DLFRfste54XDSCqSR8SIvpgGdk-b-J8qC1yZeW4GG1zu6-F8Skh05E16zN3T8xGtSoc_4ol6iZk" href="#" rel="noopener noreferrer" target="_blank">
+<div class="flex items-baseline gap-space-md">
+<span class="font-label-caps-subtle text-label-caps-subtle text-secondary-fixed/50 group-hover:text-tertiary-fixed transition-colors">02</span>
+<span class="font-headline-lg text-headline-md sm:text-headline-lg lg:text-headline-xl uppercase text-surface-bright group-hover:text-tertiary-fixed tracking-tight font-normal transition-colors">TIKTOK</span>
+</div>
+<div class="flex items-center gap-space-sm text-secondary-fixed group-hover:text-tertiary-fixed transition-colors">
+<span class="font-label-caps-spaced text-label-caps-spaced uppercase tracking-[0.2em] hidden sm:inline-block">Behind the scenes &amp; scent explorations</span>
+<span class="material-symbols-outlined text-[32px] transition-transform duration-300 group-hover:translate-x-2">arrow_forward</span>
+</div>
+</a>
+<!-- WHATSAPP -->
+<a class="channel-link group py-space-lg flex items-center justify-between transition-all duration-400 hover:pl-4" data-preview-img="https://lh3.googleusercontent.com/aida/AEtjO1UNPHmcJ21RQTW0FtfjzcIVvWM0kGoF25DMv6nAYkIrBMTxWOjsuqvaJ_ZHziU7FfHL89Obf86Mr0SBA5-uBR-OpPeGlWzGJEzv34-P-vELA7YVvMkINddNvkXJdQAuxx_WKblaUqXZcFn3cxEfQ8OM2KumqqKarIsrbO10FvmNRAy17kRC00S1YMWbc-ogRdrrJAAZcTLrC-fEBXCqTZBdRqeomyn42dkZ8vk-Lfb3xkC9ay955uzjmYU" href="#" rel="noopener noreferrer" target="_blank">
+<div class="flex items-baseline gap-space-md">
+<span class="font-label-caps-subtle text-label-caps-subtle text-secondary-fixed/50 group-hover:text-tertiary-fixed transition-colors">03</span>
+<span class="font-headline-lg text-headline-md sm:text-headline-lg lg:text-headline-xl uppercase text-surface-bright group-hover:text-tertiary-fixed tracking-tight font-normal transition-colors">WHATSAPP</span>
+</div>
+<div class="flex items-center gap-space-sm text-secondary-fixed group-hover:text-tertiary-fixed transition-colors">
+<span class="font-label-caps-spaced text-label-caps-spaced uppercase tracking-[0.2em] hidden sm:inline-block">Direct customer service &amp; inquiries</span>
+<span class="material-symbols-outlined text-[32px] transition-transform duration-300 group-hover:translate-x-2">arrow_forward</span>
+</div>
+</a>
+<!-- SHOPEE -->
+<a class="channel-link group py-space-lg flex items-center justify-between transition-all duration-400 hover:pl-4" data-preview-img="https://lh3.googleusercontent.com/aida/AEtjO1WyOT_qCL3S5dUSmQLEuTI7c0uxNvorhZSsVAJO7deN1OHaR2HTcRoAh5Isk9FevVN2agDLHVs8B9hCa0cb1Yi8D0uVKJZCzRAYjNOCsQXPeB1RhVIzNN9MhqlNxhhAbGgPojIIXMzhKlTgAko8kUD3WzgYvkbUQK1InATKdRPew0-zjHVbbob1pyDdnueQzWvOZ1SFjapW8ccAVzMFSjqkySv757nrN8WIOKs7aTX5p_Mu-0O-KjIkago" href="#" rel="noopener noreferrer" target="_blank">
+<div class="flex items-baseline gap-space-md">
+<span class="font-label-caps-subtle text-label-caps-subtle text-secondary-fixed/50 group-hover:text-tertiary-fixed transition-colors">04</span>
+<span class="font-headline-lg text-headline-md sm:text-headline-lg lg:text-headline-xl uppercase text-surface-bright group-hover:text-tertiary-fixed tracking-tight font-normal transition-colors">SHOPEE</span>
+</div>
+<div class="flex items-center gap-space-sm text-secondary-fixed group-hover:text-tertiary-fixed transition-colors">
+<span class="font-label-caps-spaced text-label-caps-spaced uppercase tracking-[0.2em] hidden sm:inline-block">Official online storefront</span>
+<span class="material-symbols-outlined text-[32px] transition-transform duration-300 group-hover:translate-x-2">arrow_forward</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Interactive Dynamic Background Transition Logic -->
+<script>
+    (function() {
+      const bgContainer = document.getElementById('enter-world-bg');
+      const links = document.querySelectorAll('.channel-link');
+      if (bgContainer && links.length) {
+        links.forEach(link => {
+          link.addEventListener('mouseenter', () => {
+            const preview = link.getAttribute('data-preview-img');
+            if (preview) {
+              bgContainer.style.backgroundImage = `url('${preview}')`;
+              bgContainer.style.opacity = '0.35';
+            }
+          });
+          link.addEventListener('mouseleave', () => {
+            bgContainer.style.opacity = '0.25';
+          });
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface border-t border-primary/[0.06] pt-space-2xl pb-space-xl"><div class="max-w-[1440px] mx-auto px-gutter-mobile lg:px-gutter-desktop"><div class="grid grid-cols-1 md:grid-cols-12 gap-space-xl pb-space-2xl border-b border-primary/[0.06]"><!-- Brand Identity Column --><div class="md:col-span-5 flex flex-col items-start"><a class="inline-block transition-opacity duration-300 hover:opacity-80 mb-space-sm" data-path="home" href="#"><img alt="VINCAND DEU PARFUM" class="h-[64px] w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVSj1ND-DnSKpl2WH44HlcATIxh4gKxCiydN2qwe_9h7_dr76GmBx_xCGcDtad3ZWtognGpAd9U2u6d3Z20VHd7sGyjOeyfSlK2KXyYIk6pb38--CU7ZSJjsvs7FVs42PPh9gWSTqq-RIUlU51itdIyKZg1QY8usICFRE6dPpCKolHiq-0T4dQp7Fx8AA-ZCS9dqgo3c4OnLJhQNd6h4w9soVNvq9yQ2aa0GT6eriIzsHIiglKP2k3CcU_URb3kwsh-g"><span class="sr-only">VINCAND DEU PARFUM</span></a><p class="font-body-regular text-body-regular text-secondary max-w-sm font-light leading-relaxed">Independent Indonesian Fragrance Brand. Crafted with dedication, creative independence, and authentic scent explorations.</p></div><!-- 3 Column Navigation --><div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-space-lg"><!-- EXPLORE --><div class="flex flex-col"><span class="font-label-caps-spaced text-label-caps-spaced uppercase text-on-surface tracking-[0.24em] font-medium mb-space-md">EXPLORE</span><nav class="flex flex-col gap-space-xs"><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" data-path="home" href="#">Home</a><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" data-path="fragrances" href="#">Fragrances</a><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" data-path="our-story" href="#">Our Story</a><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" data-path="collaboration" href="#">Collaboration</a></nav></div><!-- CONNECT --><div class="flex flex-col"><span class="font-label-caps-spaced text-label-caps-spaced uppercase text-on-surface tracking-[0.24em] font-medium mb-space-md">CONNECT</span><nav class="flex flex-col gap-space-xs"><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" href="#" rel="noopener noreferrer" target="_blank">WhatsApp</a><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" href="#" rel="noopener noreferrer" target="_blank">Shopee</a><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" href="#" rel="noopener noreferrer" target="_blank">Instagram</a><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" href="#" rel="noopener noreferrer" target="_blank">TikTok</a></nav></div><!-- INFORMATION --><div class="flex flex-col"><span class="font-label-caps-spaced text-label-caps-spaced uppercase text-on-surface tracking-[0.24em] font-medium mb-space-md">INFORMATION</span><nav class="flex flex-col gap-space-xs"><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" href="#">Legal &amp; Trust</a><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" href="#">Authenticity Guarantee</a><a class="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300" data-path="contact" href="#">Contact</a></nav></div></div></div><!-- Copyright Baseline --><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-space-xs"><div class="font-label-caps-subtle text-label-caps-subtle text-secondary/80 tracking-[0.22em] uppercase">© 2025 VINCAND DEU PARFUM. All rights reserved. Indonesian Independent Olfactive House.</div></div></div></footer>
+
+
+
+</body></html>
