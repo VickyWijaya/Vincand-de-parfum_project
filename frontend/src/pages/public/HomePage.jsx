@@ -30,7 +30,7 @@ export default function HomePage() {
       num: '03',
       title: 'WHATSAPP',
       desc: 'Direct customer service & inquiries',
-      url: 'https://wa.me/6281234567890',
+      url: 'https://wa.me/6285852802459',
       preview: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=80'
     },
     {

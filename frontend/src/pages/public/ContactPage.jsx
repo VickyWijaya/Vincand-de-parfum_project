@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 
 export default function ContactPage() {
   const [inquiryType, setInquiryType] = useState('general');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [feedback, setFeedback] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
-  const channels = [
+  const [channels, setChannels] = useState([
     {
       num: '01 / DIRECT CONNECTION',
       title: 'WhatsApp',
       subtitle: 'Chat via WhatsApp',
-      url: 'https://wa.me/6281234567890',
+      url: 'https://wa.me/6285852802459',
       action: 'Open Conversation',
       note: 'Live Atelier Desk'
     },
@@ -43,7 +42,63 @@ export default function ContactPage() {
       action: 'Official Store',
       note: 'Authenticated Delivery'
     }
-  ];
+  ]);
+
+  useEffect(() => {
+    api.public.getSocials()
+      .then((res) => {
+        if (res?.map) {
+          setChannels((prev) =>
+            prev.map((ch) => {
+              const lower = ch.title.toLowerCase();
+              if (lower.includes('whatsapp') && res.map.whatsapp) {
+                const waUrl = res.map.whatsapp.startsWith('http')
+                  ? res.map.whatsapp
+                  : `https://wa.me/${res.map.whatsapp.replace(/[^0-9]/g, '')}`;
+                return { ...ch, url: waUrl };
+              }
+              if (lower.includes('instagram') && res.map.instagram) {
+                return { ...ch, url: res.map.instagram };
+              }
+              if (lower.includes('tiktok') && res.map.tiktok) {
+                return { ...ch, url: res.map.tiktok };
+              }
+              if (lower.includes('shopee') && res.map.shopee) {
+                return { ...ch, url: res.map.shopee };
+              }
+              return ch;
+            })
+          );
+        }
+      })
+      .catch((err) => console.error('Failed to load socials:', err));
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    setErrorMessage('');
+    setFeedback('');
+
+    try {
+      const res = await api.public.sendInquiry({
+        nature: inquiryType,
+        senderName: formData.name,
+        senderEmail: formData.email,
+        message: formData.message
+      });
+
+      if (res.success) {
+        setSubmitted(true);
+        setFeedback(res.message || 'Your transmission has been logged into our atelier ledger.');
+        setFormData({ name: '', email: '', message: '' });
+      }
+    } catch (err) {
+      setErrorMessage(err.message || 'Failed to submit inquiry. Please try again.');
+    } finally {
+      setSending(false);
+    }
+  };
 
   const natures = [
     { id: 'general', title: 'General Inquiry', desc: 'Questions & guidance' },
@@ -370,16 +425,22 @@ export default function ContactPage() {
                 <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <button
                     type="submit"
-                    className="group relative inline-flex items-center gap-3 bg-primary text-on-primary px-8 py-3.5 font-label-caps-spaced text-[11px] uppercase tracking-[0.24em] transition-all duration-300 hover:bg-primary/90 shadow-sm"
+                    disabled={sending}
+                    className="group relative inline-flex items-center gap-3 bg-primary text-on-primary px-8 py-3.5 font-label-caps-spaced text-[11px] uppercase tracking-[0.24em] transition-all duration-300 hover:bg-primary/90 shadow-sm disabled:opacity-60 cursor-pointer"
                   >
-                    <span>SEND MESSAGE</span>
+                    <span>{sending ? 'TRANSMITTING...' : 'SEND MESSAGE'}</span>
                     <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-1.5">
-                      arrow_forward
+                      {sending ? 'hourglass_top' : 'arrow_forward'}
                     </span>
                   </button>
-                  {submitted && (
+                  {submitted && feedback && (
                     <div className="font-caption-editorial text-caption-editorial text-primary italic font-medium">
-                      Your transmission has been logged into our atelier ledger.
+                      {feedback}
+                    </div>
+                  )}
+                  {errorMessage && (
+                    <div className="font-body-small text-xs text-red-600 font-medium">
+                      {errorMessage}
                     </div>
                   )}
                 </div>

@@ -1,0 +1,115 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BrandProfile {
+  id        Int      @id @default(autoincrement())
+  name      String
+  tagline   String
+  origin    String
+  heroQuote String
+  story     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  slug        String    @unique
+  tag         String?
+  description String?
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id            Int           @id @default(autoincrement())
+  categoryId    Int?
+  category      Category?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  name          String
+  slug          String        @unique
+  concentration String
+  price         String
+  longevity     String
+  description   String
+  imgUrl        String?
+  shopeeUrl     String?
+  whatsappUrl   String?
+  isPublished   Boolean       @default(true)
+  notes         ProductNote[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model ProductNote {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  layer     String   // TOP, MIDDLE, BASE
+  noteName  String
+  desc      String?
+  createdAt DateTime @default(now())
+}
+
+model Collaboration {
+  id        Int      @id @default(autoincrement())
+  movement  String
+  title     String
+  desc      String
+  status    String   @default("Tayang")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Legality {
+  id        Int      @id @default(autoincrement())
+  type      String   // BPOM, NIB
+  number    String
+  title     String
+  status    String   @default("Terverifikasi")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SocialChannel {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  label     String
+  urlValue  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Inquiry {
+  id          Int      @id @default(autoincrement())
+  nature      String
+  senderName  String
+  senderEmail String
+  message     String
+  status      String   @default("NEW") // NEW, READ
+  createdAt   DateTime @default(now())
+}
+
+model SiteSetting {
+  id              Int      @id @default(autoincrement())
+  siteTitle       String
+  metaDescription String
+  adminEmail      String
+  updatedAt       DateTime @updatedAt
+}

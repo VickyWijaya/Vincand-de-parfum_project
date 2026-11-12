@@ -46,7 +46,7 @@ export default function PublicFooter() {
                 CONNECT
               </span>
               <nav className="flex flex-col gap-2.5">
-                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" className="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300">WhatsApp</a>
+                <a href="https://wa.me/6285852802459" target="_blank" rel="noopener noreferrer" className="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300">WhatsApp</a>
                 <a href="https://shopee.co.id/vincanddeuparfume" target="_blank" rel="noopener noreferrer" className="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300">Shopee</a>
                 <a href="https://www.instagram.com/vincand.deu.parfume?igsi=YWtnd2lwNmloanl6&utm_source=qr" target="_blank" rel="noopener noreferrer" className="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300">Instagram</a>
                 <a href="https://www.tiktok.com/@vincanddeuparfume" target="_blank" rel="noopener noreferrer" className="font-body-small text-body-small text-secondary hover:text-primary transition-colors duration-300">TikTok</a>
@@ -72,6 +72,12 @@ export default function PublicFooter() {
           <div className="font-label-caps-subtle text-label-caps-subtle text-secondary/80 tracking-[0.22em] uppercase">
             © 2025 VINCAND DEU PARFUM. All rights reserved. Indonesian Independent Olfactive House.
           </div>
+          <Link
+            to="/admin/login"
+            className="font-label-caps-subtle text-[10px] text-secondary/50 hover:text-primary tracking-[0.18em] uppercase transition-colors"
+          >
+            Admin Panel ↗
+          </Link>
         </div>
       </div>
     </footer>

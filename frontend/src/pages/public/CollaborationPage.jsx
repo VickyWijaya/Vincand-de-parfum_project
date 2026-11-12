@@ -222,7 +222,7 @@ export default function CollaborationPage() {
                   </a>
                 </div>
                 <div className="pt-1">
-                  <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+                  <a href="https://wa.me/6285852802459" target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 font-label-caps-spaced uppercase tracking-[0.22em] text-on-surface hover:text-secondary transition-colors group">
                     <span>REACH OUT VIA WHATSAPP</span>
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

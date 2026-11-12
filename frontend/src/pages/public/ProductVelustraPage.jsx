@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Authentic Perfume Image from assets/parfum
 import velustraImg from '../../assets/parfum/VELUSTRA by VINCAND DEU PARFUM authentic purple glass bottle with gold cap.png';
@@ -63,7 +62,7 @@ export default function ProductVelustraPage() {
                   SHOP ON SHOPEE →
                 </a>
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6285852802459"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-3.5 border border-black/20 text-black font-['Inter'] text-[11px] tracking-[0.22em] uppercase hover:bg-[#f0eee8] transition-colors duration-300 shadow-sm font-medium text-center"
@@ -245,7 +244,7 @@ export default function ProductVelustraPage() {
 
             <div className="reveal-on-scroll reveal-slide-right">
               <a
-                href="https://wa.me/6281234567890"
+                href="https://wa.me/6285852802459"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-6 bg-[#f6f3ed] border border-black/[0.06] transition-all duration-300 hover:bg-[#f0eee8] hover:shadow-md flex flex-col justify-between h-full"

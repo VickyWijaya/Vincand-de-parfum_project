@@ -365,7 +365,7 @@ export default function CollectionPage() {
               {/* Concierge Liaison */}
               <a
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 bg-[#ebe8e2] text-black font-label-caps-spaced text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 hover:bg-[#e5e2dc] font-medium"
-                href="https://wa.me/6281234567890"
+                href="https://wa.me/6285852802459"
                 rel="noopener noreferrer"
                 target="_blank"
               >

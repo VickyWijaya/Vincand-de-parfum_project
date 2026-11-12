@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Authentic Perfume Image from assets/parfum
 import amberryyceImg from '../../assets/parfum/AMBERRYYCE by VINCAND DEU PARFUM authentic clear glass bottle with gold cap, cherries, and saffron.png';
@@ -63,7 +62,7 @@ export default function ProductAmberyycePage() {
                   SHOP ON SHOPEE →
                 </a>
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6285852802459"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-3.5 border border-black/20 text-black font-['Inter'] text-[11px] tracking-[0.22em] uppercase hover:bg-[#f0eee8] transition-colors duration-300 shadow-sm font-medium text-center"
@@ -300,7 +299,7 @@ export default function ProductAmberyycePage() {
               </div>
               <div className="pt-2">
                 <a
-                  href="https://wa.me/6281234567890"
+                  href="https://wa.me/6285852802459"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-full px-8 py-3.5 bg-[#fcf9f3] text-black border border-black/20 font-['Inter'] text-[11px] tracking-[0.22em] uppercase hover:bg-[#ebe8e2] transition-colors duration-300 shadow-sm text-center font-medium"

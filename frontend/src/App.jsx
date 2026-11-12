@@ -55,6 +55,7 @@ export default function App() {
           <Route path="products" element={<AdminProductsPage />} />
           <Route path="categories" element={<AdminCategoriesPage />} />
           <Route path="products/create" element={<AdminProductCreatePage />} />
+          <Route path="products/edit/:id" element={<AdminProductCreatePage />} />
           <Route path="brand" element={<AdminBrandPage />} />
           <Route path="collaborations" element={<AdminCollaborationsPage />} />
           <Route path="legalities" element={<AdminLegalitiesPage />} />
