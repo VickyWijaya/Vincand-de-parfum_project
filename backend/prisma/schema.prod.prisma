@@ -1,0 +1,136 @@
+// schema.prod.prisma — KHUSUS RAILWAY / PRODUCTION (PostgreSQL)
+// Jangan edit langsung; sinkronkan selalu dengan schema.prisma lokal.
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BrandProfile {
+  id          Int      @id @default(autoincrement())
+  name        String
+  tagline     String
+  origin      String
+  heroQuote   String
+  story       String
+  contentJson String   @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  slug        String    @unique
+  tag         String?
+  description String?
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id            Int           @id @default(autoincrement())
+  categoryId    Int?
+  category      Category?     @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  name          String
+  slug          String        @unique
+  concentration String
+  price         String
+  longevity     String
+  description   String
+  imgUrl        String?
+  shopeeUrl     String?
+  whatsappUrl   String?
+  isPublished   Boolean       @default(true)
+  notes         ProductNote[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model ProductNote {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  layer     String
+  noteName  String
+  desc      String?
+  createdAt DateTime @default(now())
+}
+
+model Collaboration {
+  id          Int      @id @default(autoincrement())
+  movement    String
+  partnerName String   @default("")
+  title       String
+  type        String   @default("Kolaborasi")
+  desc        String   @default("")
+  imgUrl      String   @default("")
+  dateValue   String   @default("")
+  externalUrl String   @default("")
+  status      String   @default("Tayang")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Legality {
+  id        Int      @id @default(autoincrement())
+  type      String   @default("NIB")
+  number    String
+  title     String
+  authority String   @default("")
+  expiry    String   @default("")
+  status    String   @default("Tayang di Web")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SocialChannel {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  label     String
+  urlValue  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Inquiry {
+  id          Int      @id @default(autoincrement())
+  nature      String
+  senderName  String
+  senderEmail String
+  message     String
+  status      String   @default("NEW")
+  createdAt   DateTime @default(now())
+}
+
+model SiteSetting {
+  id              Int      @id @default(autoincrement())
+  siteTitle       String
+  metaDescription String
+  adminEmail      String
+  updatedAt       DateTime @updatedAt
+}
+
+model SiteMedia {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  label     String
+  page      String   @default("Umum")
+  url       String
+  updatedAt DateTime @updatedAt
+}

@@ -6,19 +6,26 @@ import routes from './routes/index.js';
 
 const app = express();
 
-// Middleware
+// Daftar origin yang diizinkan (tambahkan domain produksi di sini)
+const ALLOWED_ORIGINS = [
+  /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/,  // local dev
+  /^https:\/\/.*\.vercel\.app$/,                  // Vercel preview & produksi
+  /^https:\/\/.*\.railway\.app$/,                 // Railway internal
+  /^https:\/\/vincanddeu\.com$/,                  // custom domain (opsional)
+  /^https:\/\/www\.vincanddeu\.com$/,
+];
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin or localhost
-      if (!origin || /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+      if (!origin || ALLOWED_ORIGINS.some((r) => r.test(origin))) {
         return callback(null, true);
       }
-      return callback(null, true);
+      return callback(new Error(`Origin tidak diizinkan oleh CORS: ${origin}`));
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 
