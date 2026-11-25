@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { api } from '../../services/api';
 
 // Authentic Perfume Images from assets/parfum
 import velustraImg from '../../assets/parfum/VELUSTRA by VINCAND DEU PARFUM authentic purple glass bottle with gold cap.png';
@@ -11,36 +12,176 @@ export default function HomePage() {
   );
   const [bgOpacity, setBgOpacity] = useState('0.25');
 
-  const channels = [
+  const [brand, setBrand] = useState({
+    name: 'VINCAND DEU',
+    sub: 'PARFUM',
+    heroQuote: 'An Expression Beyond Scent.',
+    content: {
+      home_hero_sub: 'Tentang personal aura, memori yang tertinggal, dan rasa percaya diri yang effortless.',
+      home_story_eyebrow: 'ESENSI DI BALIK KARYA',
+      home_story_title: 'LEBIH DARI SEKADAR AROMA.',
+      home_story_desc: 'Setiap parfum adalah cerita yang tak terucap—jejak yang tetap tinggal lama setelah Anda melangkah pergi. Di Vincand, setiap esensi diracik untuk menemani keseharian Anda dengan rasa percaya diri dan daya tarik yang tak terlupakan.'
+    }
+  });
+
+  const [channels, setChannels] = useState([
     {
       num: '01',
       title: 'INSTAGRAM',
-      desc: 'Visual campaigns & daily journal',
+      desc: 'Kampanye visual & jurnal harian',
       url: 'https://www.instagram.com/vincand.deu.parfume?igsi=YWtnd2lwNmloanl6&utm_source=qr',
       preview: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=80'
     },
     {
       num: '02',
       title: 'TIKTOK',
-      desc: 'Behind the scenes & scent explorations',
+      desc: 'Di balik layar & eksplorasi aroma',
       url: 'https://www.tiktok.com/@vincanddeuparfume',
       preview: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80'
     },
     {
       num: '03',
       title: 'WHATSAPP',
-      desc: 'Direct customer service & inquiries',
+      desc: 'Layanan pelanggan & konsultasi langsung',
       url: 'https://wa.me/6285852802459',
       preview: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=80'
     },
     {
       num: '04',
       title: 'SHOPEE',
-      desc: 'Official online storefront',
+      desc: 'Toko resmi online terverifikasi',
       url: 'https://shopee.co.id/vincanddeuparfume',
       preview: amberryyceImg
     }
-  ];
+  ]);
+
+  const [siteMedia, setSiteMedia] = useState({
+    home_hero: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?q=80&w=1600&auto=format&fit=crop',
+    home_story_1: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    home_story_2: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80',
+    channel_instagram: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=80',
+    channel_tiktok: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80',
+    channel_whatsapp: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=80'
+  });
+
+  const [collaborations, setCollaborations] = useState([]);
+
+  const [products, setProducts] = useState([
+    {
+      slug: 'velustra',
+      name: 'VELUSTRA',
+      categoryTag: 'MANIS · FLORAL · GOURMAND',
+      price: 'Rp 289.000',
+      description: 'Ekspresi ceria dari perpaduan buah beri segar, bunga lembut, dan kehangatan gourmand yang manis.',
+      character: 'Manis · Floral · Memikat · Gourmand',
+      img: velustraImg,
+      link: '/product/velustra',
+      shopeeUrl: 'https://shopee.co.id/vincanddeuparfume',
+      slideAnim: 'reveal-slide-left'
+    },
+    {
+      slug: 'amberryyce',
+      name: 'AMBERYYCE',
+      categoryTag: 'MEWAH · WOODY · FRUITY',
+      price: 'Rp 319.000',
+      description: 'Ekspresi kaya dari ceri yang segar, bunga elegan, dan kedalaman aroma kayu yang hangat.',
+      character: 'Mewah · Manis · Woody · Fruity',
+      img: amberryyceImg,
+      link: '/product/amberryyce',
+      shopeeUrl: 'https://shopee.co.id/vincanddeuparfume',
+      slideAnim: 'reveal-slide-right'
+    }
+  ]);
+
+  useEffect(() => {
+    // 1. Fetch Brand Profile
+    api.public.getBrand()
+      .then((res) => {
+        if (res?.data) {
+          setBrand((prev) => ({
+            ...prev,
+            heroQuote: res.data.heroQuote || prev.heroQuote,
+            content: { ...prev.content, ...(res.data.content || {}) }
+          }));
+        }
+      })
+      .catch(() => {});
+
+    // 2. Fetch Socials
+    api.public.getSocials()
+      .then((res) => {
+        if (res?.map) {
+          setChannels((prev) =>
+            prev.map((ch) => {
+              const lower = ch.title.toLowerCase();
+              if (lower.includes('whatsapp') && res.map.whatsapp) {
+                const waUrl = res.map.whatsapp.startsWith('http')
+                  ? res.map.whatsapp
+                  : `https://wa.me/${res.map.whatsapp.replace(/[^0-9]/g, '')}`;
+                return { ...ch, url: waUrl };
+              }
+              if (lower.includes('instagram') && res.map.instagram) return { ...ch, url: res.map.instagram };
+              if (lower.includes('tiktok') && res.map.tiktok) return { ...ch, url: res.map.tiktok };
+              if (lower.includes('shopee') && res.map.shopee) return { ...ch, url: res.map.shopee };
+              return ch;
+            })
+          );
+        }
+      })
+      .catch(() => {});
+
+    // 3. Fetch Products from Backend
+    api.public.getProducts()
+      .then((res) => {
+        if (res?.data && res.data.length > 0) {
+          setProducts((prev) =>
+            prev.map((p) => {
+              const matched = res.data.find(
+                (item) => item.slug?.toLowerCase() === p.slug || item.name?.toLowerCase().includes(p.slug)
+              );
+              if (!matched) return p;
+              return {
+                ...p,
+                name: matched.name ? matched.name.replace(/\s*30ml/i, '').toUpperCase() : p.name,
+                categoryTag: matched.category?.tag ? matched.category.tag.toUpperCase() : p.categoryTag,
+                price: matched.price || p.price,
+                description: matched.description ? matched.description.split('.')[0] + '.' : p.description,
+                img: matched.imgUrl || p.img,
+                shopeeUrl: matched.shopeeUrl || p.shopeeUrl
+              };
+            })
+          );
+        }
+      })
+      .catch(() => {});
+
+    // 4. Fetch Collaborations from Backend
+    api.public.getCollaborations()
+      .then((res) => {
+        if (res?.data) {
+          setCollaborations(res.data);
+        }
+      })
+      .catch(() => {});
+
+    // 5. Fetch Site Media from Backend
+    api.public.getMedia()
+      .then((res) => {
+        if (res?.map) {
+          setSiteMedia((prev) => ({ ...prev, ...res.map }));
+          setChannels((prev) =>
+            prev.map((ch) => {
+              const lower = ch.title.toLowerCase();
+              if (lower.includes('instagram') && res.map.channel_instagram) return { ...ch, preview: res.map.channel_instagram };
+              if (lower.includes('tiktok') && res.map.channel_tiktok) return { ...ch, preview: res.map.channel_tiktok };
+              if (lower.includes('whatsapp') && res.map.channel_whatsapp) return { ...ch, preview: res.map.channel_whatsapp };
+              return ch;
+            })
+          );
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <div className="flex flex-col w-full">
@@ -49,7 +190,7 @@ export default function HomePage() {
         {/* Background Image Botol Parfum: Bernuansa Gelap, Sinematik, dan Moody */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?q=80&w=1600&auto=format&fit=crop"
+            src={siteMedia.home_hero}
             alt="Vincand Deu Parfum campaign hero flacon in chiaroscuro lighting"
             className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000 ease-out opacity-65"
           />
@@ -69,14 +210,14 @@ export default function HomePage() {
               <span className="italic font-normal tracking-wide text-secondary-fixed mt-1">PARFUM</span>
             </h1>
             <p className="reveal-on-scroll reveal-fade-up delay-150 font-body-lead text-lg sm:text-xl md:text-2xl italic font-normal text-secondary-fixed-dim max-w-xl mb-7 sm:mb-8">
-              An Expression Beyond Scent.
+              {brand.heroQuote}
             </p>
             {/* Minimalist Text Link CTA */}
             <Link
               to="/collection"
               className="reveal-on-scroll reveal-fade-up delay-250 group inline-flex items-center gap-3 font-label-caps-spaced text-[11px] tracking-[0.28em] uppercase text-[#fcf9f3] hover:text-tertiary-fixed transition-colors duration-300 border-b border-surface-bright/25 pb-1"
             >
-              <span>EXPLORE FRAGRANCES</span>
+              <span>JELAJAHI KOLEKSI</span>
               <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
             </Link>
           </div>
@@ -85,7 +226,7 @@ export default function HomePage() {
           <div className="reveal-on-scroll reveal-slide-right delay-200 lg:col-span-4 lg:flex flex-col items-end text-right hidden pb-2">
             <div className="w-16 h-hairline bg-white/25 mb-3"></div>
             <p className="font-body-small text-[12px] sm:text-[13px] text-secondary-fixed/70 max-w-xs font-light leading-relaxed">
-              An unhurried meditation on personal aura, evocative memory, and quiet confidence.
+              {brand.content.home_hero_sub}
             </p>
           </div>
         </div>
@@ -101,14 +242,14 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16">
             <div className="reveal-on-scroll reveal-fade-up">
               <span className="font-label-caps-spaced text-label-caps-spaced text-secondary tracking-[0.3em] uppercase block mb-2 font-medium">
-                OUR CREATIONS
+                KARYA KAMI
               </span>
               <h2 className="font-headline-xl text-3xl md:text-4xl lg:text-5xl text-on-surface font-normal">
-                Our Signature Fragrances
+                Parfum Andalan Kami
               </h2>
             </div>
             <p className="reveal-on-scroll reveal-fade-up delay-150 font-body-small text-body-small text-secondary max-w-sm mt-3 md:mt-0 font-light leading-relaxed">
-              Two distinct signatures conceived as tactile extensions of skin, ambient light, and personal aura.
+              Dua signature scent yang dirancang untuk menyatu dengan kulit dan karakter personal Anda.
             </p>
           </div>
 
@@ -118,43 +259,48 @@ export default function HomePage() {
             <article className="reveal-on-scroll reveal-slide-left flex flex-col group w-full">
               <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] overflow-hidden bg-surface-container-low shadow-sm">
                 <img
-                  src={velustraImg}
-                  alt="VELUSTRA by VINCAND DEU PARFUM authentic purple glass bottle with gold cap"
+                  src={products[0].img}
+                  alt="VELUSTRA by VINCAND DEU PARFUM"
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
                 <div className="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-3.5 py-1.5 text-on-surface shadow-xs border border-primary/5">
                   <span className="font-label-caps-subtle text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-medium">
-                    SWEET · FLORAL · GOURMAND
+                    {products[0].categoryTag}
                   </span>
                 </div>
               </div>
               <div className="pt-5 sm:pt-6 flex flex-col items-start w-full">
                 <div className="flex items-baseline justify-between w-full mb-1">
                   <h3 className="font-headline-lg text-2xl sm:text-3xl text-on-surface font-normal tracking-tight">
-                    VELUSTRA
+                    {products[0].name}
                   </h3>
+                  {products[0].price && (
+                    <span className="font-label-caps-spaced text-xs text-primary font-semibold tracking-wider">
+                      {products[0].price}
+                    </span>
+                  )}
                 </div>
                 <p className="font-body-regular text-[14px] sm:text-[15px] text-on-surface font-normal mb-1 leading-relaxed">
-                  A playful expression of juicy berries, delicate florals, and warm gourmand sweetness.
+                  {products[0].description}
                 </p>
                 <p className="font-caption-editorial text-[13px] text-secondary italic mb-4">
-                  Sweet · Floral · Seductive · Gourmand
+                  Manis · Floral · Memikat · Gourmand
                 </p>
                 <div className="flex items-center justify-between pt-3.5 border-t border-primary/10 w-full">
                   <Link
                     to="/product/velustra"
                     className="group/btn inline-flex items-center gap-2 font-label-caps-spaced text-[11px] uppercase text-primary tracking-[0.24em] transition-colors duration-300 hover:text-secondary font-medium"
                   >
-                    <span>VIEW VELUSTRA</span>
+                    <span>LIHAT VELUSTRA</span>
                     <span className="transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
                   </Link>
                   <a
-                    href="https://shopee.co.id/vincanddeuparfume"
+                    href={products[0].shopeeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group/shopee inline-flex items-center gap-1.5 font-label-caps-spaced text-[11px] uppercase text-secondary tracking-[0.24em] transition-colors duration-300 hover:text-primary font-medium"
                   >
-                    <span>SHOP ON SHOPEE</span>
+                    <span>BELI DI SHOPEE</span>
                     <span className="transition-transform duration-300 group-hover/shopee:-translate-y-0.5 group-hover/shopee:translate-x-0.5">↗</span>
                   </a>
                 </div>
@@ -165,43 +311,48 @@ export default function HomePage() {
             <article className="reveal-on-scroll reveal-slide-right flex flex-col group w-full">
               <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] overflow-hidden bg-surface-container-low shadow-sm">
                 <img
-                  src={amberryyceImg}
-                  alt="AMBERRYYCE by VINCAND DEU PARFUM authentic clear glass bottle with gold cap, cherries, and saffron"
+                  src={products[1].img}
+                  alt="AMBERRYYCE by VINCAND DEU PARFUM"
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
                 <div className="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-3.5 py-1.5 text-on-surface shadow-xs border border-primary/5">
                   <span className="font-label-caps-subtle text-[9px] sm:text-[10px] uppercase tracking-[0.25em] font-medium">
-                    LUXURY · WOODY · FRUITY
+                    {products[1].categoryTag}
                   </span>
                 </div>
               </div>
               <div className="pt-5 sm:pt-6 flex flex-col items-start w-full">
                 <div className="flex items-baseline justify-between w-full mb-1">
                   <h3 className="font-headline-lg text-2xl sm:text-3xl text-on-surface font-normal tracking-tight">
-                    AMBERRYYCE
+                    {products[1].name}
                   </h3>
+                  {products[1].price && (
+                    <span className="font-label-caps-spaced text-xs text-primary font-semibold tracking-wider">
+                      {products[1].price}
+                    </span>
+                  )}
                 </div>
                 <p className="font-body-regular text-[14px] sm:text-[15px] text-on-surface font-normal mb-1 leading-relaxed">
-                  A rich expression of juicy cherries, elegant florals, and warm woody depth.
+                  {products[1].description}
                 </p>
                 <p className="font-caption-editorial text-[13px] text-secondary italic mb-4">
-                  Luxury · Sweet · Woody · Fruity
+                  Mewah · Manis · Woody · Fruity
                 </p>
                 <div className="flex items-center justify-between pt-3.5 border-t border-primary/10 w-full">
                   <Link
                     to="/product/amberryyce"
                     className="group/btn inline-flex items-center gap-2 font-label-caps-spaced text-[11px] uppercase text-primary tracking-[0.24em] transition-colors duration-300 hover:text-secondary font-medium"
                   >
-                    <span>VIEW AMBERRYYCE</span>
+                    <span>LIHAT {products[1].name}</span>
                     <span className="transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
                   </Link>
                   <a
-                    href="https://shopee.co.id/vincanddeuparfume"
+                    href={products[1].shopeeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group/shopee inline-flex items-center gap-1.5 font-label-caps-spaced text-[11px] uppercase text-secondary tracking-[0.24em] transition-colors duration-300 hover:text-primary font-medium"
                   >
-                    <span>SHOP ON SHOPEE</span>
+                    <span>BELI DI SHOPEE</span>
                     <span className="transition-transform duration-300 group-hover/shopee:-translate-y-0.5 group-hover/shopee:translate-x-0.5">↗</span>
                   </a>
                 </div>
@@ -220,7 +371,7 @@ export default function HomePage() {
               {/* Primary Image: Portrait Fashion/Beauty Model (Aspect 3:4) */}
               <div className="w-[84%] aspect-[3/4] overflow-hidden bg-surface shadow-md relative">
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80"
+                  src={siteMedia.home_story_1}
                   alt="Editorial beauty model draped in elegance"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -228,7 +379,7 @@ export default function HomePage() {
               {/* Secondary Image: Detail shot overlapping slightly at bottom-right (Aspect 3:4) */}
               <div className="absolute -bottom-2 right-0 sm:right-2 w-[52%] aspect-[3/4] overflow-hidden bg-surface shadow-2xl border-4 border-[#f6f3ed] z-10">
                 <img
-                  src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80"
+                  src={siteMedia.home_story_2}
                   alt="Tactile macro detail of fragrance bottle and petals"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -239,21 +390,21 @@ export default function HomePage() {
             <div className="flex flex-col items-start justify-center lg:pl-6 xl:pl-10">
               <div className="reveal-on-scroll reveal-fade-up">
                 <span className="font-label-caps-spaced text-label-caps-spaced text-secondary tracking-[0.35em] uppercase mb-3 block font-medium">
-                  THE ESSENCE BEHIND
+                  {brand.content.home_story_eyebrow}
                 </span>
                 <h2 className="font-headline-xl text-3xl sm:text-4xl lg:text-5xl text-on-surface font-normal leading-[1.15] tracking-tight uppercase mb-5">
-                  MORE THAN<br />A SCENT.
+                  {brand.content.home_story_title}
                 </h2>
                 <div className="w-12 h-hairline bg-primary/25 mb-6"></div>
               </div>
               <p className="reveal-on-scroll reveal-fade-up delay-150 font-body-lead text-base sm:text-lg text-on-surface font-light leading-relaxed mb-8">
-                Every fragrance is an unspoken poetry—a presence that lingers long after you leave the room. At Vincand, our artisans weave rare olfactive notes into daily companions for confidence, allure, and unforgettable presence.
+                {brand.content.home_story_desc}
               </p>
               <Link
                 to="/our-story"
                 className="reveal-on-scroll reveal-fade-up delay-250 inline-flex items-center gap-3 bg-primary text-on-primary px-8 py-3.5 font-label-caps-spaced text-[11px] uppercase tracking-[0.26em] transition-opacity duration-300 hover:opacity-85 shadow-sm"
               >
-                <span>READ OUR STORY</span>
+                <span>BACA KISAH KAMI</span>
                 <span>→</span>
               </Link>
             </div>
@@ -268,91 +419,83 @@ export default function HomePage() {
           <div className="reveal-on-scroll reveal-fade-up flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16">
             <div>
               <span className="font-label-caps-spaced text-label-caps-spaced text-secondary tracking-[0.3em] uppercase block mb-1">
-                ARTISTIC ALLIANCES
+                KOLABORASI ARTISTIK
               </span>
               <h2 className="font-headline-xl text-3xl md:text-4xl text-on-surface font-normal">
-                Created Together
+                Diciptakan Bersama
               </h2>
               <p className="font-body-small text-body-small text-secondary mt-1 font-light">
-                Exclusive limited editions co-crafted with visionary creators.
+                Edisi terbatas eksklusif yang dirangkai bersama para kreator visioner.
               </p>
             </div>
             <Link
               to="/collaboration"
               className="group inline-flex items-center gap-2 font-label-caps-spaced text-label-caps-spaced uppercase text-primary tracking-[0.24em] mt-4 md:mt-0 hover:text-secondary transition-colors duration-300"
             >
-              <span>EXPLORE ALL CREATIONS</span>
+              <span>JELAJAHI SEMUA KARYA</span>
               <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
             </Link>
           </div>
 
           {/* Symmetrical 3-Column Grid: Identical Height & Aspect Ratio (4:5) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1: Luxury Perfume Bottle */}
-            <div className="reveal-on-scroll reveal-slide-left flex flex-col group">
-              <div className="aspect-[4/5] w-full overflow-hidden bg-surface-container-high shadow-sm mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80"
-                  alt="Visual study of amber refraction, form, and vessel design"
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="flex items-baseline justify-between mb-1">
-                <span className="font-label-caps-subtle text-label-caps-subtle tracking-[0.24em] uppercase text-on-surface font-medium">
-                  EDITORIAL PERSPECTIVE
-                </span>
-                <span className="font-caption-editorial text-caption-editorial text-secondary italic">
-                  Movement I
-                </span>
-              </div>
-              <p className="font-body-small text-body-small text-secondary font-light">
-                Visual study of amber refraction, form, and skin intimacy.
-              </p>
-            </div>
-
-            {/* Card 2: Model Applying Scent / Moody Portrait */}
-            <div className="reveal-on-scroll reveal-fade-up delay-150 flex flex-col group">
-              <div className="aspect-[4/5] w-full overflow-hidden bg-surface-container-high shadow-sm mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80"
-                  alt="Capturing the unseen trail left across fabric and atmosphere"
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="flex items-baseline justify-between mb-1">
-                <span className="font-label-caps-subtle text-label-caps-subtle tracking-[0.24em] uppercase text-on-surface font-medium">
-                  CHOREOGRAPHY OF SILLAGE
-                </span>
-                <span className="font-caption-editorial text-caption-editorial text-secondary italic">
-                  Movement II
-                </span>
-              </div>
-              <p className="font-body-small text-body-small text-secondary font-light">
-                Capturing the unseen trail left across fabric and atmosphere.
-              </p>
-            </div>
-
-            {/* Card 3: Hands Holding Fragrance / Floral Elements */}
-            <div className="reveal-on-scroll reveal-slide-right delay-250 flex flex-col group">
-              <div className="aspect-[4/5] w-full overflow-hidden bg-surface-container-high shadow-sm mb-4">
-                <img
-                  src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80"
-                  alt="Collaborations exploring natural raw essences and tactile vessel design"
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
-              </div>
-              <div className="flex items-baseline justify-between mb-1">
-                <span className="font-label-caps-subtle text-label-caps-subtle tracking-[0.24em] uppercase text-on-surface font-medium">
-                  TACTILE HARMONY
-                </span>
-                <span className="font-caption-editorial text-caption-editorial text-secondary italic">
-                  Movement III
-                </span>
-              </div>
-              <p className="font-body-small text-body-small text-secondary font-light">
-                Collaborations exploring natural raw essences and vessel design.
-              </p>
-            </div>
+            {(collaborations.length > 0 ? collaborations.slice(0, 3) : [
+              {
+                id: 'default-1',
+                partnerName: 'Studio Foto Senja',
+                title: 'Pemotretan Katalog & Visual Aroma',
+                type: 'Kreator & Konten',
+                desc: 'Kolaborasi pemotretan katalog produk dengan pencahayaan alami di studio lokal.',
+                imgUrl: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80'
+              },
+              {
+                id: 'default-2',
+                partnerName: 'Kopi & Ruang Rasa',
+                title: 'Pop-Up Tester di Kedai Kopi Lokal',
+                type: 'Komunitas & Event',
+                desc: 'Menghadirkan sudut coba aroma bagi pengunjung kedai kopi akhir pekan.',
+                imgUrl: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80'
+              },
+              {
+                id: 'default-3',
+                partnerName: 'Perajin Kemasan Nusantara',
+                title: 'Kemasan Ramah Lingkungan',
+                type: 'Reseller / Mitra',
+                desc: 'Kerja sama pembuatan kotak kemasan berbahan kertas daur ulang lokal.',
+                imgUrl: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80'
+              }
+            ]).map((collab, idx) => {
+              const fallbackImgs = [
+                'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80'
+              ];
+              return (
+                <Link key={collab.id || idx} to="/collaboration" className="flex flex-col group">
+                  <div className="aspect-[4/5] w-full overflow-hidden bg-surface-container-high shadow-sm mb-4">
+                    <img
+                      src={collab.imgUrl || fallbackImgs[idx % fallbackImgs.length]}
+                      alt={collab.title || collab.partnerName}
+                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex items-baseline justify-between gap-2 mb-1">
+                    <span className="font-label-caps-subtle text-label-caps-subtle tracking-[0.2em] uppercase text-on-surface font-medium truncate">
+                      {collab.partnerName || collab.movement}
+                    </span>
+                    <span className="font-caption-editorial text-caption-editorial text-secondary italic shrink-0">
+                      {collab.type || 'Kolaborasi'}
+                    </span>
+                  </div>
+                  <h3 className="font-headline-sm text-lg text-on-surface font-normal mb-1 group-hover:text-secondary transition-colors">
+                    {collab.title}
+                  </h3>
+                  <p className="font-body-small text-body-small text-secondary font-light line-clamp-2">
+                    {collab.desc}
+                  </p>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -371,13 +514,13 @@ export default function HomePage() {
           {/* Headline & Subtitle */}
           <div className="reveal-on-scroll reveal-fade-up max-w-2xl mb-12 sm:mb-16">
             <span className="font-label-caps-spaced text-label-caps-spaced text-tertiary-fixed tracking-[0.35em] uppercase block mb-2">
-              COMMUNITY &amp; INSPIRATION
+              KOMUNITAS &amp; INSPIRASI
             </span>
             <h2 className="font-display-hero text-4xl sm:text-6xl lg:text-[76px] text-surface-bright font-normal leading-none uppercase tracking-tight mb-2">
-              ENTER OUR WORLD
+              MASUKI DUNIA KAMI
             </h2>
             <p className="font-body-lead text-body-lead text-secondary-fixed/80 font-light italic">
-              Discover fragrances, stories, and exclusive releases.
+              Temukan parfum, kisah, dan rilis eksklusif terbaru kami.
             </p>
           </div>
 

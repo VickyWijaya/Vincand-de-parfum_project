@@ -46,7 +46,7 @@ export default function PublicHeader() {
           <Link
             to="/"
             className="flex items-center transition-opacity duration-300 hover:opacity-80 focus:outline-none select-none py-1"
-            aria-label="Vincand Deu Parfum Home"
+            aria-label="Beranda Vincand Deu Parfum"
           >
             <img
               src={brandLogo}
@@ -64,31 +64,31 @@ export default function PublicHeader() {
               end
               className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
             >
-              HOME
+              BERANDA
             </NavLink>
             <NavLink
               to="/collection"
               className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
             >
-              FRAGRANCES
+              KOLEKSI
             </NavLink>
             <NavLink
               to="/our-story"
               className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
             >
-              OUR STORY
+              KISAH KAMI
             </NavLink>
             <NavLink
               to="/collaboration"
               className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
             >
-              COLLABORATION
+              KOLABORASI
             </NavLink>
             <NavLink
               to="/contact"
               className={({ isActive }) => (isActive ? activeClass : inactiveClass)}
             >
-              CONTACT
+              KONTAK
             </NavLink>
           </nav>
 
@@ -97,7 +97,7 @@ export default function PublicHeader() {
             <button
               type="button"
               id="mobile-menu-open"
-              aria-label="Open Navigation Menu"
+              aria-label="Buka Menu Navigasi"
               className={`p-1.5 focus:outline-none ${isHome ? 'text-white' : 'text-primary'}`}
               onClick={() => setMobileMenuOpen(true)}
             >
@@ -130,7 +130,7 @@ export default function PublicHeader() {
           <button
             type="button"
             id="mobile-menu-close"
-            aria-label="Close Navigation Menu"
+            aria-label="Tutup Menu Navigasi"
             className="p-1.5 text-primary focus:outline-none"
             onClick={() => setMobileMenuOpen(false)}
           >
@@ -144,35 +144,35 @@ export default function PublicHeader() {
             onClick={() => setMobileMenuOpen(false)}
             className="text-on-surface hover:text-primary transition-colors"
           >
-            HOME
+            BERANDA
           </Link>
           <Link
             to="/collection"
             onClick={() => setMobileMenuOpen(false)}
             className="text-on-surface hover:text-primary transition-colors"
           >
-            FRAGRANCES
+            KOLEKSI
           </Link>
           <Link
             to="/our-story"
             onClick={() => setMobileMenuOpen(false)}
             className="text-on-surface hover:text-primary transition-colors"
           >
-            OUR STORY
+            KISAH KAMI
           </Link>
           <Link
             to="/collaboration"
             onClick={() => setMobileMenuOpen(false)}
             className="text-on-surface hover:text-primary transition-colors"
           >
-            COLLABORATION
+            KOLABORASI
           </Link>
           <Link
             to="/contact"
             onClick={() => setMobileMenuOpen(false)}
             className="text-primary font-medium transition-colors"
           >
-            CONTACT
+            KONTAK
           </Link>
         </nav>
 

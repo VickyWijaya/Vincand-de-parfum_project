@@ -79,7 +79,7 @@ export default function AdminProductsPage() {
           const apiProducts = res.data.map((item, index) => ({
             id: item.id || `prod-${index}`,
             sku: item.sku || (item.name?.toLowerCase().includes('vel') ? 'VCD-VEL-01' : 'VCD-AMB-02'),
-            name: item.name || 'Wewangian',
+            name: item.name || 'PARFUM',
             concentration: item.concentration || '30ml - Extrait de Parfum',
             slug: item.slug || (item.name?.toLowerCase().includes('vel') ? 'velustra' : 'amberryyce'),
             category: item.category?.slug || (item.name?.toLowerCase().includes('vel') ? 'velustra-series' : 'amberyyce-series'),
@@ -603,11 +603,18 @@ export default function AdminProductsPage() {
                         type="file"
                         accept="image/*"
                         className="hidden"
-                        onChange={(e) => {
+                        onChange={async (e) => {
                           const file = e.target.files?.[0];
-                          if (file) {
-                            const url = URL.createObjectURL(file);
-                            setEditFormData({ ...editFormData, imgUrl: url });
+                          if (!file) return;
+                          try {
+                            const res = await api.admin.uploadImage(file);
+                            if (res?.url) {
+                              setEditFormData((prev) => ({ ...prev, imgUrl: res.url }));
+                              setToastMessage('Foto produk berhasil diunggah! Klik Simpan Perubahan untuk menyimpan.');
+                              setTimeout(() => setToastMessage(''), 3000);
+                            }
+                          } catch (err) {
+                            alert(err.message || 'Gagal mengunggah foto.');
                           }
                         }}
                       />

@@ -35,6 +35,7 @@ import {
   deleteInquiry
 } from '../controllers/inquiryController.js';
 import { getSettings, updateSettings } from '../controllers/settingController.js';
+import { getMedia, updateMedia, uploadImage } from '../controllers/mediaController.js';
 
 const router = Router();
 
@@ -86,5 +87,10 @@ router.delete('/inquiries/:id', deleteInquiry);
 // Settings
 router.get('/settings', getSettings);
 router.put('/settings', updateSettings);
+
+// Media & Upload
+router.get('/media', getMedia);
+router.put('/media', updateMedia);
+router.post('/upload', uploadImage);
 
 export default router;

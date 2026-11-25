@@ -1,11 +1,71 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { api } from '../../services/api';
 
 // Authentic Perfume Images from assets/parfum
 import velustraImg from '../../assets/parfum/VELUSTRA by VINCAND DEU PARFUM authentic purple glass bottle with gold cap.png';
 import amberryyceImg from '../../assets/parfum/AMBERRYYCE by VINCAND DEU PARFUM authentic clear glass bottle with gold cap, cherries, and saffron.png';
 
 export default function OurStoryPage() {
+  const [brand, setBrand] = useState({
+    name: 'VINCAND DEU PARFUM',
+    tagline: 'Eksplorasi parfum independen dari Indonesia.',
+    heroQuote: 'Setiap aroma berawal dari sebuah ide, rasa, dan keinginan untuk menciptakan sesuatu yang selalu dikenang.',
+    story: 'VINCAND DEU PARFUM lahir dari keinginan tulus untuk menghadirkan warna baru bagi parfum independen di Indonesia. Kami percaya setiap aroma adalah karya tak kasat mata yang menyimpan kenangan, membangkitkan rasa, dan menyatu dengan karakter pemakainya tanpa terikat aturan.',
+    content: {
+      story_phil_title: 'FILOSOFI KETENANGAN',
+      story_phil_quote: '“Vincand Deu lahir dengan satu dedikasi utama: memperlakukan aroma bukan sekadar pelengkap massal, melainkan arsitektur intim dari memori dan kehadiran nyata.”',
+      story_phil_p1: 'Kami merancang parfum bagi mereka yang menghargai keanggunan bersahaja dan kesan mendalam dari kepercayaan diri yang tenang. Di tengah dunia yang serba cepat, ketenangan menjadi keyakinan tertinggi kami—memberi ruang bagi setiap nada aroma untuk mekar perlahan di kulit selama berjam-jam.',
+      story_phil_p2: 'Setiap formulasi lahir dari pencarian harmoni tanpa kompromi. Alih-alih mendominasi ruangan dengan aroma berlebihan, extrait kami bersemayam dekat di kulit, menciptakan aura yang hanya terasa dalam kedekatan yang disengaja.',
+      story_quote_text: '“Sebuah parfum tidak perlu memekik sebelum Anda tiba; ia seharusnya meninggalkan kenangan yang mengabadikan kepergian Anda.”',
+      story_bottle_title: 'BOTOL SEBAGAI KARYA PAHAT',
+      story_bottle_sub: 'Geometri arsitektural yang dirancang untuk membumikan udara yang fana ke dalam bentuk fisik.',
+      story_bottle_desc: 'Botol kami dirancang bukan sekadar untuk menampung cairan, melainkan untuk berdiri sebagai monumen taktil yang tenang di meja rias pribadi Anda. Setiap sudutnya menyambut cahaya alami: kaca berdensitas tinggi membiaskan sinar melalui esensi keemasan, sementara tutup perunggu memberikan bobot sentuhan yang meyakinkan.'
+    }
+  });
+
+  const [legalities, setLegalities] = useState([]);
+  const [siteMedia, setSiteMedia] = useState({
+    story_hero: 'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?q=80&w=1000&auto=format&fit=crop',
+    story_sillage: 'https://images.unsplash.com/photo-1512777576244-b846ac3d816f?q=80&w=1000&auto=format&fit=crop',
+    story_botani: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?q=80&w=1000&auto=format&fit=crop',
+    story_bottle: 'https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=1000&auto=format&fit=crop'
+  });
+
+  useEffect(() => {
+    api.public.getMedia()
+      .then((res) => {
+        if (res?.map) {
+          setSiteMedia((prev) => ({ ...prev, ...res.map }));
+        }
+      })
+      .catch(() => {});
+    api.public.getBrand()
+      .then((res) => {
+        if (res?.data) {
+          setBrand(prev => ({
+            ...prev,
+            name: res.data.name || prev.name,
+            tagline: res.data.tagline || prev.tagline,
+            heroQuote: res.data.heroQuote || prev.heroQuote,
+            story: res.data.story || prev.story,
+            content: { ...prev.content, ...(res.data.content || {}) }
+          }));
+        }
+      })
+      .catch(() => {});
+
+    api.public.getLegalities()
+      .then((res) => {
+        if (res?.data) {
+          const publicDocs = res.data.filter((d) =>
+            d.status?.toLowerCase().includes('tayang') || d.status?.toLowerCase().includes('terverifikasi')
+          );
+          setLegalities(publicDocs);
+        }
+      })
+      .catch(() => {});
+  }, []);
   return (
     <div className="flex flex-col w-full bg-surface">
       {/* Top Editorial Masthead */}
@@ -16,32 +76,32 @@ export default function OurStoryPage() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-8 h-hairline bg-primary/30"></span>
                 <p className="font-label-caps-spaced uppercase text-secondary tracking-[0.28em]">
-                  ATELIER ESSAY · THE JOURNEY
+                  ESAI ATELIER · PERJALANAN KAMI
                 </p>
               </div>
               <h1 className="font-display-hero uppercase tracking-tight text-on-surface mb-4 leading-none">
-                <span className="block">BEHIND</span>
-                <span className="block italic font-light">THE SCENT</span>
+                <span className="block">DI BALIK</span>
+                <span className="block italic font-light">AROMA</span>
               </h1>
               <p className="font-body-lead text-on-surface-variant max-w-xl italic mb-6 leading-relaxed">
-                “Every scent begins with an idea, a feeling, and the desire to create something worth remembering.”
+                “{brand.heroQuote}”
               </p>
               <div className="flex items-center gap-4 pt-4 border-t border-primary/[0.08]">
                 <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.24em]">
-                  An independent Indonesian olfactive exploration.
+                  {brand.tagline}
                 </span>
               </div>
             </div>
             <div className="reveal-on-scroll reveal-slide-right delay-150 lg:col-span-6 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-md overflow-hidden bg-surface-container aspect-[3/4] max-h-[480px] shadow-sm border border-primary/[0.08]">
                 <img
-                  src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?q=80&w=1000&auto=format&fit=crop"
+                  src={siteMedia.story_hero}
                   alt="Intimate hands holding Vincand Deu perfume flacon"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
                 />
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end pointer-events-none">
                   <span className="font-label-caps-subtle uppercase text-on-primary bg-primary/60 backdrop-blur-sm px-2.5 py-1 tracking-[0.2em]">
-                    ATELIER ARCHIVE
+                    ARSIP ATELIER
                   </span>
                 </div>
               </div>
@@ -55,13 +115,13 @@ export default function OurStoryPage() {
         <div className="site-container">
           <div className="reveal-on-scroll reveal-fade-up flex flex-col md:flex-row md:items-end justify-between mb-8 gap-2">
             <div>
-              <span className="font-label-caps-spaced uppercase text-secondary tracking-[0.25em]">PART I</span>
+              <span className="font-label-caps-spaced uppercase text-secondary tracking-[0.25em]">BAGIAN I</span>
               <h2 className="font-headline-xl text-on-surface uppercase mt-1">
-                THE PHILOSOPHY OF RESERVE
+                {brand.content.story_phil_title}
               </h2>
             </div>
             <p className="font-label-caps-subtle uppercase text-secondary tracking-[0.2em]">
-              INTENTIONAL DISTILLATION • SILLAGE RESTRAINT
+              DISTILASI TERUKUR • JEJAK AROMA HALUS
             </p>
           </div>
 
@@ -69,30 +129,30 @@ export default function OurStoryPage() {
             <div className="reveal-on-scroll reveal-slide-left lg:col-span-7 flex flex-col gap-6">
               <div className="relative overflow-hidden bg-surface-container aspect-[4/3] max-h-[400px] group shadow-sm">
                 <img
-                  src="https://images.unsplash.com/photo-1512777576244-b846ac3d816f?q=80&w=1000&auto=format&fit=crop"
+                  src={siteMedia.story_sillage}
                   alt="Fragrance sillage mist"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 />
                 <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end pointer-events-none">
                   <span className="font-label-caps-subtle uppercase text-on-primary bg-primary/60 backdrop-blur-sm px-2.5 py-1 tracking-[0.2em]">
-                    FIG. 01 • KINETIC SILLAGE
+                    GBR. 01 • SILLAGE KINETIK
                   </span>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
                 <div className="md:col-span-8 overflow-hidden bg-surface-container aspect-[4/3] max-h-[260px] shadow-sm">
                   <img
-                    src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?q=80&w=1000&auto=format&fit=crop"
-                    alt="White jasmine petals"
+                    src={siteMedia.story_botani}
+                    alt="Kelopak melati putih"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
                   />
                 </div>
                 <div className="md:col-span-4 flex flex-col justify-center px-2">
                   <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.22em] mb-1">
-                    FIG. 02 • BOTANICAL CONTACT
+                    GBR. 02 • SENTUHAN BOTANI
                   </span>
                   <p className="font-caption-editorial text-secondary italic">
-                    Purity of raw absolute and human warmth in equilibrium.
+                    Kemurnian esensi alami dan kehangatan kulit dalam keseimbangan.
                   </p>
                 </div>
               </div>
@@ -102,21 +162,21 @@ export default function OurStoryPage() {
               <div className="w-10 h-hairline bg-primary/30 mb-6"></div>
               <div className="flex flex-col gap-4 font-body-regular text-on-surface-variant font-light">
                 <p className="font-body-lead text-on-surface italic leading-relaxed">
-                  “Vincand Deu was conceived with a singular devotion: to treat scent not as an accessory of mass volume, but as an intimate architecture of memory and tactile presence.”
+                  {brand.content.story_phil_quote}
                 </p>
                 <p className="pt-1">
-                  We design fragrances for those who appreciate understated elegance and the lingering impression of quiet confidence. In a landscape saturated by immediacy, reserve becomes our highest conviction—giving notes space to unfold on skin across continuous, unhurried hours.
+                  {brand.content.story_phil_p1}
                 </p>
                 <p>
-                  Each formulation emerges from an uncompromising pursuit of harmony. Rather than masking the wearer with excessive sillage, our extraits dwell close, creating an aura experienced only through deliberate proximity.
+                  {brand.content.story_phil_p2}
                 </p>
               </div>
               <div className="mt-8 pt-4 border-t border-primary/[0.08] flex items-center justify-between">
                 <span className="font-label-caps-spaced uppercase text-secondary">
-                  EXTRAIT CONCENTRATION
+                  KONSENTRASI EXTRAIT
                 </span>
                 <span className="font-label-caps-subtle text-primary uppercase tracking-[0.2em]">
-                  PURE PARFUM ESSENCE
+                  ESENSI PARFUM MURNI
                 </span>
               </div>
             </div>
@@ -129,14 +189,14 @@ export default function OurStoryPage() {
         <div className="site-container">
           <div className="reveal-on-scroll reveal-fade-up flex flex-col items-center text-center max-w-3xl mx-auto mb-8 md:mb-12">
             <span className="font-label-caps-spaced uppercase text-secondary tracking-[0.26em] mb-1">
-              PART II • EQUILIBRIUM
+              BAGIAN II • KESEIMBANGAN
             </span>
             <h2 className="font-headline-xl uppercase tracking-tight text-on-surface">
-              FORMULATION & SENSORY BALANCE
+              FORMULASI &amp; KESEIMBANGAN SENSORI
             </h2>
             <div className="w-12 h-hairline bg-primary/20 my-3"></div>
             <p className="font-body-regular text-secondary max-w-xl">
-              The delicate tension between luminous morning solar accords and the nocturnal gravity of resins.
+              Harmoni halus antara kesegaran cahaya pagi yang cerah dan kedalaman resin di keheningan malam.
             </p>
           </div>
 
@@ -146,17 +206,17 @@ export default function OurStoryPage() {
               <div className="overflow-hidden bg-surface-variant aspect-[3/4] max-h-[460px] shadow-sm">
                 <img
                   src={velustraImg}
-                  alt="Velustra Flacon"
+                  alt="Botol Velustra"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
                 />
               </div>
               <div className="pt-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.24em]">THE LUMINOUS FACET</span>
+                  <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.24em]">SISI BERCAHAYA</span>
                   <span className="font-label-caps-spaced text-primary uppercase font-medium">VELUSTRA</span>
                 </div>
                 <p className="font-body-small text-secondary mt-1">
-                  Lustrous light, crystalline morning iris, sunlit amber drops, and warm Mediterranean stone.
+                  Cahaya berkilau, buah beri segar, bunga peony lembut, dan manis praline yang hangat.
                 </p>
               </div>
             </div>
@@ -165,7 +225,7 @@ export default function OurStoryPage() {
             <div className="reveal-on-scroll reveal-fade-up delay-100 lg:col-span-2 flex flex-col items-center justify-center text-center py-4 lg:py-6">
               <div className="w-hairline h-12 bg-primary/20 mb-3 hidden lg:block"></div>
               <span className="font-headline-md italic text-primary/40 select-none">&amp;</span>
-              <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.25em] mt-1">POLARITY</span>
+              <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.25em] mt-1">POLARITAS</span>
               <div className="w-hairline h-12 bg-primary/20 mt-3 hidden lg:block"></div>
             </div>
 
@@ -174,17 +234,17 @@ export default function OurStoryPage() {
               <div className="overflow-hidden bg-surface-variant aspect-[3/4] max-h-[460px] shadow-sm">
                 <img
                   src={amberryyceImg}
-                  alt="Amberyyce Flacon"
+                  alt="Botol Amberyyce"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
                 />
               </div>
               <div className="pt-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.24em]">THE SHADOW FACET</span>
+                  <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.24em]">SISI BAYANGAN</span>
                   <span className="font-label-caps-spaced text-primary uppercase font-medium">AMBERYYCE</span>
                 </div>
                 <p className="font-body-small text-secondary mt-1">
-                  Smoky resins, nocturnal woods, draped dark silk, and velvet vanilla undertones.
+                  Resin hangat, kayu malam yang dalam, ceri hitam, dan sentuhan saffron yang mewah.
                 </p>
               </div>
             </div>
@@ -192,10 +252,10 @@ export default function OurStoryPage() {
 
           <div className="reveal-on-scroll reveal-fade-up max-w-3xl mx-auto bg-surface p-6 md:p-10 text-center shadow-sm">
             <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.28em] block mb-2">
-              CANON OF PRESENCE
+              PRINSIP KEHADIRAN
             </span>
             <blockquote className="font-headline-lg text-on-surface uppercase tracking-tight leading-snug">
-              “A fragrance should never demand entrance before you arrive; it should leave a memory that immortalizes your departure.”
+              {brand.content.story_quote_text}
             </blockquote>
             <div className="w-8 h-hairline bg-primary/20 mx-auto mt-4"></div>
           </div>
@@ -209,7 +269,7 @@ export default function OurStoryPage() {
             <div className="reveal-on-scroll reveal-slide-left lg:col-span-6 relative">
               <div className="relative bg-surface-container overflow-hidden aspect-[4/5] max-h-[480px] shadow-sm">
                 <img
-                  src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?q=80&w=1000&auto=format&fit=crop"
+                  src={siteMedia.story_bottle}
                   alt="Sculptural glass perfume vessel"
                   className="w-full h-full object-cover"
                 />
@@ -218,30 +278,30 @@ export default function OurStoryPage() {
 
             <div className="reveal-on-scroll reveal-fade-up delay-150 lg:col-span-5 lg:col-start-8 flex flex-col justify-center">
               <span className="font-label-caps-spaced uppercase text-secondary tracking-[0.25em]">
-                PART III • VESSEL
+                BAGIAN III • WADAH
               </span>
               <h2 className="font-headline-xl text-on-surface uppercase mt-1 mb-4">
-                THE BOTTLE AS SCULPTURE
+                {brand.content.story_bottle_title}
               </h2>
               <p className="font-body-lead text-secondary italic mb-4">
-                Architectural geometry designed to ground ephemeral air into physical form.
+                {brand.content.story_bottle_sub}
               </p>
               <p className="font-body-regular text-on-surface-variant font-light mb-6">
-                Our flacon was drafted not merely to hold liquid, but to sit as a silent tactile monument on personal vanities. Every angle acknowledges natural light: high-density fluted glass diffuses sunlight across golden amber essences, while the brushed bronze cap provides reassuring tactile gravity.
+                {brand.content.story_bottle_desc}
               </p>
 
               <div className="flex flex-col border-t border-b border-primary/[0.08] divide-y divide-primary/[0.08]">
                 <div className="py-2.5 flex justify-between items-center">
-                  <span className="font-label-caps-spaced uppercase text-secondary font-medium">MASS & GLASS</span>
-                  <span className="font-body-small text-on-surface">Heavy-weight flint crystal</span>
+                  <span className="font-label-caps-spaced uppercase text-secondary font-medium">BOBOT &amp; KACA</span>
+                  <span className="font-body-small text-on-surface">Kristal flint berdensitas tinggi</span>
                 </div>
                 <div className="py-2.5 flex justify-between items-center">
-                  <span className="font-label-caps-spaced uppercase text-secondary font-medium">STOPPER</span>
-                  <span className="font-body-small text-on-surface">Custom brushed bronze finial</span>
+                  <span className="font-label-caps-spaced uppercase text-secondary font-medium">TUTUP BOTOL</span>
+                  <span className="font-body-small text-on-surface">Finial perunggu khusus</span>
                 </div>
                 <div className="py-2.5 flex justify-between items-center">
-                  <span className="font-label-caps-spaced uppercase text-secondary font-medium">EMBELLISHMENT</span>
-                  <span className="font-body-small text-on-surface">Embossed grosgrain ribbon label</span>
+                  <span className="font-label-caps-spaced uppercase text-secondary font-medium">DETAIL LABEL</span>
+                  <span className="font-body-small text-on-surface">Label pita grosgrain timbul</span>
                 </div>
               </div>
             </div>
@@ -249,23 +309,74 @@ export default function OurStoryPage() {
         </div>
       </section>
 
-      {/* Section 4: Acquisition */}
+      {/* Section 4: Legalitas & Sertifikasi Resmi */}
+      <section id="legalitas" className="relative w-full bg-surface py-12 md:py-16 border-t border-primary/[0.06]">
+        <div className="site-container">
+          <div className="mb-8">
+            <span className="font-label-caps-spaced uppercase text-secondary tracking-[0.25em] block mb-1">
+              KEPERCAYAAN &amp; KEAMANAN
+            </span>
+            <h2 className="font-headline-xl text-on-surface uppercase">
+              LEGALITAS &amp; IZIN USAHA
+            </h2>
+            <p className="font-body-regular text-on-surface-variant font-light mt-2 max-w-xl">
+              Seluruh produk VINCAND DEU PARFUM diproduksi secara legal dan terdaftar resmi untuk menjamin keamanan dan kenyamanan Anda.
+            </p>
+          </div>
+
+          {legalities.length === 0 ? (
+            <div className="p-6 bg-surface-container-low border border-primary/10 text-secondary font-body-small">
+              Informasi legalitas dan izin edar resmi tersedia sesuai regulasi UMKM dan BPOM RI.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {legalities.map((doc) => (
+                <div key={doc.id} className="bg-surface-container-low p-6 border border-primary/10 flex flex-col justify-between gap-4">
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <span className="font-label-caps-subtle uppercase tracking-[0.2em] text-xs px-2.5 py-1 bg-primary/10 text-primary font-semibold">
+                        {doc.type || 'IZIN'}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-medium">
+                        <span className="material-symbols-outlined text-[15px]">verified</span>
+                        Terdaftar
+                      </span>
+                    </div>
+                    <h3 className="font-headline-sm text-lg text-on-surface font-medium mb-1">
+                      {doc.title}
+                    </h3>
+                    <p className="font-mono text-xs text-primary font-semibold tracking-wider">
+                      No. {doc.number}
+                    </p>
+                  </div>
+                  <div className="pt-3 border-t border-primary/10 text-xs text-secondary space-y-0.5">
+                    {doc.authority && <p>Penerbit: {doc.authority}</p>}
+                    {doc.expiry && <p>Masa Berlaku: {doc.expiry}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Section 5: Acquisition */}
       <section className="relative w-full bg-surface-container-low py-8 md:py-12">
         <div className="site-container">
           <div className="reveal-on-scroll reveal-fade-up flex flex-col md:flex-row items-center justify-between gap-6 border-t border-b border-primary/[0.1] py-6">
             <div className="flex flex-col text-center md:text-left">
               <span className="font-label-caps-subtle uppercase text-secondary tracking-[0.24em] mb-1">
-                EXPERIENCE THE COLLECTION
+                RASAKAN KOLEKSI KAMI
               </span>
               <h3 className="font-headline-lg text-on-surface uppercase">
-                THE ATELIER CURATIONS
+                KURASI ATELIER VINCAND
               </h3>
             </div>
             <Link
               to="/collection"
               className="group inline-flex items-center gap-3 font-label-caps-spaced uppercase text-primary tracking-[0.25em] transition-all duration-300 hover:text-secondary"
             >
-              <span>EXPLORE THE CREATIONS</span>
+              <span>JELAJAHI KARYA KAMI</span>
               <span className="inline-block transition-transform duration-300 ease-out group-hover:translate-x-3 text-lg font-light">
                 →
               </span>

@@ -11,40 +11,51 @@ export default function ContactPage() {
 
   const [channels, setChannels] = useState([
     {
-      num: '01 / DIRECT CONNECTION',
+      num: '01 / KONEKSI LANGSUNG',
       title: 'WhatsApp',
-      subtitle: 'Chat via WhatsApp',
+      subtitle: 'Chat melalui WhatsApp',
       url: 'https://wa.me/6285852802459',
-      action: 'Open Conversation',
-      note: 'Live Atelier Desk'
+      action: 'Buka Percakapan',
+      note: 'Layanan Atelier Langsung'
     },
     {
-      num: '02 / FOLLOW OUR WORLD',
+      num: '02 / IKUTI DUNIA KAMI',
       title: 'Instagram',
-      subtitle: 'Daily visual journal & campaigns',
+      subtitle: 'Jurnal visual harian & kampanye',
       url: 'https://www.instagram.com/vincand.deu.parfume?igsi=YWtnd2lwNmloanl6&utm_source=qr',
       action: '@vincand.deu.parfume',
-      note: 'Visual Archive'
+      note: 'Arsip Visual'
     },
     {
-      num: '03 / DISCOVER OUR MOMENTS',
+      num: '03 / TEMUKAN MOMEN KAMI',
       title: 'TikTok',
-      subtitle: 'Behind the scent & process',
+      subtitle: 'Di balik aroma & proses kreasi',
       url: 'https://www.tiktok.com/@vincanddeuparfume',
       action: '@vincanddeuparfume',
-      note: 'Video Dispatches'
+      note: 'Kilasan Video'
     },
     {
-      num: '04 / EXPLORE THE COLLECTION',
+      num: '04 / JELAJAHI KOLEKSI',
       title: 'Shopee',
-      subtitle: 'Official verified storefront',
+      subtitle: 'Toko resmi terverifikasi',
       url: 'https://shopee.co.id/vincanddeuparfume',
-      action: 'Official Store',
-      note: 'Authenticated Delivery'
+      action: 'Toko Resmi',
+      note: 'Pengiriman Terjamin Asli'
     }
   ]);
 
+  const [contactHeroImg, setContactHeroImg] = useState(
+    'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1000&q=80'
+  );
+
   useEffect(() => {
+    api.public.getMedia()
+      .then((res) => {
+        if (res?.map?.contact_hero) {
+          setContactHeroImg(res.map.contact_hero);
+        }
+      })
+      .catch(() => {});
     api.public.getSocials()
       .then((res) => {
         if (res?.map) {
@@ -90,21 +101,21 @@ export default function ContactPage() {
 
       if (res.success) {
         setSubmitted(true);
-        setFeedback(res.message || 'Your transmission has been logged into our atelier ledger.');
+        setFeedback(res.message || 'Pesan Anda telah tercatat di buku tamu atelier kami.');
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (err) {
-      setErrorMessage(err.message || 'Failed to submit inquiry. Please try again.');
+      setErrorMessage(err.message || 'Gagal mengirim pesan. Silakan coba lagi.');
     } finally {
       setSending(false);
     }
   };
 
   const natures = [
-    { id: 'general', title: 'General Inquiry', desc: 'Questions & guidance' },
-    { id: 'orders', title: 'Order & Shipping', desc: 'Status, tracking & support' },
-    { id: 'collaboration', title: 'Collaboration', desc: 'Creative projects & creators' },
-    { id: 'retail', title: 'Retail / Reseller', desc: 'Partnerships & stockists' }
+    { id: 'general', title: 'Pertanyaan Umum', desc: 'Informasi & panduan' },
+    { id: 'orders', title: 'Pesanan & Pengiriman', desc: 'Status, resi & bantuan' },
+    { id: 'collaboration', title: 'Kolaborasi', desc: 'Proyek kreatif & kreator' },
+    { id: 'retail', title: 'Ritel / Reseller', desc: 'Kemitraan & stokis' }
   ];
 
   return (
@@ -121,19 +132,19 @@ export default function ContactPage() {
               <div className="flex items-center gap-2.5 mb-3">
                 <span className="w-8 h-[1px] bg-primary"></span>
                 <span className="font-label-caps-spaced text-[11px] uppercase tracking-[0.26em] text-secondary font-medium">
-                  DIRECT TOUCHPOINTS · BRAND INQUIRIES
+                  KANAL LANGSUNG · PERTANYAAN BRAND
                 </span>
               </div>
               <h1 className="font-display-hero text-5xl sm:text-6xl lg:text-[76px] text-on-surface tracking-tight mb-5 leading-[0.96] font-normal uppercase">
-                LET'S<br />CONNECT
+                MARI<br />TERHUBUNG
               </h1>
               <p className="font-body-lead text-base sm:text-lg lg:text-[19px] text-secondary max-w-xl font-light leading-relaxed mb-6">
-                Discover, follow, connect, and experience VINCAND DEU beyond the scent.
+                Temukan, ikuti, terhubung, dan rasakan VINCAND DEU melampaui sekadar aroma.
               </p>
               <div className="flex items-center gap-2.5 pt-4 border-t border-primary/[0.08] max-w-lg text-secondary">
                 <span className="material-symbols-outlined text-[18px]">schedule</span>
                 <p className="font-body-small text-[12px] sm:text-[13px] text-secondary font-light">
-                  Direct channels connect you to our brand team. Responses within 24 hours.
+                  Kanal langsung menghubungkan Anda ke tim brand kami. Balasan dalam 24 jam.
                 </p>
               </div>
             </div>
@@ -142,16 +153,16 @@ export default function ContactPage() {
             <div className="reveal-on-scroll reveal-slide-right delay-150 lg:col-span-5 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[340px] sm:max-w-[380px] aspect-[4/5] bg-surface-variant overflow-hidden shadow-md">
                 <img
-                  src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1000&q=80"
-                  alt="Vincand Deu Parfum artisanal flacon in boutique atelier"
+                  src={contactHeroImg}
+                  alt="Botol artisanal Vincand Deu Parfum di butik atelier"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-primary/85 via-primary/35 to-transparent text-white">
                   <span className="font-label-caps-subtle text-[9px] uppercase tracking-[0.25em] text-[#fedeb2] block mb-1">
-                    BOUTIQUE ATELIER
+                    BUTIK ATELIER
                   </span>
                   <p className="font-caption-editorial text-[12px] italic text-[#fcf9f3]">
-                    Direct responses from our fragrance specialists.
+                    Respon langsung dari tim parfum kami.
                   </p>
                 </div>
               </div>
@@ -165,10 +176,10 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="reveal-on-scroll reveal-fade-up flex items-center justify-between mb-8">
             <span className="font-label-caps-subtle text-label-caps-subtle uppercase text-secondary tracking-[0.26em] font-medium">
-              OFFICIAL CHANNELS &amp; TOUCHPOINTS
+              KANAL &amp; TITIK SENTUH RESMI
             </span>
             <span className="font-label-caps-subtle text-label-caps-subtle uppercase text-secondary tracking-[0.2em] hidden sm:block">
-              04 INTERACTION NODES
+              04 KANAL INTERAKSI
             </span>
           </div>
 
@@ -216,13 +227,13 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="reveal-on-scroll reveal-fade-up flex flex-col mb-10 max-w-2xl">
             <span className="font-label-caps-spaced text-label-caps-spaced uppercase text-secondary tracking-[0.24em] mb-1 font-medium">
-              LEGAL &amp; BRAND TRUST
+              LEGALITAS &amp; KEPERCAYAAN BRAND
             </span>
             <h2 className="font-headline-xl text-3xl sm:text-4xl text-on-surface mb-1 font-normal">
-              Brand Trust &amp; Legality
+              Kepercayaan &amp; Legalitas Brand
             </h2>
             <p className="font-body-regular text-[14px] text-secondary font-light">
-              Official information, legal registration, and brand credentials.
+              Informasi resmi, registrasi legalitas, dan kredensial brand kami.
             </p>
           </div>
 
@@ -233,19 +244,19 @@ export default function ContactPage() {
                 <div className="flex items-center gap-2 mb-3 text-secondary">
                   <span className="material-symbols-outlined text-[19px]">verified</span>
                   <span className="font-label-caps-subtle text-[9.5px] uppercase tracking-[0.2em] font-medium">
-                    LEGAL REGISTRATION
+                    REGISTRASI LEGAL
                   </span>
                 </div>
                 <h3 className="font-headline-md text-xl sm:text-[22px] text-on-surface mb-2 font-normal">
-                  Business Information
+                  Informasi Usaha
                 </h3>
                 <p className="font-body-small text-[13px] text-secondary mb-4 leading-relaxed font-light">
-                  Indonesian Registered UMKM with active NIB (Nomor Induk Berusaha) registration placeholder. Brand Identity: VINCAND DEU PARFUM.
+                  UMKM Terdaftar di Indonesia dengan NIB (Nomor Induk Berusaha) aktif. Identitas Brand: VINCAND DEU PARFUM.
                 </p>
               </div>
               <div className="pt-3 border-t border-primary/[0.06]">
                 <p className="font-caption-editorial text-[11.5px] text-secondary italic">
-                  Official registration details maintained by brand management.
+                  Detail registrasi resmi dikelola oleh manajemen brand.
                 </p>
               </div>
             </div>
@@ -256,19 +267,19 @@ export default function ContactPage() {
                 <div className="flex items-center gap-2 mb-3 text-secondary">
                   <span className="material-symbols-outlined text-[19px]">storefront</span>
                   <span className="font-label-caps-subtle text-[9.5px] uppercase tracking-[0.2em] font-medium">
-                    VERIFIED CHANNELS
+                    KANAL TERVERIFIKASI
                   </span>
                 </div>
                 <h3 className="font-headline-md text-xl sm:text-[22px] text-on-surface mb-2 font-normal">
-                  Distribution &amp; Verification
+                  Distribusi &amp; Verifikasi
                 </h3>
                 <p className="font-body-small text-[13px] text-secondary mb-4 leading-relaxed font-light">
-                  Official sales channel verified on Shopee Mall / Star and direct WhatsApp verification to ensure original flacon delivery with sealed, authenticated packaging.
+                  Kanal penjualan resmi terverifikasi di Shopee dan verifikasi langsung via WhatsApp untuk menjamin pengiriman botol asli tersegel dan terautentikasi.
                 </p>
               </div>
               <div className="pt-3 border-t border-primary/[0.06]">
                 <p className="font-caption-editorial text-[11.5px] text-secondary italic">
-                  Guaranteed 100% authentic directly from our studio.
+                  Dijamin 100% asli langsung dari studio kami.
                 </p>
               </div>
             </div>
@@ -279,19 +290,19 @@ export default function ContactPage() {
                 <div className="flex items-center gap-2 mb-3 text-secondary">
                   <span className="material-symbols-outlined text-[19px]">shield_check</span>
                   <span className="font-label-caps-subtle text-[9.5px] uppercase tracking-[0.2em] font-medium">
-                    SAFETY STANDARD
+                    STANDAR KEAMANAN
                   </span>
                 </div>
                 <h3 className="font-headline-md text-xl sm:text-[22px] text-on-surface mb-2 font-normal">
-                  Quality &amp; Safety
+                  Kualitas &amp; Keamanan
                 </h3>
                 <p className="font-body-small text-[13px] text-secondary mb-4 leading-relaxed font-light">
-                  Formulated with cosmetic grade ingredients adhering to international standards. Formal BPOM notification dossiers in active process / updated by brand.
+                  Diformulasikan dengan bahan kelas kosmetik sesuai standar internasional. Dokumen notifikasi resmi BPOM aktif dan diperbarui oleh brand.
                 </p>
               </div>
               <div className="pt-3 border-t border-primary/[0.06]">
                 <p className="font-caption-editorial text-[11.5px] text-secondary italic">
-                  Skin-safe, quality controlled batch formulations.
+                  Aman di kulit, formulasi batch dengan kontrol kualitas ketat.
                 </p>
               </div>
             </div>
@@ -307,13 +318,13 @@ export default function ContactPage() {
             <div className="reveal-on-scroll reveal-fade-up lg:col-span-4 flex flex-col justify-between">
               <div>
                 <span className="font-label-caps-spaced text-label-caps-spaced uppercase text-secondary tracking-[0.22em] block mb-1 font-medium">
-                  WRITTEN INQUIRY
+                  PESAN TERTULIS
                 </span>
                 <h2 className="font-headline-xl text-3xl sm:text-4xl text-on-surface mb-3 font-normal">
-                  Direct Inquiry
+                  Pertanyaan Langsung
                 </h2>
                 <p className="font-body-regular text-[14px] text-secondary leading-relaxed font-light mb-6">
-                  Whether you have questions about our formulations, orders and shipping, creative collaborations, or reseller opportunities, send us a message below.
+                  Jika Anda memiliki pertanyaan seputar formulasi, pesanan &amp; pengiriman, kolaborasi kreatif, atau peluang reseller, kirimkan pesan Anda di bawah ini.
                 </p>
               </div>
 
@@ -321,11 +332,11 @@ export default function ContactPage() {
                 <div className="flex items-center gap-2 mb-2 text-secondary">
                   <span className="material-symbols-outlined text-[18px]">verified</span>
                   <span className="font-label-caps-subtle text-[9.5px] uppercase tracking-[0.2em] font-medium">
-                    DIRECT AUTHENTICITY
+                    KEASLIAN LANGSUNG
                   </span>
                 </div>
                 <p className="font-body-small text-[12.5px] text-secondary font-light leading-relaxed">
-                  Every message reaches our atelier desk directly. We honor intentional inquiries with measured consideration.
+                  Setiap pesan diterima langsung oleh tim atelier kami. Kami menghargai setiap pertanyaan dengan perhatian penuh.
                 </p>
               </div>
             </div>
@@ -339,7 +350,7 @@ export default function ContactPage() {
                       className="font-label-caps-subtle text-[9.5px] uppercase text-secondary mb-1.5 tracking-[0.2em] font-medium"
                       htmlFor="name"
                     >
-                      YOUR NAME
+                      NAMA ANDA
                     </label>
                     <input
                       id="name"
@@ -347,7 +358,7 @@ export default function ContactPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="e.g. Adrienne Laurent"
+                      placeholder="cth. Adrienne Laurent"
                       className="w-full bg-surface-container-low px-4 py-3 font-body-regular text-[14px] text-on-surface placeholder:text-outline-variant focus:bg-surface-container-high focus:outline-none transition-colors border border-transparent focus:border-primary/20"
                     />
                   </div>
@@ -357,7 +368,7 @@ export default function ContactPage() {
                       className="font-label-caps-subtle text-[9.5px] uppercase text-secondary mb-1.5 tracking-[0.2em] font-medium"
                       htmlFor="email"
                     >
-                      EMAIL ADDRESS
+                      ALAMAT EMAIL
                     </label>
                     <input
                       id="email"
@@ -365,7 +376,7 @@ export default function ContactPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="e.g. adrienne@domain.com"
+                      placeholder="cth. adrienne@domain.com"
                       className="w-full bg-surface-container-low px-4 py-3 font-body-regular text-[14px] text-on-surface placeholder:text-outline-variant focus:bg-surface-container-high focus:outline-none transition-colors border border-transparent focus:border-primary/20"
                     />
                   </div>
@@ -374,7 +385,7 @@ export default function ContactPage() {
                 {/* Inquiry Nature Interactive Selector */}
                 <div className="flex flex-col">
                   <span className="font-label-caps-subtle text-[9.5px] uppercase text-secondary mb-2 tracking-[0.2em] font-medium">
-                    INQUIRY NATURE
+                    KATEGORI PERTANYAAN
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
                     {natures.map((n) => (
@@ -408,7 +419,7 @@ export default function ContactPage() {
                     className="font-label-caps-subtle text-[9.5px] uppercase text-secondary mb-1.5 tracking-[0.2em] font-medium"
                     htmlFor="message"
                   >
-                    CORRESPONDENCE
+                    ISI PESAN
                   </label>
                   <textarea
                     id="message"
@@ -416,7 +427,7 @@ export default function ContactPage() {
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Share your inquiry or proposal in detail..."
+                    placeholder="Tuliskan pertanyaan atau pengajuan Anda secara rinci..."
                     className="w-full bg-surface-container-low px-4 py-3.5 font-body-regular text-[14px] text-on-surface placeholder:text-outline-variant focus:bg-surface-container-high focus:outline-none transition-colors resize-none border border-transparent focus:border-primary/20"
                   ></textarea>
                 </div>
@@ -428,7 +439,7 @@ export default function ContactPage() {
                     disabled={sending}
                     className="group relative inline-flex items-center gap-3 bg-primary text-on-primary px-8 py-3.5 font-label-caps-spaced text-[11px] uppercase tracking-[0.24em] transition-all duration-300 hover:bg-primary/90 shadow-sm disabled:opacity-60 cursor-pointer"
                   >
-                    <span>{sending ? 'TRANSMITTING...' : 'SEND MESSAGE'}</span>
+                    <span>{sending ? 'MENGIRIM...' : 'KIRIM PESAN'}</span>
                     <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-1.5">
                       {sending ? 'hourglass_top' : 'arrow_forward'}
                     </span>
@@ -458,31 +469,31 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
           <div className="reveal-on-scroll reveal-fade-up flex flex-col items-center text-center max-w-2xl mx-auto">
             <span className="font-label-caps-subtle text-[9.5px] uppercase text-[#fedeb2] tracking-[0.3em] mb-3 font-medium">
-              OLFACTIVE PROVENANCE
+              ASAL-USUL OLFAKTIF
             </span>
             <h3 className="font-display-hero text-3xl sm:text-4xl lg:text-[44px] tracking-tight text-white mb-2 font-normal uppercase">
               VINCAND DEU PARFUM
             </h3>
             <p className="font-body-lead text-base sm:text-lg text-secondary-fixed-dim italic font-light mb-5">
-              Independent Olfactive House.
+              Independent Perfume House.
             </p>
             <p className="font-body-small text-[13px] sm:text-[14px] text-white/70 max-w-xl font-light leading-relaxed mb-8">
-              Crafted without synthetic mass-production constraints or commercial compromise. We operate through authentic direct dialogues, artisanal batch production, and deliberate creative independence.
+              Diciptakan tanpa batasan produksi massal maupun kompromi komersial. Kami hadir melalui dialog langsung yang autentik, produksi batch artisanal, dan kemandirian kreatif yang terarah.
             </p>
 
             {/* Minimalist Indicator Cluster */}
             <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 pt-5 border-t border-white/15 w-full max-w-md">
               <div className="flex items-center gap-2 text-white/80">
                 <span className="material-symbols-outlined text-[16px] text-[#fedeb2]">spa</span>
-                <span className="font-label-caps-subtle text-[9px] uppercase tracking-[0.22em]">PURE ESSENCE</span>
+                <span className="font-label-caps-subtle text-[9px] uppercase tracking-[0.22em]">ESENSI MURNI</span>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <span className="material-symbols-outlined text-[16px] text-[#fedeb2]">filter_vintage</span>
-                <span className="font-label-caps-subtle text-[9px] uppercase tracking-[0.22em]">SMALL BATCH</span>
+                <span className="font-label-caps-subtle text-[9px] uppercase tracking-[0.22em]">BATCH TERBATAS</span>
               </div>
               <div className="flex items-center gap-2 text-white/80">
                 <span className="material-symbols-outlined text-[16px] text-[#fedeb2]">lock</span>
-                <span className="font-label-caps-subtle text-[9px] uppercase tracking-[0.22em]">DIRECT ATELIER</span>
+                <span className="font-label-caps-subtle text-[9px] uppercase tracking-[0.22em]">ATELIER LANGSUNG</span>
               </div>
             </div>
           </div>

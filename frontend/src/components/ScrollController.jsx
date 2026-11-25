@@ -4,12 +4,11 @@ import { useLocation } from 'react-router-dom';
 /**
  * ScrollController handles:
  * 1. Automatic scroll reset to top (top: 0) on page reload & navigation.
- * 2. High-performance, luxury scroll entrance animations via Intersection Observer.
+ * 2. Scroll entrance animations via IntersectionObserver + MutationObserver for dynamic content.
  */
 export default function ScrollController() {
   const { pathname, hash } = useLocation();
 
-  // 1. Reset Posisi Scroll ke Paling Atas (Scroll to Top)
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -27,7 +26,6 @@ export default function ScrollController() {
     }
   }, [pathname, hash]);
 
-  // 2. Animasi Muncul yang Halus dan Elegan (Scroll Entrance Animations)
   useEffect(() => {
     const observerCallback = (entries, observer) => {
       entries.forEach((entry) => {
@@ -40,29 +38,33 @@ export default function ScrollController() {
 
     const observer = new IntersectionObserver(observerCallback, {
       root: null,
-      rootMargin: '0px 0px -30px 0px',
-      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px',
+      threshold: 0.02,
     });
 
-    // Timeout allows DOM to render before attaching observers
-    const timer = setTimeout(() => {
-      const elements = document.querySelectorAll('.reveal-on-scroll');
+    const scanAndObserve = () => {
+      const elements = document.querySelectorAll('.reveal-on-scroll:not(.is-revealed)');
       elements.forEach((el) => {
         const rect = el.getBoundingClientRect();
-        // If element is already in viewport on mount, reveal smoothly
-        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+        if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
           el.classList.add('is-revealed');
         } else {
-          // Otherwise observe for scroll entrance
-          el.classList.remove('is-revealed');
           observer.observe(el);
         }
       });
-    }, 80);
+    };
+
+    const timer = setTimeout(scanAndObserve, 60);
+
+    const mutationObserver = new MutationObserver(() => {
+      scanAndObserve();
+    });
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       clearTimeout(timer);
       observer.disconnect();
+      mutationObserver.disconnect();
     };
   }, [pathname]);
 

@@ -17,14 +17,15 @@ model Admin {
 }
 
 model BrandProfile {
-  id        Int      @id @default(autoincrement())
-  name      String
-  tagline   String
-  origin    String
-  heroQuote String
-  story     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  name        String
+  tagline     String
+  origin      String
+  heroQuote   String
+  story       String
+  contentJson String   @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Category {
@@ -68,21 +69,28 @@ model ProductNote {
 }
 
 model Collaboration {
-  id        Int      @id @default(autoincrement())
-  movement  String
-  title     String
-  desc      String
-  status    String   @default("Tayang")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  movement    String   // nama partner (untuk kompatibilitas lama)
+  partnerName String   @default("")
+  title       String
+  type        String   @default("Kolaborasi")
+  desc        String   @default("")
+  imgUrl      String   @default("")
+  dateValue   String   @default("")
+  externalUrl String   @default("")
+  status      String   @default("Tayang")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Legality {
   id        Int      @id @default(autoincrement())
-  type      String   // BPOM, NIB
+  type      String   @default("NIB") // BPOM, NIB, dll
   number    String
   title     String
-  status    String   @default("Terverifikasi")
+  authority String   @default("")
+  expiry    String   @default("")
+  status    String   @default("Tayang di Web")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -112,4 +120,13 @@ model SiteSetting {
   metaDescription String
   adminEmail      String
   updatedAt       DateTime @updatedAt
+}
+
+model SiteMedia {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  label     String
+  page      String   @default("Umum")
+  url       String
+  updatedAt DateTime @updatedAt
 }

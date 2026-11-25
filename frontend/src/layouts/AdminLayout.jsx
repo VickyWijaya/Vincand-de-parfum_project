@@ -39,7 +39,7 @@ export default function AdminLayout() {
     { label: 'Dashboard', path: '/admin', icon: 'grid_view' },
     { label: 'Produk', path: '/admin/products', icon: 'inventory_2' },
     { label: 'Kategori & Varian', path: '/admin/categories', icon: 'category' },
-    { label: 'Profil Brand', path: '/admin/brand', icon: 'storefront' },
+    { label: 'Konten & Gambar', path: '/admin/brand', icon: 'storefront' },
     { label: 'Kolaborasi', path: '/admin/collaborations', icon: 'handshake' },
     { label: 'Legalitas & Izin', path: '/admin/legalities', icon: 'verified_user' },
     { label: 'Media Sosial & Kontak', path: '/admin/social', icon: 'contact_phone' },
@@ -164,20 +164,10 @@ export default function AdminLayout() {
 
             <div className="h-4 w-px bg-outline-variant/40 hidden sm:block"></div>
 
-            {/* Notification button */}
-            <button
-              type="button"
-              className="relative p-1.5 text-on-surface-variant hover:text-on-surface rounded-lg hover:bg-surface-container transition-colors cursor-pointer"
-              title="Notifikasi"
-            >
-              <span className="material-symbols-outlined text-[20px]">notifications</span>
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span>
-            </button>
-
             {/* Avatar / Profile Initials */}
             <div className="flex items-center pl-1">
               <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center font-bold text-xs text-on-surface border border-outline-variant/50">
-                VA
+                {adminUser?.name ? adminUser.name.charAt(0).toUpperCase() : 'A'}
               </div>
             </div>
           </div>

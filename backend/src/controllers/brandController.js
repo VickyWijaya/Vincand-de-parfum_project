@@ -1,5 +1,13 @@
 import prisma from '../prisma.js';
 
+const parseContent = (raw) => {
+  try {
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+};
+
 export const getBrand = async (req, res) => {
   try {
     let brand = await prisma.brandProfile.findFirst();
@@ -7,16 +15,20 @@ export const getBrand = async (req, res) => {
     if (!brand) {
       brand = {
         name: 'VINCAND DEU PARFUM',
-        tagline: 'Indonesian Independent Olfactive House',
+        tagline: 'Rumah Parfum Independen Indonesia',
         origin: '2024 / Jakarta, Indonesia',
-        heroQuote: 'Every scent begins with an idea, a feeling, and the desire to create something worth remembering.',
-        story: 'VINCAND DEU PARFUM lahir dari dorongan autentik untuk meredefinisi wewangian independen di Indonesia.'
+        heroQuote: 'Setiap aroma berawal dari sebuah ide, rasa, dan keinginan untuk menciptakan sesuatu yang selalu dikenang.',
+        story: 'VINCAND DEU PARFUM lahir dari keinginan tulus untuk menghadirkan warna baru bagi parfum independen di Indonesia.',
+        contentJson: '{}'
       };
     }
 
     return res.json({
       success: true,
-      data: brand
+      data: {
+        ...brand,
+        content: parseContent(brand.contentJson)
+      }
     });
   } catch (error) {
     console.error('getBrand error:', error);
@@ -29,11 +41,14 @@ export const getBrand = async (req, res) => {
 
 export const updateBrand = async (req, res) => {
   try {
-    const { name, tagline, origin, heroQuote, heroDescription, story } = req.body;
-
+    const { name, tagline, origin, heroQuote, heroDescription, story, content } = req.body;
     const quoteToSave = heroQuote || heroDescription || '';
 
     let brand = await prisma.brandProfile.findFirst();
+    const existingContent = brand ? parseContent(brand.contentJson) : {};
+    const mergedContent = content && typeof content === 'object'
+      ? { ...existingContent, ...content }
+      : existingContent;
 
     if (brand) {
       brand = await prisma.brandProfile.update({
@@ -43,25 +58,30 @@ export const updateBrand = async (req, res) => {
           tagline: tagline ?? brand.tagline,
           origin: origin ?? brand.origin,
           heroQuote: quoteToSave || brand.heroQuote,
-          story: story ?? brand.story
+          story: story ?? brand.story,
+          contentJson: JSON.stringify(mergedContent)
         }
       });
     } else {
       brand = await prisma.brandProfile.create({
         data: {
           name: name || 'VINCAND DEU PARFUM',
-          tagline: tagline || 'Indonesian Independent Olfactive House',
+          tagline: tagline || 'Rumah Parfum Independen Indonesia',
           origin: origin || '2024 / Jakarta, Indonesia',
-          heroQuote: quoteToSave || 'Every scent begins with an idea.',
-          story: story || ''
+          heroQuote: quoteToSave || 'Setiap aroma berawal dari sebuah ide.',
+          story: story || '',
+          contentJson: JSON.stringify(mergedContent)
         }
       });
     }
 
     return res.json({
       success: true,
-      message: 'Profil brand berhasil diperbarui.',
-      data: brand
+      message: 'Profil brand & konten berhasil diperbarui.',
+      data: {
+        ...brand,
+        content: parseContent(brand.contentJson)
+      }
     });
   } catch (error) {
     console.error('updateBrand error:', error);

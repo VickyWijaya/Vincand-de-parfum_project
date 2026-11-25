@@ -7,6 +7,7 @@ import { getLegalities } from '../controllers/legalityController.js';
 import { getSocials } from '../controllers/socialController.js';
 import { createInquiry } from '../controllers/inquiryController.js';
 import { getSettings } from '../controllers/settingController.js';
+import { getMedia } from '../controllers/mediaController.js';
 
 const router = Router();
 
@@ -32,6 +33,9 @@ router.get('/legalities', getLegalities);
 
 // Socials
 router.get('/socials', getSocials);
+
+// Site Media
+router.get('/media', getMedia);
 
 // Inquiries (Contact Form Submission)
 router.post('/inquiries', createInquiry);

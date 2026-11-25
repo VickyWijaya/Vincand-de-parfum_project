@@ -169,7 +169,7 @@ export default function AdminProductCreatePage() {
               </span>
             </div>
             <p className="font-body-sm text-body-sm text-on-surface-variant">
-              Perbarui informasi wewangian, foto resmi botol, piramida aroma, dan tautan transaksi e-commerce.
+              Perbarui informasi PARFUM, foto resmi botol, piramida aroma, dan tautan transaksi e-commerce.
             </p>
           </div>
 
@@ -516,10 +516,16 @@ export default function AdminProductCreatePage() {
                     type="file"
                     accept="image/*"
                     className="hidden"
-                    onChange={(e) => {
+                    onChange={async (e) => {
                       const file = e.target.files?.[0];
-                      if (file) {
-                        setFormData({ ...formData, imgUrl: URL.createObjectURL(file) });
+                      if (!file) return;
+                      try {
+                        const res = await api.admin.uploadImage(file);
+                        if (res?.url) {
+                          setFormData((prev) => ({ ...prev, imgUrl: res.url }));
+                        }
+                      } catch (err) {
+                        alert(err.message || 'Gagal mengunggah foto.');
                       }
                     }}
                   />
@@ -552,7 +558,7 @@ export default function AdminProductCreatePage() {
               <div className="flex flex-col">
                 <span className="font-label-md text-label-md text-on-surface font-semibold">Status Tayang Publik</span>
                 <span className="font-caption text-caption text-secondary">
-                  Produk dapat dilihat oleh calon pembeli di katalog utama dan lookbook wewangian.
+                  Produk dapat dilihat oleh calon pembeli di katalog utama dan lookbook PARFUM.
                 </span>
               </div>
               <label className="relative inline-flex items-center cursor-pointer shrink-0">

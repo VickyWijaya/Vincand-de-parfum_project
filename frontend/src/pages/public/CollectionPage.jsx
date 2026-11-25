@@ -1,11 +1,73 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { api } from '../../services/api';
 
 // Authentic Perfume Images from assets/parfum
 import velustraImg from '../../assets/parfum/VELUSTRA by VINCAND DEU PARFUM authentic purple glass bottle with gold cap.png';
 import amberryyceImg from '../../assets/parfum/AMBERRYYCE by VINCAND DEU PARFUM authentic clear glass bottle with gold cap, cherries, and saffron.png';
 
 export default function CollectionPage() {
+  const [velustra, setVelustra] = useState({
+    name: 'VELUSTRA',
+    categoryTag: 'Manis • Floral • Memikat • Gourmand',
+    tags: ['Manis', 'Floral', 'Memikat', 'Gourmand'],
+    description: 'Ekspresi ceria dari perpaduan buah beri segar, bunga lembut, dan kehangatan gourmand yang manis.',
+    notesSummary: 'Wild Berries, Raspberry, Peony, Freesia, Warm Praline, Vanilla',
+    concentration: '30 ML • EAU DE PARFUM',
+    price: 'Rp 289.000',
+    imgUrl: velustraImg,
+    shopeeUrl: 'https://shopee.co.id/vincanddeuparfume'
+  });
+
+  const [amberryyce, setAmberyyce] = useState({
+    name: 'AMBERYYCE',
+    categoryTag: 'Mewah • Manis • Woody • Fruity',
+    tags: ['Mewah', 'Manis', 'Woody', 'Fruity'],
+    description: 'Ekspresi kaya dari ceri yang segar, bunga elegan, dan kedalaman aroma kayu yang hangat.',
+    notesSummary: 'Wild Cherry, Sour Cherry, Jasmine, Saffron, Amberwood, Cedar',
+    concentration: '30 ML • EAU DE PARFUM',
+    price: 'Rp 319.000',
+    imgUrl: amberryyceImg,
+    shopeeUrl: 'https://shopee.co.id/vincanddeuparfume'
+  });
+
+  useEffect(() => {
+    api.public.getProducts()
+      .then((res) => {
+        if (res?.data && res.data.length > 0) {
+          const v = res.data.find(p => p.slug === 'velustra' || p.name?.toLowerCase().includes('vel'));
+          if (v) {
+            setVelustra(prev => ({
+              ...prev,
+              name: v.name ? v.name.replace(/\s*30ml/i, '').toUpperCase() : prev.name,
+              description: v.description || prev.description,
+              concentration: v.concentration ? v.concentration.toUpperCase() : prev.concentration,
+              price: v.price || prev.price,
+              notesSummary: v.notes?.length ? v.notes.map(n => n.noteName).join(', ') : prev.notesSummary,
+              imgUrl: v.imgUrl || prev.imgUrl,
+              shopeeUrl: v.shopeeUrl || prev.shopeeUrl,
+              tags: v.category?.tag ? v.category.tag.split(/[\s•,]+/).filter(Boolean) : prev.tags
+            }));
+          }
+
+          const a = res.data.find(p => p.slug === 'amberryyce' || p.name?.toLowerCase().includes('amb'));
+          if (a) {
+            setAmberyyce(prev => ({
+              ...prev,
+              name: a.name ? a.name.replace(/\s*30ml/i, '').toUpperCase() : prev.name,
+              description: a.description || prev.description,
+              concentration: a.concentration ? a.concentration.toUpperCase() : prev.concentration,
+              price: a.price || prev.price,
+              notesSummary: a.notes?.length ? a.notes.map(n => n.noteName).join(', ') : prev.notesSummary,
+              imgUrl: a.imgUrl || prev.imgUrl,
+              shopeeUrl: a.shopeeUrl || prev.shopeeUrl,
+              tags: a.category?.tag ? a.category.tag.split(/[\s•,]+/).filter(Boolean) : prev.tags
+            }));
+          }
+        }
+      })
+      .catch(() => {});
+  }, []);
   return (
     <div className="flex flex-col w-full bg-surface">
       {/* SECTION 1: COLLECTION HERO HEADER */}
@@ -13,13 +75,13 @@ export default function CollectionPage() {
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             <span className="reveal-on-scroll reveal-fade-up font-label-caps-spaced text-[11px] uppercase text-secondary tracking-[0.28em] mb-3 font-medium">
-              THE ARCHIVE OF SCENT · ESSENTIAL EDITIONS
+              ARSIP AROMA · EDISI ESENSIAL
             </span>
             <h1 className="reveal-on-scroll reveal-fade-up delay-100 font-display-hero text-4xl sm:text-6xl lg:text-[76px] text-primary tracking-tight font-normal mb-3 uppercase">
-              THE COLLECTION
+              KOLEKSI KAMI
             </h1>
             <p className="reveal-on-scroll reveal-fade-up delay-150 font-body-lead text-base sm:text-lg lg:text-xl text-secondary font-light max-w-xl mb-4 italic">
-              Two scents. Two distinct expressions.
+              Dua aroma. Dua ekspresi yang berbeda.
             </p>
             <div className="w-12 h-[1px] bg-outline-variant/60 my-3 opacity-60"></div>
             <div className="reveal-on-scroll reveal-fade-up delay-200 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-2 text-secondary">
@@ -27,14 +89,14 @@ export default function CollectionPage() {
                 href="#velustra"
                 className="font-label-caps-spaced text-[11px] uppercase tracking-[0.2em] text-primary hover:opacity-75 transition-opacity font-medium"
               >
-                VELUSTRA <span className="text-secondary font-light text-[10.5px] lowercase italic">(Soft • Sweet • Floral)</span>
+                VELUSTRA <span className="text-secondary font-light text-[10.5px] lowercase italic">(Lembut • Manis • Floral)</span>
               </a>
               <span className="text-outline-variant text-[11px] select-none">·</span>
               <a
                 href="#amberryyce"
                 className="font-label-caps-spaced text-[11px] uppercase tracking-[0.2em] text-primary hover:opacity-75 transition-opacity font-medium"
               >
-                AMBERYYCE <span className="text-secondary font-light text-[10.5px] lowercase italic">(Warm • Bold • Woody)</span>
+                AMBERYYCE <span className="text-secondary font-light text-[10.5px] lowercase italic">(Hangat • Berani • Woody)</span>
               </a>
             </div>
           </div>
@@ -49,17 +111,17 @@ export default function CollectionPage() {
             <div className="reveal-on-scroll reveal-slide-left lg:col-span-6 relative">
               <div className="relative overflow-hidden bg-surface-container aspect-[3/4] shadow-sm group">
                 <img
-                  src={velustraImg}
-                  alt="VELUSTRA by VINCAND DEU PARFUM authentic purple glass bottle with gold cap"
+                  src={velustra.imgUrl}
+                  alt="VELUSTRA by VINCAND DEU PARFUM"
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 />
               </div>
               <div className="mt-3 flex justify-between items-center text-secondary">
                 <span className="font-caption-editorial text-[13px] tracking-wider italic text-secondary">
-                  Sweet & Seductive Gourmand Floral
+                  Floral Gourmand Manis &amp; Memikat
                 </span>
                 <span className="font-label-caps-subtle text-[10px] uppercase tracking-[0.2em] font-medium text-secondary">
-                  30 ML • EAU DE PARFUM
+                  {velustra.concentration}
                 </span>
               </div>
             </div>
@@ -69,17 +131,17 @@ export default function CollectionPage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-[#e0c298]"></span>
                 <span className="font-label-caps-spaced uppercase text-secondary tracking-[0.24em] text-[11px] font-medium">
-                  EAU DE PARFUM
+                  {velustra.concentration}
                 </span>
               </div>
               <h2 className="font-headline-xl text-3xl sm:text-4xl lg:text-5xl text-primary font-normal tracking-tight mb-1 uppercase">
-                VELUSTRA
+                {velustra.name}
               </h2>
               <p className="font-headline-md text-base sm:text-lg text-secondary italic mb-4 font-normal">
-                Sweet • Floral • Seductive • Gourmand
+                {velustra.categoryTag}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
-                {['Sweet', 'Floral', 'Seductive', 'Gourmand'].map((tag) => (
+                {velustra.tags.map((tag) => (
                   <span
                     key={tag}
                     className="bg-surface-container text-secondary font-label-caps-subtle text-[10px] uppercase px-3.5 py-1 tracking-[0.2em] font-medium"
@@ -89,31 +151,36 @@ export default function CollectionPage() {
                 ))}
               </div>
               <p className="font-body-regular text-[14.5px] sm:text-[15px] text-secondary mb-6 sm:mb-8 leading-relaxed font-light">
-                A playful expression of juicy berries, delicate florals, and warm gourmand sweetness.
+                {velustra.description}
               </p>
               <div className="bg-surface-container-low p-5 sm:p-6 mb-8 shadow-xs border border-primary/[0.04]">
                 <span className="font-label-caps-subtle text-[10px] uppercase text-secondary tracking-[0.25em] block mb-2 font-medium">
-                  KEY ESSENCE CHARACTER
+                  KARAKTER ESENSI UTAMA
                 </span>
                 <p className="font-headline-md text-primary italic leading-relaxed text-lg sm:text-xl font-normal">
-                  Wild Berries, Raspberry, Peony, Freesia, Warm Praline, Vanilla
+                  {velustra.notesSummary}
                 </p>
+                {velustra.price && (
+                  <p className="mt-3 font-headline-sm text-lg font-semibold text-primary tracking-wide">
+                    {velustra.price}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col sm:flex-row gap-3.5 items-stretch sm:items-center">
                 <Link
                   to="/product/velustra"
                   className="inline-flex items-center justify-center px-8 py-3.5 bg-black text-white font-label-caps-spaced text-[11px] uppercase tracking-[0.24em] transition-opacity duration-300 hover:opacity-85 shadow-sm text-center font-medium"
                 >
-                  <span>VIEW VELUSTRA</span>
+                  <span>LIHAT {velustra.name}</span>
                   <span className="ml-2">→</span>
                 </Link>
                 <a
-                  href="https://shopee.co.id/vincanddeuparfume"
+                  href={velustra.shopeeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-3.5 bg-[#ebe8e2] text-black font-label-caps-spaced text-[11px] uppercase tracking-[0.24em] transition-colors duration-300 hover:bg-[#e5e2dc] text-center font-medium"
                 >
-                  <span>DISCOVER ON SHOPEE</span>
+                  <span>TEMUKAN DI SHOPEE</span>
                   <span className="ml-2">↗</span>
                 </a>
               </div>
@@ -131,17 +198,17 @@ export default function CollectionPage() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-[#fedeb2]"></span>
                 <span className="font-label-caps-spaced uppercase text-[#c8c6c5] tracking-[0.24em] text-[11px] font-medium">
-                  EAU DE PARFUM
+                  {amberryyce.concentration}
                 </span>
               </div>
               <h2 className="font-headline-xl text-3xl sm:text-4xl lg:text-5xl text-[#fcf9f3] font-normal tracking-tight mb-1 uppercase">
-                AMBERYYCE
+                {amberryyce.name}
               </h2>
               <p className="font-headline-md text-base sm:text-lg text-[#e0c298] italic mb-4 font-normal">
-                Luxury • Sweet • Woody • Fruity
+                {amberryyce.categoryTag}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
-                {['Luxury', 'Sweet', 'Woody', 'Fruity'].map((tag) => (
+                {amberryyce.tags.map((tag) => (
                   <span
                     key={tag}
                     className="bg-[#31312d] text-[#f3f0ea] font-label-caps-subtle text-[10px] uppercase px-3.5 py-1 tracking-[0.2em] font-medium"
@@ -151,31 +218,36 @@ export default function CollectionPage() {
                 ))}
               </div>
               <p className="font-body-regular text-[14.5px] sm:text-[15px] text-[#c8c6c5] mb-6 sm:mb-8 leading-relaxed font-light">
-                A rich expression of juicy cherries, elegant florals, and warm woody depth.
+                {amberryyce.description}
               </p>
               <div className="bg-[#281800] p-5 sm:p-6 mb-8 shadow-md border border-[#9a805b]/20">
                 <span className="font-label-caps-subtle text-[10px] uppercase text-[#e0c298] tracking-[0.25em] block mb-2 font-medium">
-                  KEY ESSENCE CHARACTER
+                  KARAKTER ESENSI UTAMA
                 </span>
                 <p className="font-headline-md text-[#fedeb2] italic leading-relaxed text-lg sm:text-xl font-normal">
-                  Wild Cherry, Sour Cherry, Jasmine, Saffron, Amberwood, Cedar
+                  {amberryyce.notesSummary}
                 </p>
+                {amberryyce.price && (
+                  <p className="mt-3 font-headline-sm text-lg font-semibold text-[#fcf9f3] tracking-wide">
+                    {amberryyce.price}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col sm:flex-row gap-3.5 items-stretch sm:items-center">
                 <Link
                   to="/product/amberryyce"
                   className="inline-flex items-center justify-center px-8 py-3.5 bg-[#fcf9f3] text-black font-label-caps-spaced text-[11px] uppercase tracking-[0.24em] transition-opacity duration-300 hover:opacity-90 shadow-sm text-center font-medium"
                 >
-                  <span>VIEW AMBERYYCE</span>
+                  <span>LIHAT {amberryyce.name}</span>
                   <span className="ml-2">→</span>
                 </Link>
                 <a
-                  href="https://shopee.co.id/vincanddeuparfume"
+                  href={amberryyce.shopeeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-3.5 bg-[#31312d] text-[#fcf9f3] font-label-caps-spaced text-[11px] uppercase tracking-[0.24em] transition-colors duration-300 hover:bg-[#444748] text-center font-medium border border-white/10"
                 >
-                  <span>DISCOVER ON SHOPEE</span>
+                  <span>TEMUKAN DI SHOPEE</span>
                   <span className="ml-2">↗</span>
                 </a>
               </div>
@@ -185,14 +257,14 @@ export default function CollectionPage() {
             <div className="reveal-on-scroll reveal-slide-right lg:col-span-6 relative order-1 lg:order-2">
               <div className="relative overflow-hidden bg-[#31312d] aspect-[3/4] shadow-xl group">
                 <img
-                  src={amberryyceImg}
+                  src={amberryyce.imgUrl}
                   alt="AMBERYYCE by VINCAND DEU PARFUM authentic clear glass bottle with gold cap, cherries, and saffron"
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 />
               </div>
               <div className="mt-3 flex justify-between items-center text-[#c8c6c5]">
                 <span className="font-caption-editorial text-[13px] tracking-wider italic text-[#c8c6c5]">
-                  Rich Woody Cherry & Resinous Luxury
+                  Ceri Woody Kaya &amp; Kemewahan Resin
                 </span>
                 <span className="font-label-caps-subtle text-[10px] uppercase tracking-[0.2em] font-medium text-[#c8c6c5]">
                   30 ML • EAU DE PARFUM
@@ -209,13 +281,13 @@ export default function CollectionPage() {
           {/* Section Header */}
           <div className="reveal-on-scroll reveal-fade-up text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <span className="font-label-caps-spaced uppercase text-secondary tracking-[0.26em] text-[11px] mb-2 block font-medium">
-              THE DUAL DIALOGUE
+              DIALOG DUALITAS
             </span>
             <h3 className="font-headline-lg text-3xl sm:text-4xl text-primary tracking-tight font-normal uppercase">
-              SENSORY PARALLELS
+              PARALEL SENSORI
             </h3>
             <p className="font-body-small text-[14px] text-secondary mt-2 font-light leading-relaxed">
-              Two divergent trajectories of emotional atmosphere, crafted as daylight clarity and midnight gravity.
+              Dua arah atmosfer emosional yang berbeda, dirangkai layaknya kejernihan cahaya siang dan kedalaman malam.
             </p>
           </div>
 
@@ -226,43 +298,43 @@ export default function CollectionPage() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-label-caps-subtle text-[10px] uppercase tracking-[0.25em] text-secondary font-medium">
-                    COMPOSITION I
+                    KOMPOSISI I
                   </span>
                   <span className="font-caption-editorial text-[13px] italic text-secondary">
-                    30ml • 8–12 Hour Wear
+                    30ml • Ketahanan 8–12 Jam
                   </span>
                 </div>
                 <h4 className="font-headline-md text-2xl sm:text-3xl text-primary font-normal mb-1 tracking-tight uppercase">
                   VELUSTRA
                 </h4>
                 <p className="font-label-caps-spaced text-[10.5px] text-secondary uppercase tracking-[0.18em] mb-6 font-medium">
-                  SWEET • FLORAL • SEDUCTIVE • GOURMAND
+                  MANIS • FLORAL • MEMIKAT • GOURMAND
                 </p>
                 <div className="space-y-4 pt-4 border-t border-primary/10">
                   <div>
                     <span className="font-label-caps-subtle text-[9px] uppercase text-secondary tracking-[0.2em] block mb-1 font-medium">
-                      TOP NOTES
+                      AROMA PEMBUKA (TOP NOTES)
                     </span>
-                    <p className="font-body-small text-[14px] text-on-surface">Wild Berries & Raspberry</p>
+                    <p className="font-body-small text-[14px] text-on-surface">Wild Berries &amp; Raspberry</p>
                   </div>
                   <div>
                     <span className="font-label-caps-subtle text-[9px] uppercase text-secondary tracking-[0.2em] block mb-1 font-medium">
-                      HEART NOTES
+                      AROMA INTI (HEART NOTES)
                     </span>
-                    <p className="font-body-small text-[14px] text-on-surface">Peony & Freesia</p>
+                    <p className="font-body-small text-[14px] text-on-surface">Peony &amp; Freesia</p>
                   </div>
                   <div>
                     <span className="font-label-caps-subtle text-[9px] uppercase text-secondary tracking-[0.2em] block mb-1 font-medium">
-                      BASE NOTES
+                      AROMA DASAR (BASE NOTES)
                     </span>
-                    <p className="font-body-small text-[14px] text-on-surface">Warm Praline & Vanilla</p>
+                    <p className="font-body-small text-[14px] text-on-surface">Warm Praline &amp; Vanilla</p>
                   </div>
                   <div>
                     <span className="font-label-caps-subtle text-[9px] uppercase text-secondary tracking-[0.2em] block mb-1 font-medium">
-                      OLFACTIVE CHARACTER
+                      KARAKTER OLFAKTIF
                     </span>
                     <p className="font-body-small text-[14px] text-on-surface font-light leading-relaxed">
-                      A playful expression of juicy berries, delicate florals, and warm gourmand sweetness.
+                      Ekspresi ceria dari perpaduan buah beri segar, bunga lembut, dan kehangatan gourmand yang manis.
                     </p>
                   </div>
                 </div>
@@ -272,7 +344,7 @@ export default function CollectionPage() {
                   href="#velustra"
                   className="font-label-caps-spaced text-[11px] uppercase text-primary tracking-[0.22em] inline-flex items-center gap-1.5 hover:opacity-75 transition-opacity font-medium"
                 >
-                  <span>INSPECT VELUSTRA</span>
+                  <span>TELISIK VELUSTRA</span>
                   <span>↖</span>
                 </a>
               </div>
@@ -283,43 +355,43 @@ export default function CollectionPage() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-label-caps-subtle text-[10px] uppercase tracking-[0.25em] text-secondary font-medium">
-                    COMPOSITION II
+                    KOMPOSISI II
                   </span>
                   <span className="font-caption-editorial text-[13px] italic text-secondary">
-                    30ml • 8–12 Hour Wear
+                    30ml • Ketahanan 8–12 Jam
                   </span>
                 </div>
                 <h4 className="font-headline-md text-2xl sm:text-3xl text-primary font-normal mb-1 tracking-tight uppercase">
                   AMBERYYCE
                 </h4>
                 <p className="font-label-caps-spaced text-[10.5px] text-secondary uppercase tracking-[0.18em] mb-6 font-medium">
-                  LUXURY • SWEET • WOODY • FRUITY
+                  MEWAH • MANIS • WOODY • FRUITY
                 </p>
                 <div className="space-y-4 pt-4 border-t border-primary/10">
                   <div>
                     <span className="font-label-caps-subtle text-[9px] uppercase text-secondary tracking-[0.2em] block mb-1 font-medium">
-                      TOP NOTES
+                      AROMA PEMBUKA (TOP NOTES)
                     </span>
-                    <p className="font-body-small text-[14px] text-on-surface">Wild Cherry & Sour Cherry</p>
+                    <p className="font-body-small text-[14px] text-on-surface">Wild Cherry &amp; Sour Cherry</p>
                   </div>
                   <div>
                     <span className="font-label-caps-subtle text-[9px] uppercase text-secondary tracking-[0.2em] block mb-1 font-medium">
-                      HEART NOTES
+                      AROMA INTI (HEART NOTES)
                     </span>
-                    <p className="font-body-small text-[14px] text-on-surface">Jasmine & Saffron</p>
+                    <p className="font-body-small text-[14px] text-on-surface">Jasmine &amp; Saffron</p>
                   </div>
                   <div>
                     <span className="font-label-caps-subtle text-[9px] uppercase text-secondary tracking-[0.2em] block mb-1 font-medium">
-                      BASE NOTES
+                      AROMA DASAR (BASE NOTES)
                     </span>
-                    <p className="font-body-small text-[14px] text-on-surface">Amberwood & Cedar</p>
+                    <p className="font-body-small text-[14px] text-on-surface">Amberwood &amp; Cedar</p>
                   </div>
                   <div>
                     <span className="font-label-caps-subtle text-[9px] uppercase text-secondary tracking-[0.2em] block mb-1 font-medium">
-                      OLFACTIVE CHARACTER
+                      KARAKTER OLFAKTIF
                     </span>
                     <p className="font-body-small text-[14px] text-on-surface font-light leading-relaxed">
-                      A rich expression of juicy cherries, elegant florals, and warm woody depth.
+                      Ekspresi kaya dari ceri yang segar, bunga elegan, dan kedalaman aroma kayu yang hangat.
                     </p>
                   </div>
                 </div>
@@ -329,7 +401,7 @@ export default function CollectionPage() {
                   href="#amberryyce"
                   className="font-label-caps-spaced text-[11px] uppercase text-primary tracking-[0.22em] inline-flex items-center gap-1.5 hover:opacity-75 transition-opacity font-medium"
                 >
-                  <span>INSPECT AMBERYYCE</span>
+                  <span>TELISIK AMBERYYCE</span>
                   <span>↖</span>
                 </a>
               </div>
@@ -343,13 +415,13 @@ export default function CollectionPage() {
         <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="reveal-on-scroll reveal-fade-up bg-[#f0eee8] p-8 sm:p-12 lg:p-16 max-w-4xl mx-auto shadow-xs text-center border border-primary/[0.04]">
             <span className="font-label-caps-spaced text-[11px] uppercase text-secondary tracking-[0.26em] mb-2 block font-medium">
-              ACQUISITION & LIAISON
+              PEMBELIAN &amp; KONSULTASI
             </span>
             <h3 className="font-headline-lg text-2xl sm:text-3xl lg:text-4xl text-primary tracking-tight font-normal mb-3 uppercase">
-              EXPERIENCE THE COMPOSITIONS
+              RASAKAN KOMPOSISI KAMI
             </h3>
             <p className="font-body-regular text-[14.5px] sm:text-[15px] text-secondary max-w-lg mx-auto mb-8 sm:mb-10 font-light leading-relaxed">
-              Both master editions are available for immediate acquisition through our authorized digital boutique, or via bespoke personal consultation.
+              Kedua edisi utama tersedia untuk dipesan langsung melalui butik digital resmi kami, atau melalui konsultasi personal.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               {/* Shopee Direct Flagship */}
@@ -359,7 +431,7 @@ export default function CollectionPage() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span>OFFICIAL SHOPEE FLAGSHIP</span>
+                <span>TOKO RESMI SHOPEE</span>
                 <span className="ml-2">↗</span>
               </a>
               {/* Concierge Liaison */}
@@ -369,13 +441,13 @@ export default function CollectionPage() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <span>WHATSAPP CONCIERGE</span>
+                <span>KONSULTASI WHATSAPP</span>
                 <span className="ml-2">💬</span>
               </a>
             </div>
             <div className="mt-8 pt-6 border-t border-primary/[0.08]">
               <p className="font-caption-editorial text-[12px] text-secondary tracking-widest uppercase">
-                VINCAND DEU PARFUM • INDEPENDENT OLFACTIVE ATELIER
+                VINCAND DEU PARFUM • ATELIER PARFUM INDEPENDEN
               </p>
             </div>
           </div>

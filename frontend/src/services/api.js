@@ -81,6 +81,16 @@ export const api = {
       return res;
     },
     getMe: () => request('/auth/me'),
+    updateProfile: (data) =>
+      request('/auth/profile', {
+        method: 'PUT',
+        body: data
+      }),
+    updatePassword: (data) =>
+      request('/auth/password', {
+        method: 'PUT',
+        body: data
+      }),
     logout: () => authStorage.logout()
   },
 
@@ -93,6 +103,7 @@ export const api = {
     getCollaborations: () => request('/collaborations'),
     getLegalities: () => request('/legalities'),
     getSocials: () => request('/socials'),
+    getMedia: () => request('/media'),
     getSettings: () => request('/settings'),
     sendInquiry: (data) =>
       request('/inquiries', {
@@ -216,6 +227,31 @@ export const api = {
       request('/admin/settings', {
         method: 'PUT',
         body: data
+      }),
+
+    // Site Media & Image Upload
+    getMedia: () => request('/admin/media'),
+    updateMedia: (data) =>
+      request('/admin/media', {
+        method: 'PUT',
+        body: data
+      }),
+    uploadImage: (file) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = async () => {
+          try {
+            const res = await request('/admin/upload', {
+              method: 'POST',
+              body: { filename: file.name, dataUrl: reader.result }
+            });
+            resolve(res);
+          } catch (err) {
+            reject(err);
+          }
+        };
+        reader.onerror = () => reject(new Error('Gagal membaca file gambar.'));
+        reader.readAsDataURL(file);
       })
   }
 };
